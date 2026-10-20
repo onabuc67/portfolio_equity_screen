@@ -1,0 +1,2 @@
+requests>=2.32,<3
+pandas_market_calendars>=4.6,<6

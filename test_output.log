@@ -1,0 +1,40 @@
+test_country_diversity_cap (test_screen.ProviderAndQualityTests.test_country_diversity_cap) ... ok
+test_duplicate_share_class_not_double_count (test_screen.ProviderAndQualityTests.test_duplicate_share_class_not_double_count) ... ok
+test_fail_closed_no_sec_contact (test_screen.ProviderAndQualityTests.test_fail_closed_no_sec_contact) ... ok
+test_fail_closed_without_market_feed (test_screen.ProviderAndQualityTests.test_fail_closed_without_market_feed) ... ok
+test_full_mock_data_ready_with_no_trade_signal (test_screen.ProviderAndQualityTests.test_full_mock_data_ready_with_no_trade_signal) ... ok
+test_nasdaq_session_date_not_intraday_fabrication (test_screen.ProviderAndQualityTests.test_nasdaq_session_date_not_intraday_fabrication) ... ok
+test_no_automatic_canonical_score (test_screen.ProviderAndQualityTests.test_no_automatic_canonical_score) ... ok
+test_number_and_spurious_rows (test_screen.ProviderAndQualityTests.test_number_and_spurious_rows) ... ok
+test_sec_annual_exact_period (test_screen.ProviderAndQualityTests.test_sec_annual_exact_period) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.176s
+
+OK
+{
+  "status": "FAILED",
+  "coverage": {},
+  "failures": [
+    "FetchFailure: upstream offline"
+  ]
+}
+{
+  "status": "DATA_READY_RESEARCH_PENDING",
+  "coverage": {
+    "US": 220,
+    "INTL": 120,
+    "INTL_ETF": 31,
+    "US_SECTORS": 11,
+    "INTL_COUNTRIES": 8,
+    "issuer_facts_attempted": 340,
+    "issuer_facts_with_valuation": 340,
+    "etf_quotes_attempted": 31,
+    "nasdaq_quote_asof_date": "2026-10-19",
+    "etf_quote_asof_range": [
+      "2026-10-19",
+      "2026-10-19"
+    ]
+  },
+  "failures": []
+}
