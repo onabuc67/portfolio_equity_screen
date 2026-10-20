@@ -196,17 +196,21 @@ def select_stocks(rows,sp,secmap):
         elif country and country!='US' and (maybe_adr(r) or cap>2e9):
             if volume*p<1_000_000:continue
             cik=secmap.get(t,'')
+            # CompanyFacts uses SEC CIK keys. Skip names that cannot be mapped
+            # rather than spending SEC requests on CIK0000000000.
             if cik and cik not in seen_cik_intl:
                 seen_cik_intl.add(cik)
                 international.append({'ticker':t,'name':name,'segment':'INTL','sector':vendor_sector(r.get('sector'),r.get('industry')),'sector_authority':'Nasdaq indicative vendor mapping', 'country':country,'price':p,'market_cap':cap,'cik':cik,'daily_dollar_volume_proxy':round(p*volume,2)})
     domestic.sort(key=lambda x:x['market_cap'],reverse=True)
     international.sort(key=lambda x:x['market_cap'],reverse=True)
-    # Domestic S&P 500 has 11 sector breadth. Foreign country cap prevents top-heavy EM representation.
+    # Preserve country diversification, but do not truncate potentially
+    # SEC-verifiable foreign issuers at 150 before the SEC financial gate.
+    # Live test #2 recovered 77/100 from that artificially restricted pool.
     intl=[];bycountry=Counter()
     for r in international:
-        if bycountry[r['country']]<25:
+        if bycountry[r['country']]<65:
             intl.append(r);bycountry[r['country']]+=1
-        if len(intl)>=150:break
+        if len(intl)>=420:break
     return domestic[:460],intl
 
 def annual_value(facts,tags,unit='USD',asof=None):
@@ -255,22 +259,81 @@ def facts_for(session,row,contact,asof):
     except (FetchFailure,requests.RequestException,ValueError) as ex:
         x=dict(row);x.update(annual_pe=None,fcf_yield=None,earnings_annual=None,fcf_annual=None,sec_filed=None,sec_period_end=None,sec_url=url,fundamental_error=str(ex)[:200]);return x
 
-def etf_stooq(session,ticker,asof):
-    # Stooq daily OHLCV contains an ACTUAL dated trading session, not a fabricated time.
+def etf_nasdaq(session,ticker,asof):
+    """Read dated ETF last trade and session volume from Nasdaq's public info page.
+
+    No inference from HTTP fetch dates or today's run date is allowed. If the
+    provider omits required evidence, the security FAILS validation.
+    """
+    url=f'https://api.nasdaq.com/api/quote/{ticker}/info'
+    try:
+        payload=fetch(session,url,params={'assetclass':'etf'},headers=HEADERS,tries=2,timeout=22).json()
+        data=payload.get('data') or {}
+        if data.get('symbol') and data['symbol'].upper()!=ticker.upper():
+            raise FetchFailure(f'Nasdaq returned a different symbol for {ticker}: {data["symbol"]}')
+        category=str(data.get('assetClass') or '').upper()
+        if category and category not in ('ETF','ETFS'):
+            raise FetchFailure(f'Not ETF-classified by Nasdaq: {category}')
+        raw=data.get('primaryData') or {}
+        price=number(raw.get('lastSalePrice'))
+        volume=number(raw.get('volume'))
+        timestamp=raw.get('lastTradeTimestamp')
+        tradeday=parse_nasdaq_asof(timestamp)
+        if not timestamp or not tradeday:
+            raise FetchFailure('missing explicit provider lastTradeTimestamp')
+        if tradeday>asof:
+            raise FetchFailure(f'future quote trade date {tradeday}')
+        if not price or price<=0 or not volume or volume<=0:
+            raise FetchFailure('missing positive lastSalePrice or session volume')
+        return {'ticker':ticker,'segment':'INTL_ETF','asset_type':'ETF',
+                'quote_asof_date':tradeday.isoformat(),'provider_timestamp':timestamp,
+                'price_usd':price,'volume':volume,'source_url':url+'?assetclass=etf',
+                'fund_domicile':'US','provider':'Nasdaq quote/info','error':''}
+    except (FetchFailure,ValueError,KeyError,TypeError,requests.RequestException) as ex:
+        return {'ticker':ticker,'provider':'Nasdaq quote/info','error':str(ex)[:190]}
+
+def etf_stooq(session,ticker,asof,apikey=None):
+    """Optional second source: Stooq now requires a separate download API key.
+
+    Never request unauthenticated Stooq bulk CSV and count HTML/quota pages as
+    market data. An optional GitHub STOOQ_API_KEY secret enables this fallback.
+    """
+    if not apikey:
+        return {'ticker':ticker,'provider':'Stooq','error':'STOOQ_API_KEY not provided; Stooq CSV fallback disabled'}
     try:
         start=(asof-timedelta(days=12)).strftime('%Y%m%d');end=asof.strftime('%Y%m%d')
-        resp=fetch(session,'https://stooq.com/q/d/l/',params={'s':ticker.lower()+'.us','i':'d','d1':start,'d2':end},headers={'User-Agent':'Mozilla/5.0'},tries=2,timeout=22)
+        resp=fetch(session,'https://stooq.com/q/d/l/',
+                   params={'s':ticker.lower()+'.us','i':'d','d1':start,'d2':end,'apikey':apikey},
+                   headers={'User-Agent':'Mozilla/5.0'},tries=2,timeout=22)
         rows=list(csv.DictReader(io.StringIO(resp.text)))
         vals=[]
         for x in rows:
             try:
-                d=date.fromisoformat(x['Date']);price=float(x['Close']);vol=float(x['Volume']);
+                d=date.fromisoformat(x['Date']);price=float(x['Close']);vol=float(x['Volume'])
                 if d<=asof and price>0 and vol>0:vals.append((d,price,vol))
             except (ValueError,KeyError):pass
-        if not vals:return None
+        if not vals:raise FetchFailure('no eligible dated OHLCV CSV rows from Stooq')
         d,p,v=max(vals)
-        return {'ticker':ticker,'segment':'INTL_ETF','asset_type':'ETF','quote_asof_date':d.isoformat(), 'price_usd':p,'volume':v,'source_url':resp.url,'fund_domicile':'US','error':''}
-    except FetchFailure as ex:return {'ticker':ticker,'error':str(ex)}
+        return {'ticker':ticker,'segment':'INTL_ETF','asset_type':'ETF',
+                'quote_asof_date':d.isoformat(),'price_usd':p,'volume':v,
+                'source_url':'https://stooq.com/q/d/l/ (authenticated)','fund_domicile':'US',
+                'provider':'Stooq authenticated CSV','error':''}
+    except (FetchFailure,ValueError) as ex:return {'ticker':ticker,'provider':'Stooq','error':str(ex)[:190]}
+
+def etf_quote(session,ticker,asof):
+    """Use date-verifiable Nasdaq quotes; optional keyed Stooq fallback.
+
+    The caller decides freshness based on the NYSE prior completed session.
+    """
+    nasdaq=etf_nasdaq(session,ticker,asof)
+    if nasdaq.get('price_usd'):
+        return nasdaq
+    stooq=etf_stooq(session,ticker,asof,os.getenv('STOOQ_API_KEY'))
+    if stooq.get('price_usd'):
+        return stooq
+    return {'ticker':ticker,'error':('Nasdaq: '+nasdaq.get('error','unknown')+
+                                    ' | Stooq: '+stooq.get('error','unknown'))[:320],
+            'provider':'both sources failed'}
 
 def triage(rows,segment,n=15):
     # NOT the canonical Opportunity Score. Cheapness/free cash flow is a RESEARCH queue only.
@@ -302,12 +365,13 @@ def write_json(path,obj):
 
 def main(out,asof=None,contact=None):
     now=datetime.now(UTC);today=asof or now.date();session=requests.Session()
-    report={'pipeline_version':'0.2','run_utc':now.isoformat(),'report_date':today.isoformat(),
+    report={'pipeline_version':'0.3','run_utc':now.isoformat(),'report_date':today.isoformat(),
             'provider_status':{},'coverage':{},'status':'FAILED','failures':[],
             'notes':['Market-wide quote source supplies trading-session date, NOT per-security intraday timestamps.',
                      'Triage results are NOT Opportunity Reserve v1.4 scores or buy recommendations.'],
             'sources':{'us_sector_universe':SP500,'nasdaq':STOCKS,'issuer_fundamentals':'https://data.sec.gov/api/xbrl/companyfacts/',
-                       'etf_history':'https://stooq.com/q/d/l/'}}
+                       'etf_quote_primary':'https://api.nasdaq.com/api/quote/{symbol}/info?assetclass=etf',
+                       'etf_history_optional':'https://stooq.com/q/d/l/ (API key required)'}}
     try:
         stocks,quotedate,meta=market_rows(session)
         report['provider_status']['nasdaq']=meta
@@ -333,8 +397,12 @@ def main(out,asof=None,contact=None):
         valid=[r for r in enriched if r.get('annual_pe') is not None or r.get('fcf_yield') is not None]
         ok_us=[r for r in valid if r['segment']=='US']
         ok_foreign=[r for r in valid if r['segment']=='INTL']
-        with ThreadPoolExecutor(max_workers=4) as pool:
-            etfs=list(pool.map(lambda t:etf_stooq(requests.Session(),t,today),ETF_SYMBOLS))
+        def etf_job(t):
+            time.sleep(0.12+random.random()*0.15)
+            with requests.Session() as es:
+                return etf_quote(es,t,today)
+        with ThreadPoolExecutor(max_workers=3) as pool:
+            etfs=list(pool.map(etf_job,ETF_SYMBOLS))
         verified_etfs=[e for e in etfs if e and e.get('price_usd') and e['price_usd']*e.get('volume',0)>=300_000 and date.fromisoformat(e['quote_asof_date'])>=prior]
         countries={r['country'] for r in ok_foreign if r['country']}
         sectors={r['sector'] for r in ok_us}
@@ -344,6 +412,11 @@ def main(out,asof=None,contact=None):
              'etf_quotes_attempted':len(etfs),'nasdaq_quote_asof_date':quotedate.isoformat(),
              'etf_quote_asof_range':[min((e['quote_asof_date'] for e in verified_etfs),default=None),max((e['quote_asof_date'] for e in verified_etfs),default=None)]}
         report['provider_status']['issuer_errors']=sum(bool(r.get('fundamental_error')) for r in enriched)
+        report['provider_status']['foreign_candidate_pool']=len(foreign)
+        report['provider_status']['foreign_sec_facts_errors']=sum(bool(r.get('fundamental_error')) for r in enriched if r['segment']=='INTL')
+        report['provider_status']['foreign_missing_valuation']=sum((r.get('annual_pe') is None and r.get('fcf_yield') is None) for r in enriched if r['segment']=='INTL')
+        report['provider_status']['etf_sources']=dict(Counter(e.get('provider','unknown') for e in etfs if e))
+        report['provider_status']['etf_failed_samples']=[{'ticker':e.get('ticker'),'error':e.get('error')} for e in etfs if e and not e.get('price_usd')][:12]
         if len(ok_us)<200:report['failures'].append(f'US issuer-valued: {len(ok_us)}/200')
         if len(ok_foreign)<100:report['failures'].append(f'Foreign issuer-valued: {len(ok_foreign)}/100')
         if len(verified_etfs)<20:report['failures'].append(f'International ETF dated quotes: {len(verified_etfs)}/20')
@@ -369,6 +442,10 @@ def main(out,asof=None,contact=None):
         else:report['status']='FAILED_COVERAGE'
     except Exception as ex:
         report['failures'].append(f'{type(ex).__name__}: {str(ex)[:280]}')
+    # Do not leave an old successful public review queue beside a failed
+    # current status: downstream readers must never confuse it for fresh data.
+    if report['status']!='DATA_READY_RESEARCH_PENDING':
+        (out/'latest.json').unlink(missing_ok=True)
     write_json(out/'status.json',report)
     print(json.dumps({'status':report['status'],'coverage':report['coverage'],'failures':report['failures']},indent=2))
     return 0 if report['status']=='DATA_READY_RESEARCH_PENDING' else 2
