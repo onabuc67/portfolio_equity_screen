@@ -1,0 +1,21 @@
+{
+  "pipeline_version": "0.2",
+  "run_utc": "2026-10-20T15:44:36.618281+00:00",
+  "report_date": "2026-10-20",
+  "provider_status": {},
+  "coverage": {},
+  "status": "FAILED",
+  "failures": [
+    "FetchFailure: Nasdaq did not publish a recognizable trading-session date"
+  ],
+  "notes": [
+    "Market-wide quote source supplies trading-session date, NOT per-security intraday timestamps.",
+    "Triage results are NOT Opportunity Reserve v1.4 scores or buy recommendations."
+  ],
+  "sources": {
+    "us_sector_universe": "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv",
+    "nasdaq": "https://api.nasdaq.com/api/screener/stocks",
+    "issuer_fundamentals": "https://data.sec.gov/api/xbrl/companyfacts/",
+    "etf_history": "https://stooq.com/q/d/l/"
+  }
+}
