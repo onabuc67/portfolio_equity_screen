@@ -1,12 +1,58 @@
 {
   "pipeline_version": "0.2",
-  "run_utc": "2026-10-20T15:44:36.618281+00:00",
+  "run_utc": "2026-10-20T16:00:54.265525+00:00",
   "report_date": "2026-10-20",
-  "provider_status": {},
-  "coverage": {},
-  "status": "FAILED",
+  "provider_status": {
+    "nasdaq": {
+      "source": "https://api.nasdaq.com/api/screener/stocks",
+      "fetched_rows": 6986,
+      "reported_total": null,
+      "pages": 1,
+      "quote_date_provenance": "Nasdaq quote/info corroboration — two dated symbols, sampled not per-row timestamp",
+      "quote_timestamp_anchors": [
+        {
+          "ticker": "AAPL",
+          "trade_timestamp": "Oct 20, 2026 12:01 PM ET",
+          "trade_date": "2026-10-20",
+          "price_deviation_pct": 0.595,
+          "source": "https://api.nasdaq.com/api/quote/AAPL/info"
+        },
+        {
+          "ticker": "JPM",
+          "trade_timestamp": "Oct 20, 2026 12:01 PM ET",
+          "trade_date": "2026-10-20",
+          "price_deviation_pct": 0.982,
+          "source": "https://api.nasdaq.com/api/quote/JPM/info"
+        }
+      ],
+      "individual_row_timestamps_verified": false
+    },
+    "sp500_constituents": 503,
+    "eligible_pre_sec": {
+      "us": 460,
+      "foreign": 150
+    },
+    "issuer_errors": 1
+  },
+  "coverage": {
+    "US": 450,
+    "INTL": 77,
+    "INTL_ETF": 0,
+    "US_SECTORS": 11,
+    "INTL_COUNTRIES": 17,
+    "issuer_facts_attempted": 610,
+    "issuer_facts_with_valuation": 527,
+    "etf_quotes_attempted": 31,
+    "nasdaq_quote_asof_date": "2026-10-20",
+    "etf_quote_asof_range": [
+      null,
+      null
+    ]
+  },
+  "status": "FAILED_COVERAGE",
   "failures": [
-    "FetchFailure: Nasdaq did not publish a recognizable trading-session date"
+    "Foreign issuer-valued: 77/100",
+    "International ETF dated quotes: 0/20"
   ],
   "notes": [
     "Market-wide quote source supplies trading-session date, NOT per-security intraday timestamps.",
