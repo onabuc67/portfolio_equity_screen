@@ -1,37 +1,58 @@
+
 name: Public equity market snapshot (preclose)
+
 on:
   schedule:
-    # Repeated off-hour UTC attempts span US Mountain DST and provide redundancy.
+    # Multiple weekday runs cover Mountain daylight/standard time.
     - cron: '17 15-19 * * 1-5'
   workflow_dispatch:
+
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
 concurrency:
   group: public-equity-snapshot
   cancel-in-progress: false
+
 jobs:
   screen:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
+
       - name: Run public data screening
         env:
           SEC_CONTACT_EMAIL: ${{ secrets.SEC_CONTACT_EMAIL }}
         run: |
-          rm -f public/status.json
+          mkdir -p public
+          rm -f public/status.json public/latest.json
           python -m src.screen --out public || echo 'Screen returned failure; status will be audited below'
           if [ ! -f public/status.json ]; then
             python - <<'PYSTATUS'
           import json,datetime,pathlib
-          pathlib.Path('public/status.json').write_text(json.dumps({'status':'FAILED','failures':['Producer exited without status.json'],'run_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()}))
+          pathlib.Path('public/status.json').write_text(json.dumps({
+              'status':'FAILED',
+              'failures':['Producer exited without status.json'],
+              'run_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }))
           PYSTATUS
           fi
+
       - name: Publish dated machine-readable QA status
         run: |
           git config user.name 'Equity public data bot'
@@ -41,11 +62,40 @@ jobs:
             git commit -m 'Update public market-data screen status'
             git push
           fi
-      - name: Acceptance check — fail workflow on outage or deficient coverage
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy screening results to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Acceptance check
         run: |
           python - <<'PY'
-          import json,sys
-          r=json.load(open('public/status.json'))
-          assert r['status']=='DATA_READY_RESEARCH_PENDING',r['failures']
-          print('First-pass data coverage READY; issuer qualitative analysis remains pending')
+          import json
+          from pathlib import Path
+
+          r=json.loads(Path('public/status.json').read_text())
+          assert r['status']=='DATA_READY_RESEARCH_PENDING', r.get('failures')
+
+          c=r['coverage']
+          assert c['US']>=200, 'Insufficient US coverage'
+          assert c['INTL']>=100, 'Insufficient international coverage'
+          assert c['INTL_ETF']>=20, 'Insufficient ETF coverage'
+          assert c['US_SECTORS']>=11, 'Insufficient sector coverage'
+
+          p=Path('public/latest.json')
+          assert p.exists(), 'Research queue missing'
+          data=json.loads(p.read_text())
+          assert len(data['us_review_queue'])>=15, 'US research queue incomplete'
+          assert len(data['foreign_review_queue'])>=15, 'International research queue incomplete'
+
+          print('Market data READY; GitHub Pages deployed.')
+          print('Issuer research and canonical scoring remain pending.')
           PY
