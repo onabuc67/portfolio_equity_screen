@@ -39,9 +39,62 @@ def fetch(session,url,params=None,headers=None,tries=3,timeout=40):
     raise FetchFailure(url)
 
 def parse_nasdaq_asof(s):
-    # Exact trading-session date, NOT an invented intraday exchange timestamp.
-    m=re.search(r'(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+\d{4}',s or '')
-    return datetime.strptime(m.group(),'%b %d, %Y').date() if m else None
+    # Parse ONLY an explicitly reported provider trade/session date.
+    # Do not substitute today's run date or GitHub HTTP retrieval timestamp.
+    raw = str(s or '')
+    m = re.search(r'(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+\d{4}', raw)
+    if m:
+        return datetime.strptime(m.group(), '%b %d, %Y').date()
+    m = re.search(r'(?<!\d)\d{4}-\d{2}-\d{2}(?!\d)', raw)
+    return date.fromisoformat(m.group()) if m else None
+
+
+def corroborate_nasdaq_quote_date(session, rows, required=2):
+    """Recover a SOURCE-REPORTED session date when the bulk screener omits asof.
+
+    Requires two independent issuer symbol checks against Nasdaq quote/info.
+    Price agreement is a *sample corroboration*, NOT a row-level price timestamp.
+    Reject inconsistent or missing provider dates. The existing NYSE-calendar gate
+    subsequently rejects dates older than the previous completed session.
+    """
+    by_symbol = {str(r.get('symbol') or '').upper(): r for r in rows}
+    preferred = ('AAPL', 'JPM', 'MSFT', 'XOM', 'NVDA', 'WMT', 'AMZN', 'GOOGL', 'BAC')
+    results = []
+    errors = []
+    for symbol in preferred:
+        screener = by_symbol.get(symbol)
+        if not screener:
+            continue
+        reference = number(screener.get('lastsale'))
+        if not reference or reference <= 0:
+            continue
+        url = f'https://api.nasdaq.com/api/quote/{symbol}/info'
+        try:
+            payload = fetch(session, url, params={'assetclass':'stocks'}, headers=HEADERS, tries=2, timeout=20).json()
+            data = payload.get('data') or {}
+            observed = data.get('primaryData') or {}
+            timestamp = observed.get('lastTradeTimestamp')
+            qdate = parse_nasdaq_asof(timestamp)
+            quote = number(observed.get('lastSalePrice'))
+            if not qdate or not quote or quote <= 0:
+                errors.append(f'{symbol}: missing provider trade timestamp or quoted price')
+                continue
+            deviation = abs(quote-reference)/reference
+            if deviation > 0.03:
+                errors.append(f'{symbol}: screener/quote disagreement {deviation:.1%} (>3%)')
+                continue
+            results.append({'ticker':symbol,'trade_timestamp':timestamp,'trade_date':qdate.isoformat(),
+                            'price_deviation_pct':round(100*deviation,3),'source':url})
+            if len(results)>=required:
+                break
+        except (FetchFailure,ValueError,KeyError,TypeError) as ex:
+            errors.append(f'{symbol}: {str(ex)[:140]}')
+    dates={x['trade_date'] for x in results}
+    if len(results)<required:
+        raise FetchFailure(f'Nasdaq screener missing asof AND only {len(results)}/{required} quote timestamp anchors validated; details: {errors[:5]}')
+    if len(dates)!=1:
+        raise FetchFailure(f'Nasdaq quote timestamp anchors disagree on session dates: {sorted(dates)}')
+    return date.fromisoformat(next(iter(dates))),results
 
 def number(s):
     if isinstance(s,(int,float)): return float(s) if math.isfinite(s) else None
@@ -69,9 +122,18 @@ def market_rows(session,max_pages=70):
         if total is not None and offset>=int(total):break
         if len(records)>=6500:break
     if not records:raise FetchFailure('Nasdaq screener returned no rows')
-    if not source_dates:raise FetchFailure('Nasdaq did not publish a recognizable trading-session date')
-    if len(set(source_dates))>1:raise FetchFailure('Nasdaq pagination returned inconsistent quote as-of dates')
-    return records,source_dates[0],{'source':STOCKS,'fetched_rows':len(records),'reported_total':total,'pages':page+1}
+    if len(set(source_dates))>1:
+        raise FetchFailure('Nasdaq pagination returned inconsistent quote as-of dates')
+    provenance = 'bulk screener explicit asof field'
+    anchors = []
+    if source_dates:
+        chosen = source_dates[0]
+    else:
+        chosen, anchors = corroborate_nasdaq_quote_date(session, records)
+        provenance = 'Nasdaq quote/info corroboration — two dated symbols, sampled not per-row timestamp'
+    return records,chosen,{'source':STOCKS,'fetched_rows':len(records),
+        'reported_total':total,'pages':page+1,'quote_date_provenance':provenance,
+        'quote_timestamp_anchors':anchors,'individual_row_timestamps_verified':False}
 
 def sp500(session):
     rows=list(csv.DictReader(io.StringIO(fetch(session,SP500).text)))
