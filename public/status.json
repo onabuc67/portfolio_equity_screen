@@ -1,6 +1,6 @@
 {
-  "pipeline_version": "0.2",
-  "run_utc": "2026-10-20T16:00:54.265525+00:00",
+  "pipeline_version": "0.3",
+  "run_utc": "2026-10-20T16:15:51.896678+00:00",
   "report_date": "2026-10-20",
   "provider_status": {
     "nasdaq": {
@@ -12,16 +12,16 @@
       "quote_timestamp_anchors": [
         {
           "ticker": "AAPL",
-          "trade_timestamp": "Oct 20, 2026 12:01 PM ET",
+          "trade_timestamp": "Oct 20, 2026 12:15 PM ET",
           "trade_date": "2026-10-20",
-          "price_deviation_pct": 0.595,
+          "price_deviation_pct": 0.678,
           "source": "https://api.nasdaq.com/api/quote/AAPL/info"
         },
         {
           "ticker": "JPM",
-          "trade_timestamp": "Oct 20, 2026 12:01 PM ET",
+          "trade_timestamp": "Oct 20, 2026 12:15 PM ET",
           "trade_date": "2026-10-20",
-          "price_deviation_pct": 0.982,
+          "price_deviation_pct": 0.853,
           "source": "https://api.nasdaq.com/api/quote/JPM/info"
         }
       ],
@@ -30,30 +30,34 @@
     "sp500_constituents": 503,
     "eligible_pre_sec": {
       "us": 460,
-      "foreign": 150
+      "foreign": 273
     },
-    "issuer_errors": 1
+    "issuer_errors": 1,
+    "foreign_candidate_pool": 273,
+    "foreign_sec_facts_errors": 1,
+    "foreign_missing_valuation": 115,
+    "etf_sources": {
+      "Nasdaq quote/info": 31
+    },
+    "etf_failed_samples": []
   },
   "coverage": {
     "US": 450,
-    "INTL": 77,
-    "INTL_ETF": 0,
+    "INTL": 158,
+    "INTL_ETF": 31,
     "US_SECTORS": 11,
-    "INTL_COUNTRIES": 17,
-    "issuer_facts_attempted": 610,
-    "issuer_facts_with_valuation": 527,
+    "INTL_COUNTRIES": 18,
+    "issuer_facts_attempted": 733,
+    "issuer_facts_with_valuation": 608,
     "etf_quotes_attempted": 31,
     "nasdaq_quote_asof_date": "2026-10-20",
     "etf_quote_asof_range": [
-      null,
-      null
+      "2026-10-20",
+      "2026-10-20"
     ]
   },
-  "status": "FAILED_COVERAGE",
-  "failures": [
-    "Foreign issuer-valued: 77/100",
-    "International ETF dated quotes: 0/20"
-  ],
+  "status": "DATA_READY_RESEARCH_PENDING",
+  "failures": [],
   "notes": [
     "Market-wide quote source supplies trading-session date, NOT per-security intraday timestamps.",
     "Triage results are NOT Opportunity Reserve v1.4 scores or buy recommendations."
@@ -62,6 +66,8 @@
     "us_sector_universe": "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv",
     "nasdaq": "https://api.nasdaq.com/api/screener/stocks",
     "issuer_fundamentals": "https://data.sec.gov/api/xbrl/companyfacts/",
-    "etf_history": "https://stooq.com/q/d/l/"
-  }
+    "etf_quote_primary": "https://api.nasdaq.com/api/quote/{symbol}/info?assetclass=etf",
+    "etf_history_optional": "https://stooq.com/q/d/l/ (API key required)"
+  },
+  "next_gate": "ChatGPT must complete six issuer-grade reviews PER segment and six-factor scoring, vetoes, alternatives, plus finalist intraday prices."
 }
