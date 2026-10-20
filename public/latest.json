@@ -1,7 +1,7 @@
 {
   "meta": {
     "pipeline_version": "0.3",
-    "run_utc": "2026-10-20T16:41:34.461881+00:00",
+    "run_utc": "2026-10-20T20:05:04.832127+00:00",
     "report_date": "2026-10-20",
     "provider_status": {
       "nasdaq": {
@@ -13,16 +13,16 @@
         "quote_timestamp_anchors": [
           {
             "ticker": "AAPL",
-            "trade_timestamp": "Oct 20, 2026 12:41 PM ET",
+            "trade_timestamp": "Oct 20, 2026 4:05 PM ET",
             "trade_date": "2026-10-20",
-            "price_deviation_pct": 0.607,
+            "price_deviation_pct": 0.84,
             "source": "https://api.nasdaq.com/api/quote/AAPL/info"
           },
           {
             "ticker": "JPM",
-            "trade_timestamp": "Oct 20, 2026 12:41 PM ET",
+            "trade_timestamp": "Oct 20, 2026 4:05 PM ET",
             "trade_date": "2026-10-20",
-            "price_deviation_pct": 0.636,
+            "price_deviation_pct": 0.531,
             "source": "https://api.nasdaq.com/api/quote/JPM/info"
           }
         ],
