@@ -18,7 +18,7 @@ METRICS = (
 )
 IDENTITY = (
     'ticker', 'name', 'segment', 'country', 'sector', 'sector_authority',
-    'size_class', 'cik', 'sec_filed', 'sec_period_end', 'sec_url',
+    'size_class', 'cik', 'sec_filed', 'sec_period_end', 'cashflow_period_end', 'sec_url',
     'balance_asof',
 )
 
