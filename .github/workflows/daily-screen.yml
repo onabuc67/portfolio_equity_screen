@@ -67,6 +67,11 @@ jobs:
 
       - name: Publish dated machine-readable QA status
         run: |
+          git fetch origin main
+          if ! git diff --quiet HEAD origin/main -- src/ tests/ requirements.txt .github/workflows/daily-screen.yml; then
+            echo 'SOURCE_REVISION_CHANGED: refusing to publish research generated from superseded code'
+            exit 1
+          fi
           git config user.name 'Equity public data bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A public/
@@ -114,6 +119,7 @@ jobs:
           assert q.exists(), 'Issuer research metrics artifact missing'
           m=json.loads(q.read_text())
           assert m['meta']['run_utc']==r['run_utc'], 'Research metrics run mismatch'
+          assert m['meta']['producer_source_commit']==r['producer_source_commit'], 'Producer revision mismatch'
           assert m['meta']['report_date']==r['report_date'], 'Research metrics date mismatch'
           assert m['meta']['coverage']==r['coverage'], 'Research metrics coverage mismatch'
           assert m['audit']['issuer_metrics_published']==len(m['issuer_metrics']), 'Issuer metrics count mismatch'
