@@ -6,6 +6,8 @@ reserve balances, account data, or personal identifiers are published.
 from __future__ import annotations
 from datetime import date
 import math
+import json
+import hashlib
 
 
 METRICS = (
@@ -154,3 +156,75 @@ def validate_research_metrics(payload, report, minimum_us=200, minimum_foreign=1
         if r['data_quality']['individual_quote_timestamp_verified'] is not False:
             raise ValueError('issuer quotes not independently timestamped')
     return True
+
+
+def partition_research_metrics(payload, max_rows=150):
+    """Publish a small fetchable index plus independently verifiable issuer shards.
+
+    GitHub's Contents API may return empty content for blobs larger than 1 MiB.
+    Each shard is deliberately capped at 150 compact issuer rows. Consumers
+    must verify manifest SHA-256 before trusting the full universe.
+    """
+    if max_rows<1 or max_rows>150:
+        raise ValueError('Shard size must be 1..150')
+    index={k:v for k,v in payload.items() if k!='issuer_metrics'}
+    index['schema_version']='1.1-index'
+    index['issuer_metrics_total']=len(payload['issuer_metrics'])
+    index['issuer_metrics_manifest']=[]
+    shards=[]
+    for segment in ('US','INTL'):
+        group=[r for r in payload['issuer_metrics'] if r['segment']==segment]
+        for offset in range(0,len(group),max_rows):
+            batch=group[offset:offset+max_rows]
+            filename=f'research_metrics_{segment.lower()}_{offset//max_rows+1:02d}.json'
+            shard={'schema_version':'1.1-shard','meta':payload['meta'],
+                   'segment':segment,'issuer_metrics':batch}
+            blob=json.dumps(shard,ensure_ascii=False,separators=(',',':'),sort_keys=True)
+            if len(blob.encode('utf-8'))>850_000:
+                raise ValueError(f'Issuer shard too large for GitHub Contents API: {filename}')
+            digest=hashlib.sha256(blob.encode('utf-8')).hexdigest()
+            index['issuer_metrics_manifest'].append({'path':filename,'segment':segment,
+                'count':len(batch),'sha256':digest})
+            shards.append((filename,blob))
+    if sum(x['count'] for x in index['issuer_metrics_manifest'])!=index['issuer_metrics_total']:
+        raise ValueError('Issuer shard coverage mismatch')
+    return index,shards
+
+
+def validate_research_index(index,report,read_bytes):
+    """Validate on-disk published shards; callable by GitHub Actions acceptance."""
+    meta=index['meta']
+    for field in ('run_utc','producer_source_commit','report_date','status','coverage'):
+        if meta[field]!=report[field]:
+            raise ValueError(f'Research index {field} mismatch')
+    if index['issuer_metrics_total']!=index['audit']['issuer_metrics_published']:
+        raise ValueError('Research index total mismatch')
+    manifest=index['issuer_metrics_manifest']
+    if not manifest or sum(m['count'] for m in manifest)!=index['issuer_metrics_total']:
+        raise ValueError('Research manifest incomplete')
+    seen=set();counts={'US':0,'INTL':0}
+    for entry in manifest:
+        path=entry['path']
+        if '/' in path or not path.startswith('research_metrics_') or not path.endswith('.json'):
+            raise ValueError('Unsafe shard filename')
+        data=read_bytes(path)
+        if len(data)>850_000 or hashlib.sha256(data).hexdigest()!=entry['sha256']:
+            raise ValueError(f'Shard checksum/size mismatch: {path}')
+        shard=json.loads(data)
+        if shard['meta']!=meta or shard['segment']!=entry['segment']:
+            raise ValueError(f'Shard run/segment mismatch: {path}')
+        rows=shard['issuer_metrics']
+        if len(rows)!=entry['count']:
+            raise ValueError(f'Shard row count mismatch: {path}')
+        for row in rows:
+            key=(row['segment'],row['ticker'])
+            if row['segment']!=entry['segment'] or key in seen:
+                raise ValueError(f'Duplicate/wrong segment issuer: {key}')
+            seen.add(key);counts[row['segment']]+=1
+            if 'price' in row or 'market_cap' in row or 'daily_dollar_volume_proxy' in row:
+                raise ValueError('Raw vendor market data must not be redistributed')
+            if row['data_quality']['canonical_six_factor_score'] is not None:
+                raise ValueError('Unverified opportunity score in public issuer shard')
+    if counts['US']!=index['audit']['us_metrics_published'] or counts['INTL']!=index['audit']['foreign_metrics_published']:
+        raise ValueError('Shard issuer segment counts mismatch')
+    return counts
