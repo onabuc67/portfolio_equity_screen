@@ -89,6 +89,7 @@ def build_research_metrics(report, enriched, us_queue, foreign_queue, etfs):
         'schema_version': '1.0',
         'meta': {
             'run_utc': report['run_utc'],
+            'producer_source_commit': report.get('producer_source_commit',''),
             'report_date': report_date,
             'status': report['status'],
             'coverage': report['coverage'],
@@ -125,7 +126,7 @@ def build_research_metrics(report, enriched, us_queue, foreign_queue, etfs):
 def validate_research_metrics(payload, report, minimum_us=200, minimum_foreign=100):
     """Fail closed if data artifact mismatches its producer or claims false validation."""
     meta = payload['meta']
-    for field in ('run_utc', 'report_date', 'status', 'coverage'):
+    for field in ('run_utc', 'producer_source_commit', 'report_date', 'status', 'coverage'):
         if meta[field] != report[field]:
             raise ValueError(f'research handoff {field} mismatch')
     if meta['status'] != 'DATA_READY_RESEARCH_PENDING':
