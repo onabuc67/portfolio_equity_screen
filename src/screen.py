@@ -13,6 +13,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 import requests
 from src.research_handoff import build_research_metrics, validate_research_metrics
+from src.financials import enrich_sec_facts
 
 UTC=timezone.utc
 HEADERS={'User-Agent':'Mozilla/5.0 (compatible; PortfolioPublicDataResearch/1.0)',
@@ -263,6 +264,7 @@ def facts_for(session,row,contact,asof):
         row.update(earnings_annual=ni['value'] if ni else None,
          annual_pe=round(row['market_cap']/ni['value'],2) if ni and ni['value']>0 else None,
          operating_cashflow_annual=cf['value'] if cf else None,
+         cashflow_period_end=cf['period_end'] if cf else None,
          capital_expenditures_annual=capex['value'] if capex else None,
          fcf_annual=cf['value']-capex['value'] if cf and capex and cf['period_end']==capex['period_end'] else None,
          revenue_annual=rev['value'] if rev else None,
@@ -271,7 +273,7 @@ def facts_for(session,row,contact,asof):
          sec_url=url,
          fundamental_error='')
         row['fcf_yield']=round(row['fcf_annual']/row['market_cap'],5) if row['fcf_annual'] is not None else None
-        return row
+        return enrich_sec_facts(facts,row,asof)
     except (FetchFailure,requests.RequestException,ValueError) as ex:
         x=dict(row);x.update(annual_pe=None,fcf_yield=None,earnings_annual=None,fcf_annual=None,sec_filed=None,sec_period_end=None,sec_url=url,fundamental_error=str(ex)[:200]);return x
 
@@ -381,7 +383,7 @@ def write_json(path,obj):
 
 def main(out,asof=None,contact=None):
     now=datetime.now(UTC);today=asof or now.date();session=requests.Session()
-    report={'pipeline_version':'0.3','run_utc':now.isoformat(),'report_date':today.isoformat(),
+    report={'pipeline_version':'0.4','run_utc':now.isoformat(),'report_date':today.isoformat(),
             'provider_status':{},'coverage':{},'status':'FAILED','failures':[],
             'notes':['Market-wide quote source supplies trading-session date, NOT per-security intraday timestamps.',
                      'Triage results are NOT Opportunity Reserve v1.4 scores or buy recommendations.'],
