@@ -171,6 +171,7 @@ def partition_research_metrics(payload, max_rows=150):
     index['schema_version']='1.1-index'
     index['issuer_metrics_total']=len(payload['issuer_metrics'])
     index['issuer_metrics_manifest']=[]
+    index['consumer_instructions']='Fetch each listed shard from GitHub main/public for complete issuer coverage; verify SHA-256, matching meta, segment counts and no raw quotes/scores. Index queues are preliminary research priorities only.'
     shards=[]
     for segment in ('US','INTL'):
         group=[r for r in payload['issuer_metrics'] if r['segment']==segment]
