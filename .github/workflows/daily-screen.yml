@@ -5,7 +5,14 @@ on:
   schedule:
     # Multiple weekday runs cover Mountain daylight/standard time.
     - cron: '17 15-19 * * 1-5'
+    - cron: '37 16-17 * * 1-5'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - '.github/workflows/daily-screen.yml'
+      - 'requirements.txt'
 
 permissions:
   contents: write
@@ -40,7 +47,7 @@ jobs:
           SEC_CONTACT_EMAIL: ${{ secrets.SEC_CONTACT_EMAIL }}
         run: |
           mkdir -p public
-          rm -f public/status.json public/latest.json
+          rm -f public/status.json public/latest.json public/research_metrics.json
           python -m src.screen --out public || echo 'Screen returned failure; status will be audited below'
           if [ ! -f public/status.json ]; then
             python - <<'PYSTATUS'
@@ -96,6 +103,17 @@ jobs:
           assert len(data['us_review_queue'])>=15, 'US research queue incomplete'
           assert len(data['foreign_review_queue'])>=15, 'International research queue incomplete'
 
+          q=Path('public/research_metrics.json')
+          assert q.exists(), 'Issuer research metrics artifact missing'
+          m=json.loads(q.read_text())
+          assert m['meta']['run_utc']==r['run_utc'], 'Research metrics run mismatch'
+          assert m['meta']['report_date']==r['report_date'], 'Research metrics date mismatch'
+          assert m['meta']['coverage']==r['coverage'], 'Research metrics coverage mismatch'
+          assert m['audit']['issuer_metrics_published']==len(m['issuer_metrics']), 'Issuer metrics count mismatch'
+          assert m['audit']['us_metrics_published']>=200 and m['audit']['foreign_metrics_published']>=100
+          assert m['audit']['us_preliminary_queue']>=15 and m['audit']['foreign_preliminary_queue']>=15
+          assert m['provenance']['individual_row_timestamps_verified'] is False
+          assert m['audit']['issuer_grade_finalists_validated']==0 and m['audit']['canonical_six_factor_scores']==0
           print('Market data READY; GitHub Pages deployed.')
           print('Issuer research and canonical scoring remain pending.')
           PY
