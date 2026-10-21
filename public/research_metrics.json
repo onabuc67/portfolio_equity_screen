@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1-index",
   "meta": {
-    "run_utc": "2026-10-21T20:59:16.337717+00:00",
-    "producer_source_commit": "bb874f133d2c545b28f3744779f340b1ededd9be",
+    "run_utc": "2026-10-21T21:59:19.220836+00:00",
+    "producer_source_commit": "62614646368dfe6679e81a7d60bcbda473efc9f0",
     "report_date": "2026-10-21",
     "status": "DATA_READY_RESEARCH_PENDING",
     "coverage": {
@@ -1595,43 +1595,43 @@
       "path": "research_metrics_us_01.json",
       "segment": "US",
       "count": 150,
-      "sha256": "988266eed064e301e1750387e4387199bbc73b2bcaba66db82849cc6eb8b786a"
+      "sha256": "d996b97c1fcf05c7ce73ed4049ca9bfb1ab510837ba0931a733d5ab4334822af"
     },
     {
       "path": "research_metrics_us_02.json",
       "segment": "US",
       "count": 150,
-      "sha256": "92161c3f5a9c7b074e76e5660a5f1278ebf1ad27d9350f666a7145f00f9ebb88"
+      "sha256": "38db1b033899646d7832f2e004958942633e047ed80fe3573121254adfa70c4a"
     },
     {
       "path": "research_metrics_us_03.json",
       "segment": "US",
       "count": 150,
-      "sha256": "43948873e1a0b5ce07800e82ba232336692ee2cbce0a59a31c043399a6d4d4ba"
+      "sha256": "9c27c28f2019cd3501a70fc497072e516b517e088ab7dd80acab77393bbd7700"
     },
     {
       "path": "research_metrics_us_04.json",
       "segment": "US",
       "count": 150,
-      "sha256": "b914fda1668edbf758cbf34d13911834455d8c8078d970e3296d51d3c7d8b520"
+      "sha256": "47af6547b3e3cf4ef2a90e9c77111f7e65291652cb53d2e91909e33e404edf24"
     },
     {
       "path": "research_metrics_us_05.json",
       "segment": "US",
       "count": 6,
-      "sha256": "bc0d7fca0778c7e184d4aa1700bafd992a4af3bac14a9dbc8646baaad28ed5f7"
+      "sha256": "795c0805bee38b91faec63717564c9a88be421b713d873aec8e978c656ecdeb1"
     },
     {
       "path": "research_metrics_intl_01.json",
       "segment": "INTL",
       "count": 150,
-      "sha256": "0a653fb050cc40b11db44d891409583e3f62b222294bcb0115ecff7310f9f7c4"
+      "sha256": "b2aa897aed73960b6f62602c3b18fcc5e51c2d468e89730ab60d5b9c9d9d106a"
     },
     {
       "path": "research_metrics_intl_02.json",
       "segment": "INTL",
       "count": 6,
-      "sha256": "70bb58d2d862e7697d04d354342ca08a8bf27076c15e0655c18546ffd3644bf7"
+      "sha256": "cd1a428b0c3b64773d662947419d622dc2d596843135d90eb12df48e76d7bd51"
     }
   ],
   "consumer_instructions": "Fetch each listed shard from GitHub main/public for complete issuer coverage; verify SHA-256, matching meta, segment counts and no raw quotes/scores. Index queues are preliminary research priorities only."

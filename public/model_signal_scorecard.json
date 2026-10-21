@@ -1,0 +1,42 @@
+{
+  "model_only": true,
+  "total_recommended": 0,
+  "paper_state_counts": {},
+  "horizons": {
+    "5": {
+      "evaluated_count": 0,
+      "total_signal_count": 0,
+      "win_count": 0,
+      "mean_excess_return_pct": null,
+      "median_excess_return_pct": null,
+      "win_rate_pct": null,
+      "unverified_or_immature_count": 0
+    },
+    "20": {
+      "evaluated_count": 0,
+      "total_signal_count": 0,
+      "win_count": 0,
+      "mean_excess_return_pct": null,
+      "median_excess_return_pct": null,
+      "win_rate_pct": null,
+      "unverified_or_immature_count": 0
+    },
+    "60": {
+      "evaluated_count": 0,
+      "total_signal_count": 0,
+      "win_count": 0,
+      "mean_excess_return_pct": null,
+      "median_excess_return_pct": null,
+      "win_rate_pct": null,
+      "unverified_or_immature_count": 0
+    }
+  },
+  "rows": [],
+  "limitations": [
+    "No real order fills inferred",
+    "Tax-specific outcomes require private after-tax analysis",
+    "Returns require verified split/dividend adjustment and source-dated benchmark",
+    "A small number of signals cannot establish persistent forecasting skill",
+    "Outcome data missing or immature are not counted as wins or losses"
+  ]
+}\n
