@@ -12,7 +12,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from collections import Counter, defaultdict
 from pathlib import Path
 import requests
-from src.research_handoff import build_research_metrics, validate_research_metrics
+from src.research_handoff import build_research_metrics, validate_research_metrics, partition_research_metrics, validate_research_index
 from src.financials import enrich_sec_facts
 
 UTC=timezone.utc
@@ -463,7 +463,11 @@ def main(out,asof=None,contact=None):
                    'warnings':['Issuer queue is NOT validated investment recommendations. Researcher must fetch current quote and reconcile nonrecurring GAAP earnings.','Raw Nasdaq/Stooq price data are not redistributed in this public research-queue artifact.']}
             metrics=build_research_metrics(report,enriched,us_top,foreign_top,verified_etfs)
             validate_research_metrics(metrics,report)
-            write_json(out/'research_metrics.json',metrics)
+            index,shards=partition_research_metrics(metrics)
+            write_json(out/'research_metrics.json',index)
+            for name,blob in shards:
+                (out/name).write_text(blob,encoding='utf-8')
+            validate_research_index(index,report,lambda name:(out/name).read_bytes())
             write_json(out/'latest.json',public)
             # Never persist user portfolio, reserve, tax lots or positions on a public website.
         else:report['status']='FAILED_COVERAGE'
@@ -474,7 +478,8 @@ def main(out,asof=None,contact=None):
     # current status: downstream readers must never confuse it for fresh data.
     if report['status']!='DATA_READY_RESEARCH_PENDING':
         (out/'latest.json').unlink(missing_ok=True)
-        (out/'research_metrics.json').unlink(missing_ok=True)
+        for old in out.glob('research_metrics*.json'):
+            old.unlink(missing_ok=True)
     write_json(out/'status.json',report)
     print(json.dumps({'status':report['status'],'coverage':report['coverage'],'failures':report['failures']},indent=2))
     return 0 if report['status']=='DATA_READY_RESEARCH_PENDING' else 2
