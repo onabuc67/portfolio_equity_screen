@@ -39,6 +39,8 @@ def _public_row(row, report_date, quote_session_date):
         warnings.append('FCF and owner-cash multiples may not be economically comparable for financials')
     if item['metrics']['annual_pe'] is None:
         warnings.append('Positive-earnings annual P/E not established')
+    if item['metrics']['interest_coverage_proxy'] is not None:
+        warnings.append('Interest proxy is GAAP net income divided by interest expense, NOT EBIT/interest coverage')
     if item['metrics']['owner_cash_proxy_annual'] is None:
         warnings.append('CFO/capex/SBC not available for a matching fiscal period')
     if not row.get('sec_period_end'):
@@ -103,6 +105,7 @@ def build_research_metrics(report, enriched, us_queue, foreign_queue, etfs):
             'vendor_cap_sec_ratio_caveat': 'Preliminary vendor-market-cap divided by SEC annual earnings/cash flow; periods differ; independently validate finalist quotes',
             'normalized_earnings_verified': False,
             'current_quarter_verified': False,
+            'interest_coverage_caveat': 'Net income divided by reported interest expense; not standard EBIT or EBITDA interest coverage',
             'no_private_portfolio_data': True,
             'no_canonical_scores': True,
         },
