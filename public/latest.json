@@ -1,28 +1,28 @@
 {
   "meta": {
     "pipeline_version": "0.3",
-    "run_utc": "2026-10-20T20:05:04.832127+00:00",
-    "report_date": "2026-10-20",
+    "run_utc": "2026-10-21T19:18:13.346210+00:00",
+    "report_date": "2026-10-21",
     "provider_status": {
       "nasdaq": {
         "source": "https://api.nasdaq.com/api/screener/stocks",
-        "fetched_rows": 6986,
+        "fetched_rows": 6956,
         "reported_total": null,
         "pages": 1,
         "quote_date_provenance": "Nasdaq quote/info corroboration — two dated symbols, sampled not per-row timestamp",
         "quote_timestamp_anchors": [
           {
             "ticker": "AAPL",
-            "trade_timestamp": "Oct 20, 2026 4:05 PM ET",
-            "trade_date": "2026-10-20",
-            "price_deviation_pct": 0.84,
+            "trade_timestamp": "Oct 21, 2026 3:18 PM ET",
+            "trade_date": "2026-10-21",
+            "price_deviation_pct": 1.308,
             "source": "https://api.nasdaq.com/api/quote/AAPL/info"
           },
           {
             "ticker": "JPM",
-            "trade_timestamp": "Oct 20, 2026 4:05 PM ET",
-            "trade_date": "2026-10-20",
-            "price_deviation_pct": 0.531,
+            "trade_timestamp": "Oct 21, 2026 3:18 PM ET",
+            "trade_date": "2026-10-21",
+            "price_deviation_pct": 0.261,
             "source": "https://api.nasdaq.com/api/quote/JPM/info"
           }
         ],
@@ -31,30 +31,36 @@
       "sp500_constituents": 503,
       "eligible_pre_sec": {
         "us": 460,
-        "foreign": 273
+        "foreign": 272
       },
       "issuer_errors": 1,
-      "foreign_candidate_pool": 273,
+      "foreign_candidate_pool": 272,
       "foreign_sec_facts_errors": 1,
-      "foreign_missing_valuation": 115,
+      "foreign_missing_valuation": 116,
       "etf_sources": {
-        "Nasdaq quote/info": 31
+        "Nasdaq quote/info": 30,
+        "both sources failed": 1
       },
-      "etf_failed_samples": []
+      "etf_failed_samples": [
+        {
+          "ticker": "FXI",
+          "error": "Nasdaq: missing explicit provider lastTradeTimestamp | Stooq: STOOQ_API_KEY not provided; Stooq CSV fallback disabled"
+        }
+      ]
     },
     "coverage": {
-      "US": 450,
-      "INTL": 158,
-      "INTL_ETF": 31,
+      "US": 451,
+      "INTL": 156,
+      "INTL_ETF": 30,
       "US_SECTORS": 11,
       "INTL_COUNTRIES": 18,
-      "issuer_facts_attempted": 733,
-      "issuer_facts_with_valuation": 608,
+      "issuer_facts_attempted": 732,
+      "issuer_facts_with_valuation": 607,
       "etf_quotes_attempted": 31,
-      "nasdaq_quote_asof_date": "2026-10-20",
+      "nasdaq_quote_asof_date": "2026-10-21",
       "etf_quote_asof_range": [
-        "2026-10-20",
-        "2026-10-20"
+        "2026-10-21",
+        "2026-10-21"
       ]
     },
     "status": "DATA_READY_RESEARCH_PENDING",
@@ -134,18 +140,6 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000093751.json"
     },
     {
-      "ticker": "CF",
-      "name": "CF Industries Holdings Inc. Common Stock",
-      "segment": "US",
-      "country": "US",
-      "sector": "Materials",
-      "sector_authority": "S&P500 constituents GICS label",
-      "cik": "0001324404",
-      "sec_filed": "2026-02-25",
-      "sec_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001324404.json"
-    },
-    {
       "ticker": "GM",
       "name": "General Motors Company Common Stock",
       "segment": "US",
@@ -156,6 +150,18 @@
       "sec_filed": "2026-01-27",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001467858.json"
+    },
+    {
+      "ticker": "CF",
+      "name": "CF Industries Holdings Inc. Common Stock",
+      "segment": "US",
+      "country": "US",
+      "sector": "Materials",
+      "sector_authority": "S&P500 constituents GICS label",
+      "cik": "0001324404",
+      "sec_filed": "2026-02-25",
+      "sec_period_end": "2025-12-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001324404.json"
     },
     {
       "ticker": "PHM",
@@ -182,16 +188,16 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000882184.json"
     },
     {
-      "ticker": "ADBE",
-      "name": "Adobe Inc. Common Stock",
+      "ticker": "EXE",
+      "name": "Expand Energy Corporation Common Stock",
       "segment": "US",
       "country": "US",
-      "sector": "Information Technology",
+      "sector": "Energy",
       "sector_authority": "S&P500 constituents GICS label",
-      "cik": "0000796343",
-      "sec_filed": "2026-01-15",
-      "sec_period_end": "2025-11-28",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000796343.json"
+      "cik": "0000895126",
+      "sec_filed": "2026-02-18",
+      "sec_period_end": "2025-12-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000895126.json"
     },
     {
       "ticker": "GDDY",
@@ -218,16 +224,16 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000849399.json"
     },
     {
-      "ticker": "EXE",
-      "name": "Expand Energy Corporation Common Stock",
+      "ticker": "ADBE",
+      "name": "Adobe Inc. Common Stock",
       "segment": "US",
       "country": "US",
-      "sector": "Energy",
+      "sector": "Information Technology",
       "sector_authority": "S&P500 constituents GICS label",
-      "cik": "0000895126",
-      "sec_filed": "2026-02-18",
-      "sec_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000895126.json"
+      "cik": "0000796343",
+      "sec_filed": "2026-01-15",
+      "sec_period_end": "2025-11-28",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000796343.json"
     },
     {
       "ticker": "TMUS",
@@ -352,18 +358,6 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000701818.json"
     },
     {
-      "ticker": "WIT",
-      "name": "Wipro Limited Common Stock",
-      "segment": "INTL",
-      "country": "IN",
-      "sector": "Information Technology",
-      "sector_authority": "Nasdaq indicative vendor mapping",
-      "cik": "0001123799",
-      "sec_filed": "2025-05-22",
-      "sec_period_end": "2025-03-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001123799.json"
-    },
-    {
       "ticker": "HDB",
       "name": "HDFC Bank Limited Common Stock",
       "segment": "INTL",
@@ -374,18 +368,6 @@
       "sec_filed": "2025-07-14",
       "sec_period_end": "2025-03-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001144967.json"
-    },
-    {
-      "ticker": "MRX",
-      "name": "Marex Group Limited Ordinary Shares",
-      "segment": "INTL",
-      "country": "GB",
-      "sector": "Financials",
-      "sector_authority": "Nasdaq indicative vendor mapping",
-      "cik": "0001997464",
-      "sec_filed": "2026-03-25",
-      "sec_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001997464.json"
     },
     {
       "ticker": "ALV",
@@ -400,6 +382,18 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001034670.json"
     },
     {
+      "ticker": "MRX",
+      "name": "Marex Group Limited Ordinary Shares",
+      "segment": "INTL",
+      "country": "GB",
+      "sector": "Financials",
+      "sector_authority": "Nasdaq indicative vendor mapping",
+      "cik": "0001997464",
+      "sec_filed": "2026-03-25",
+      "sec_period_end": "2025-12-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001997464.json"
+    },
+    {
       "ticker": "B",
       "name": "Barrick Mining Corporation Common Shares",
       "segment": "INTL",
@@ -412,6 +406,30 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000756894.json"
     },
     {
+      "ticker": "WIT",
+      "name": "Wipro Limited Common Stock",
+      "segment": "INTL",
+      "country": "IN",
+      "sector": "Information Technology",
+      "sector_authority": "Nasdaq indicative vendor mapping",
+      "cik": "0001123799",
+      "sec_filed": "2025-05-22",
+      "sec_period_end": "2025-03-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001123799.json"
+    },
+    {
+      "ticker": "TAL",
+      "name": "TAL Education Group American Depositary Shares",
+      "segment": "INTL",
+      "country": "CN",
+      "sector": "Real Estate",
+      "sector_authority": "Nasdaq indicative vendor mapping",
+      "cik": "0001499620",
+      "sec_filed": "2026-06-12",
+      "sec_period_end": "2026-02-28",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001499620.json"
+    },
+    {
       "ticker": "WSE",
       "name": "Wise Group plc Class A Ordinary Shares",
       "segment": "INTL",
@@ -422,174 +440,157 @@
       "sec_filed": "2026-06-25",
       "sec_period_end": "2026-03-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002099039.json"
-    },
-    {
-      "ticker": "HSBC",
-      "name": "HSBC Holdings plc. Common Stock",
-      "segment": "INTL",
-      "country": "GB",
-      "sector": "Financials",
-      "sector_authority": "Nasdaq indicative vendor mapping",
-      "cik": "0001089113",
-      "sec_filed": "2026-02-26",
-      "sec_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001089113.json"
     }
   ],
   "international_etfs": [
     {
       "ticker": "VEA",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/VEA/info?assetclass=etf"
     },
     {
       "ticker": "VWO",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/VWO/info?assetclass=etf"
     },
     {
       "ticker": "VGK",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/VGK/info?assetclass=etf"
     },
     {
       "ticker": "VPL",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/VPL/info?assetclass=etf"
     },
     {
       "ticker": "EWJ",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWJ/info?assetclass=etf"
     },
     {
       "ticker": "EWG",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWG/info?assetclass=etf"
     },
     {
       "ticker": "EWU",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWU/info?assetclass=etf"
     },
     {
       "ticker": "EWC",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWC/info?assetclass=etf"
     },
     {
       "ticker": "EWA",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWA/info?assetclass=etf"
     },
     {
       "ticker": "EEM",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EEM/info?assetclass=etf"
     },
     {
       "ticker": "IEMG",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/IEMG/info?assetclass=etf"
     },
     {
       "ticker": "VXUS",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/VXUS/info?assetclass=etf"
     },
     {
       "ticker": "IXUS",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/IXUS/info?assetclass=etf"
     },
     {
       "ticker": "ACWX",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/ACWX/info?assetclass=etf"
     },
     {
       "ticker": "EFV",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EFV/info?assetclass=etf"
     },
     {
       "ticker": "EWY",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWY/info?assetclass=etf"
     },
     {
       "ticker": "EWT",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWT/info?assetclass=etf"
     },
     {
       "ticker": "EWZ",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWZ/info?assetclass=etf"
     },
     {
       "ticker": "EWW",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWW/info?assetclass=etf"
     },
     {
       "ticker": "INDA",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/INDA/info?assetclass=etf"
     },
     {
-      "ticker": "FXI",
-      "quote_asof_date": "2026-10-20",
-      "source_url": "https://api.nasdaq.com/api/quote/FXI/info?assetclass=etf"
-    },
-    {
       "ticker": "MCHI",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/MCHI/info?assetclass=etf"
     },
     {
       "ticker": "SPEM",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/SPEM/info?assetclass=etf"
     },
     {
       "ticker": "SCHE",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/SCHE/info?assetclass=etf"
     },
     {
       "ticker": "AVDE",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/AVDE/info?assetclass=etf"
     },
     {
       "ticker": "AVEM",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/AVEM/info?assetclass=etf"
     },
     {
       "ticker": "EWI",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWI/info?assetclass=etf"
     },
     {
       "ticker": "EWL",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWL/info?assetclass=etf"
     },
     {
       "ticker": "EWN",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWN/info?assetclass=etf"
     },
     {
       "ticker": "EWP",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EWP/info?assetclass=etf"
     },
     {
       "ticker": "EZA",
-      "quote_asof_date": "2026-10-20",
+      "quote_asof_date": "2026-10-21",
       "source_url": "https://api.nasdaq.com/api/quote/EZA/info?assetclass=etf"
     }
   ],

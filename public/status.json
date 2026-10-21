@@ -1,27 +1,27 @@
 {
   "pipeline_version": "0.3",
-  "run_utc": "2026-10-20T20:05:04.832127+00:00",
-  "report_date": "2026-10-20",
+  "run_utc": "2026-10-21T19:18:13.346210+00:00",
+  "report_date": "2026-10-21",
   "provider_status": {
     "nasdaq": {
       "source": "https://api.nasdaq.com/api/screener/stocks",
-      "fetched_rows": 6986,
+      "fetched_rows": 6956,
       "reported_total": null,
       "pages": 1,
       "quote_date_provenance": "Nasdaq quote/info corroboration — two dated symbols, sampled not per-row timestamp",
       "quote_timestamp_anchors": [
         {
           "ticker": "AAPL",
-          "trade_timestamp": "Oct 20, 2026 4:05 PM ET",
-          "trade_date": "2026-10-20",
-          "price_deviation_pct": 0.84,
+          "trade_timestamp": "Oct 21, 2026 3:18 PM ET",
+          "trade_date": "2026-10-21",
+          "price_deviation_pct": 1.308,
           "source": "https://api.nasdaq.com/api/quote/AAPL/info"
         },
         {
           "ticker": "JPM",
-          "trade_timestamp": "Oct 20, 2026 4:05 PM ET",
-          "trade_date": "2026-10-20",
-          "price_deviation_pct": 0.531,
+          "trade_timestamp": "Oct 21, 2026 3:18 PM ET",
+          "trade_date": "2026-10-21",
+          "price_deviation_pct": 0.261,
           "source": "https://api.nasdaq.com/api/quote/JPM/info"
         }
       ],
@@ -30,30 +30,36 @@
     "sp500_constituents": 503,
     "eligible_pre_sec": {
       "us": 460,
-      "foreign": 273
+      "foreign": 272
     },
     "issuer_errors": 1,
-    "foreign_candidate_pool": 273,
+    "foreign_candidate_pool": 272,
     "foreign_sec_facts_errors": 1,
-    "foreign_missing_valuation": 115,
+    "foreign_missing_valuation": 116,
     "etf_sources": {
-      "Nasdaq quote/info": 31
+      "Nasdaq quote/info": 30,
+      "both sources failed": 1
     },
-    "etf_failed_samples": []
+    "etf_failed_samples": [
+      {
+        "ticker": "FXI",
+        "error": "Nasdaq: missing explicit provider lastTradeTimestamp | Stooq: STOOQ_API_KEY not provided; Stooq CSV fallback disabled"
+      }
+    ]
   },
   "coverage": {
-    "US": 450,
-    "INTL": 158,
-    "INTL_ETF": 31,
+    "US": 451,
+    "INTL": 156,
+    "INTL_ETF": 30,
     "US_SECTORS": 11,
     "INTL_COUNTRIES": 18,
-    "issuer_facts_attempted": 733,
-    "issuer_facts_with_valuation": 608,
+    "issuer_facts_attempted": 732,
+    "issuer_facts_with_valuation": 607,
     "etf_quotes_attempted": 31,
-    "nasdaq_quote_asof_date": "2026-10-20",
+    "nasdaq_quote_asof_date": "2026-10-21",
     "etf_quote_asof_range": [
-      "2026-10-20",
-      "2026-10-20"
+      "2026-10-21",
+      "2026-10-21"
     ]
   },
   "status": "DATA_READY_RESEARCH_PENDING",
