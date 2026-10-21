@@ -52,7 +52,7 @@ jobs:
           SEC_CONTACT_EMAIL: ${{ secrets.SEC_CONTACT_EMAIL }}
         run: |
           mkdir -p public
-          rm -f public/status.json public/latest.json public/research_metrics.json
+          rm -f public/status.json public/latest.json public/research_metrics*.json
           python -m src.screen --out public || echo 'Screen returned failure; status will be audited below'
           if [ ! -f public/status.json ]; then
             python - <<'PYSTATUS'
@@ -122,7 +122,10 @@ jobs:
           assert m['meta']['producer_source_commit']==r['producer_source_commit'], 'Producer revision mismatch'
           assert m['meta']['report_date']==r['report_date'], 'Research metrics date mismatch'
           assert m['meta']['coverage']==r['coverage'], 'Research metrics coverage mismatch'
-          assert m['audit']['issuer_metrics_published']==len(m['issuer_metrics']), 'Issuer metrics count mismatch'
+          assert m['audit']['issuer_metrics_published']==m['issuer_metrics_total'], 'Issuer metrics count mismatch'
+          from src.research_handoff import validate_research_index
+          counts=validate_research_index(m,r,lambda name:(Path('public')/name).read_bytes())
+          assert counts['US']==c['US'] and counts['INTL']==c['INTL'], 'Shard universe mismatch'
           assert m['audit']['us_metrics_published']>=200 and m['audit']['foreign_metrics_published']>=100
           assert m['audit']['us_preliminary_queue']>=15 and m['audit']['foreign_preliminary_queue']>=15
           assert m['provenance']['individual_row_timestamps_verified'] is False
