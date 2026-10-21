@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "as_of_utc": "2026-10-21T00:00:00Z",
+  "scope": "PUBLIC, MODEL-ONLY PAPER RECOMMENDATIONS. NOT ACTUAL OWNER TRADES OR PRIVATE PORTFOLIO.",
+  "historical_coverage_start": "2026-10-21",
+  "historical_pre_start": "NOT_BACKFILLED; do not assert all older recommendations included until original dated messages recovered",
+  "policy": {
+    "include": "Every explicit model BUY/ADD/REDUCE/SELL/EXIT suggestion made to the user, including proposals rejected/not filled; WATCH/HOLD/REVIEW REQUIRED logged separately as decisions if useful, not trade recommendations",
+    "never_publish": "owner identity, actual portfolio shares, account/broker, holdings, tax lots, cost basis, reserve dollars, personal net worth, private source contents or executed trades",
+    "prospective": "Record the action, timestamp, independently source-dated reference quote, limit/trigger and veto BEFORE subsequent outcome. Never revise original prediction; append correction/superseding event.",
+    "state": "IDEA -> RECOMMENDED -> TRIGGERED_PAPER or NO_FILL or CANCELED or EXPIRED; then outcome reviews.",
+    "benchmark": "Specify liquid asset-class appropriate total-return benchmark in original event; also compare cash/SGOV with after-tax differences described separately, not fabricated.",
+    "measurement": "5, 20, 60 completed NYSE sessions from first attainable prospective paper entry, then 120/252 where mature; split/dividend/ROC aware actual total return when evidenced, source + as-of on every input, subtract stated costs/slippage. If sources incomplete, result NULL and reason.",
+    "metrics": "signal count including unfavorable/no-fill; triggered count; absolute and excess total return; win rate, median and mean excess return; maximum adverse excursion; realized/unrealized and horizon maturity; drawdown, stress, turn-over; compare to no-action and safer benchmark; group by score band/veto/sector/regime",
+    "calibration": "Revisit causal explanations and false positives/false negatives; no change to frozen v1.4 weights, vetoes, bands, tranche logic without owner approval; warn about survivorship/selection/small-sample",
+    "time_zone": "America/Los_Angeles",
+    "public_model_only": true
+  },
+  "signal_events": [],
+  "assessment_events": []
+}
