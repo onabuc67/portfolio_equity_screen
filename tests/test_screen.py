@@ -30,7 +30,7 @@ class ProviderAndQualityTests(unittest.TestCase):
   for i in range(8):
    rows.append({'symbol':'B'+str(i),'name':'Foreign American Depositary Shares','lastsale':'$10','marketCap':str(5e10-i*1e7),'country':'Brazil','sector':'Finance','volume':'1000000'})
   _,foreign=screen.select_stocks(rows,{}, {r['symbol']:str(i+100) for i,r in enumerate(rows)})
-  self.assertEqual(sum(x['country']=='CN' for x in foreign),25)
+  self.assertEqual(sum(x['country']=='CN' for x in foreign),40)
   self.assertEqual(sum(x['country']=='BR' for x in foreign),8)
  def test_fail_closed_no_sec_contact(self):
   class Fake: pass
@@ -61,7 +61,7 @@ class ProviderAndQualityTests(unittest.TestCase):
         patch.object(screen,'sp500',return_value=sp),\
         patch.object(screen,'sec_ciks',return_value=ciks),\
         patch.object(screen,'facts_for',side_effect=filed),\
-        patch.object(screen,'etf_stooq',side_effect=etf),\
+        patch.object(screen,'etf_quote',side_effect=etf),\
         patch.object(screen,'nyse_previous_session',return_value=date(2026,10,19)),\
         patch.object(screen.time,'sleep',return_value=None):
     code=screen.main(Path(d),date(2026,10,20),contact='research@example.net')
@@ -73,5 +73,11 @@ class ProviderAndQualityTests(unittest.TestCase):
    r=json.loads((Path(d)/'latest.json').read_text());self.assertEqual(len(r['us_review_queue']),15)
    self.assertEqual(len(r['foreign_review_queue']),15)
    self.assertNotIn('opportunity_score',r['us_review_queue'][0])
+   m=json.loads((Path(d)/'research_metrics.json').read_text())
+   self.assertEqual(m['meta']['run_utc'],obj['run_utc'])
+   self.assertEqual(m['meta']['coverage'],obj['coverage'])
+   self.assertEqual(m['audit']['issuer_metrics_published'],obj['coverage']['issuer_facts_with_valuation'])
+   self.assertEqual(m['audit']['canonical_six_factor_scores'],0)
+   self.assertIsNone(m['preliminary_us_queue'][0]['data_quality']['canonical_six_factor_score'])
 
 if __name__=='__main__':unittest.main()
