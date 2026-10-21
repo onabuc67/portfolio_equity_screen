@@ -12,6 +12,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from collections import Counter, defaultdict
 from pathlib import Path
 import requests
+from src.research_handoff import build_research_metrics, validate_research_metrics
 
 UTC=timezone.utc
 HEADERS={'User-Agent':'Mozilla/5.0 (compatible; PortfolioPublicDataResearch/1.0)',
@@ -173,7 +174,7 @@ def vendor_sector(s,industry):
     return ''
 
 def select_stocks(rows,sp,secmap):
-    domestic=[]; international=[]; seen_cik_us=set();seen_cik_intl=set()
+    domestic=[]; midcaps=[]; international=[]; seen_cik_us=set();seen_cik_intl=set()
     for r in rows:
         t=str(r.get('symbol') or '').upper().strip()
         p=number(r.get('lastsale'));cap=number(r.get('marketCap'))
@@ -192,7 +193,15 @@ def select_stocks(rows,sp,secmap):
             if cik in seen_cik_us:continue
             seen_cik_us.add(cik)
             # US segment follows S&P 500 economic equity universe; separately flag domiciles in portfolio research.
-            domestic.append({'ticker':t,'name':name,'segment':'US','sector':gics,'sector_authority':'S&P500 constituents GICS label','country':country or 'US-listed', 'price':p,'market_cap':cap,'cik':cik,'daily_dollar_volume_proxy':round(p*volume,2)})
+            domestic.append({'ticker':t,'name':name,'segment':'US','sector':gics,'sector_authority':'S&P500 constituents GICS label','country':country or 'US-listed', 'price':p,'market_cap':cap,'cik':cik,'daily_dollar_volume_proxy':round(p*volume,2),'size_class':'LARGE'})
+        elif (not country or country=='US') and 2e9<=cap<=2e10 and volume*p>=5_000_000 and not maybe_adr(r):
+            cik=secmap.get(t,'')
+            sector=vendor_sector(r.get('sector'),r.get('industry'))
+            if cik and sector in SECTORS and cik not in seen_cik_us:
+                midcaps.append({'ticker':t,'name':name,'segment':'US','sector':sector,
+                    'sector_authority':'Nasdaq indicative mapping; verify GICS',
+                    'country':'US','price':p,'market_cap':cap,'cik':cik,
+                    'daily_dollar_volume_proxy':round(p*volume,2),'size_class':'MID'})
         elif country and country!='US' and (maybe_adr(r) or cap>2e9):
             if volume*p<1_000_000:continue
             cik=secmap.get(t,'')
@@ -211,7 +220,14 @@ def select_stocks(rows,sp,secmap):
         if bycountry[r['country']]<65:
             intl.append(r);bycountry[r['country']]+=1
         if len(intl)>=420:break
-    return domestic[:460],intl
+    large_ciks={r['cik'] for r in domestic}
+    midcaps.sort(key=lambda r:r['market_cap'],reverse=True)
+    mid_selected=[];mid_seen=set();by_sector=Counter()
+    for r in midcaps:
+        if r['cik'] in large_ciks or r['cik'] in mid_seen or by_sector[r['sector']]>=20:continue
+        mid_selected.append(r);mid_seen.add(r['cik']);by_sector[r['sector']]+=1
+        if len(mid_selected)>=180:break
+    return domestic[:460]+mid_selected,intl
 
 def annual_value(facts,tags,unit='USD',asof=None):
     opts=[]
@@ -379,6 +395,10 @@ def main(out,asof=None,contact=None):
         if quotedate < prior:
             raise FetchFailure(f'Nasdaq quote session {quotedate} is older than previous completed NYSE session {prior}')
         if quotedate>today:raise FetchFailure(f'Nasdaq future-date quote {quotedate}')
+        from zoneinfo import ZoneInfo
+        market_now=now.astimezone(ZoneInfo('America/New_York'))
+        if asof is None and market_now.weekday()<5 and market_now.hour>=10 and quotedate!=today:
+            raise FetchFailure(f'Nasdaq bulk quote session stale after 10 ET: {quotedate} vs {today}')
         if not contact or '@' not in contact:raise FetchFailure('SEC_CONTACT_EMAIL not set; SEC fair-access identity gate')
         sp=sp500(session);ciks=sec_ciks(session,contact)
         us,foreign=select_stocks(stocks,sp,ciks)
@@ -427,6 +447,8 @@ def main(out,asof=None,contact=None):
         if len(foreign_top)<15:report['failures'].append(f'Foreign preliminary candidates: {len(foreign_top)}/15')
         if not report['failures']:
             report['status']='DATA_READY_RESEARCH_PENDING'
+            report['coverage']['US_MIDCAP']=sum(r.get('size_class')=='MID' for r in ok_us)
+            report['coverage']['issuer_metrics_published']=len(valid)
             report['next_gate']='ChatGPT must complete six issuer-grade reviews PER segment and six-factor scoring, vetoes, alternatives, plus finalist intraday prices.'
             # Public handoff carries identifiers, issuer-source references and dated coverage ONLY.
             # It intentionally does NOT redistribute Nasdaq/Stooq raw quotes or vendor market caps.
@@ -437,15 +459,20 @@ def main(out,asof=None,contact=None):
                    'foreign_review_queue':[publish_issuer(r) for r in foreign_top],
                    'international_etfs':[{'ticker':e['ticker'],'quote_asof_date':e['quote_asof_date'],'source_url':e['source_url']} for e in verified_etfs],
                    'warnings':['Issuer queue is NOT validated investment recommendations. Researcher must fetch current quote and reconcile nonrecurring GAAP earnings.','Raw Nasdaq/Stooq price data are not redistributed in this public research-queue artifact.']}
+            metrics=build_research_metrics(report,enriched,us_top,foreign_top,verified_etfs)
+            validate_research_metrics(metrics,report)
+            write_json(out/'research_metrics.json',metrics)
             write_json(out/'latest.json',public)
             # Never persist user portfolio, reserve, tax lots or positions on a public website.
         else:report['status']='FAILED_COVERAGE'
     except Exception as ex:
+        report['status']='FAILED'
         report['failures'].append(f'{type(ex).__name__}: {str(ex)[:280]}')
     # Do not leave an old successful public review queue beside a failed
     # current status: downstream readers must never confuse it for fresh data.
     if report['status']!='DATA_READY_RESEARCH_PENDING':
         (out/'latest.json').unlink(missing_ok=True)
+        (out/'research_metrics.json').unlink(missing_ok=True)
     write_json(out/'status.json',report)
     print(json.dumps({'status':report['status'],'coverage':report['coverage'],'failures':report['failures']},indent=2))
     return 0 if report['status']=='DATA_READY_RESEARCH_PENDING' else 2
