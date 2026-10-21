@@ -452,7 +452,7 @@ def main(out,asof=None,contact=None):
             report['coverage']['US_MIDCAP']=sum(r.get('size_class')=='MID' for r in ok_us)
             report['coverage']['issuer_metrics_published']=len(valid)
             report['next_gate']='ChatGPT must complete six issuer-grade reviews PER segment and six-factor scoring, vetoes, alternatives, plus finalist intraday prices.'
-            # Public handoff carries identifiers, issuer-source references and dated coverage ONLY.
+            # Public handoff carries identifiers, issuer-source references and preliminary SEC-derived ratios.
             # It intentionally does NOT redistribute Nasdaq/Stooq raw quotes or vendor market caps.
             def publish_issuer(r):
                 keep=('ticker','name','segment','country','sector','sector_authority','cik','sec_filed','sec_period_end','sec_url','annual_pe','fcf_yield')
