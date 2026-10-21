@@ -60,7 +60,7 @@ def enrich_sec_facts(facts,row,asof):
     elif total_debt:
         debt=total_debt['value'];debt_date=total_debt['period_end']
     fcf=r.get('fcf_annual')
-    fiscal_end=r.get('sec_period_end')
+    fiscal_end=r.get('cashflow_period_end') or r.get('sec_period_end')
     # Conservative: CFO and capex already match, but annual SBC must match them too.
     owner_cash=fcf-sbc['value'] if fcf is not None and sbc and sbc['period_end']==fiscal_end else None
     rev_growth=(revenue['value']/prior_revenue['value']-1) if revenue and prior_revenue and prior_revenue['value']>0 else None
