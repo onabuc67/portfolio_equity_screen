@@ -1,7 +1,7 @@
 import unittest
 from datetime import date
 from src.financials import enrich_sec_facts
-from src.research_handoff import build_research_metrics, validate_research_metrics
+from src.research_handoff import build_research_metrics, validate_research_metrics, partition_research_metrics, validate_research_index
 from src.screen import select_stocks
 
 
@@ -75,6 +75,15 @@ class ProductionContractTests(unittest.TestCase):
         rows=[issuer(i,'US') for i in range(200)]+[issuer(i,'INTL') for i in range(100)]
         p=build_research_metrics(report,rows,rows[:15],rows[200:215],[])
         self.assertTrue(validate_research_metrics(p,report))
+        index,shards=partition_research_metrics(p,max_rows=120)
+        blobs={name:blob.encode('utf-8') for name,blob in shards}
+        self.assertEqual(index['issuer_metrics_total'],300)
+        self.assertGreaterEqual(len(shards),3)
+        self.assertEqual(validate_research_index(index,report,lambda name:blobs[name]),{'US':200,'INTL':100})
+        first=shards[0][0]
+        blobs[first]=blobs[first]+b'BAD'
+        with self.assertRaises(ValueError):
+            validate_research_index(index,report,lambda name:blobs[name])
         self.assertEqual(p['audit']['us_midcap_metrics_published'],200)
         self.assertEqual(p['audit']['canonical_six_factor_scores'],0)
         self.assertNotIn('price',p['issuer_metrics'][0])
