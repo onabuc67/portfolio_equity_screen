@@ -63,7 +63,7 @@ class ProductionContractTests(unittest.TestCase):
 
     def test_metrics_publish_no_vendor_quotes_or_scores(self):
         coverage={'US':200,'INTL':100,'nasdaq_quote_asof_date':'2026-10-21'}
-        report={'run_utc':'2026-10-21T19:18:00+00:00','report_date':'2026-10-21',
+        report={'run_utc':'2026-10-21T19:18:00+00:00','producer_source_commit':'synthetic','report_date':'2026-10-21',
                 'status':'DATA_READY_RESEARCH_PENDING','coverage':coverage,
                 'sources':{'nasdaq':'https://api.nasdaq.com/api/screener/stocks'}}
         def issuer(i,segment):
