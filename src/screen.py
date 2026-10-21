@@ -383,7 +383,7 @@ def write_json(path,obj):
 
 def main(out,asof=None,contact=None):
     now=datetime.now(UTC);today=asof or now.date();session=requests.Session()
-    report={'pipeline_version':'0.4','run_utc':now.isoformat(),'report_date':today.isoformat(),
+    report={'pipeline_version':'0.4','producer_source_commit':os.getenv('GITHUB_SHA',''),'run_utc':now.isoformat(),'report_date':today.isoformat(),
             'provider_status':{},'coverage':{},'status':'FAILED','failures':[],
             'notes':['Market-wide quote source supplies trading-session date, NOT per-security intraday timestamps.',
                      'Triage results are NOT Opportunity Reserve v1.4 scores or buy recommendations.'],
