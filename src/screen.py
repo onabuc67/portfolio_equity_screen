@@ -431,7 +431,7 @@ def main(out,asof=None,contact=None):
             # Public handoff carries identifiers, issuer-source references and dated coverage ONLY.
             # It intentionally does NOT redistribute Nasdaq/Stooq raw quotes or vendor market caps.
             def publish_issuer(r):
-                keep=('ticker','name','segment','country','sector','sector_authority','cik','sec_filed','sec_period_end','sec_url')
+                keep=('ticker','name','segment','country','sector','sector_authority','cik','sec_filed','sec_period_end','sec_url','annual_pe','fcf_yield')
                 return {k:r.get(k) for k in keep}
             public={'meta':report,'us_review_queue':[publish_issuer(r) for r in us_top],
                    'foreign_review_queue':[publish_issuer(r) for r in foreign_top],
