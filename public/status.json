@@ -1,8 +1,8 @@
 {
   "pipeline_version": "0.4",
-  "producer_source_commit": "62614646368dfe6679e81a7d60bcbda473efc9f0",
-  "run_utc": "2026-10-21T21:59:19.220836+00:00",
-  "report_date": "2026-10-21",
+  "producer_source_commit": "72c4c23d9aff947e8e54f2d21df12e4a0d20a127",
+  "run_utc": "2026-10-22T02:14:59.262033+00:00",
+  "report_date": "2026-10-22",
   "provider_status": {
     "nasdaq": {
       "source": "https://api.nasdaq.com/api/screener/stocks",
@@ -13,54 +13,27 @@
       "quote_timestamp_anchors": [
         {
           "ticker": "AAPL",
-          "trade_timestamp": "Oct 21, 2026 5:59 PM ET",
+          "trade_timestamp": "Oct 21, 2026",
           "trade_date": "2026-10-21",
-          "price_deviation_pct": 1.284,
+          "price_deviation_pct": 1.323,
           "source": "https://api.nasdaq.com/api/quote/AAPL/info"
         },
         {
           "ticker": "JPM",
-          "trade_timestamp": "Oct 21, 2026 5:59 PM ET",
+          "trade_timestamp": "Oct 21, 2026",
           "trade_date": "2026-10-21",
-          "price_deviation_pct": 0.092,
+          "price_deviation_pct": 0.021,
           "source": "https://api.nasdaq.com/api/quote/JPM/info"
         }
       ],
       "individual_row_timestamps_verified": false
-    },
-    "sp500_constituents": 503,
-    "eligible_pre_sec": {
-      "us": 632,
-      "foreign": 272
-    },
-    "issuer_errors": 1,
-    "foreign_candidate_pool": 272,
-    "foreign_sec_facts_errors": 1,
-    "foreign_missing_valuation": 116,
-    "etf_sources": {
-      "Nasdaq quote/info": 31
-    },
-    "etf_failed_samples": []
+    }
   },
-  "coverage": {
-    "US": 606,
-    "INTL": 156,
-    "INTL_ETF": 31,
-    "US_SECTORS": 11,
-    "INTL_COUNTRIES": 18,
-    "issuer_facts_attempted": 904,
-    "issuer_facts_with_valuation": 762,
-    "etf_quotes_attempted": 31,
-    "nasdaq_quote_asof_date": "2026-10-21",
-    "etf_quote_asof_range": [
-      "2026-10-21",
-      "2026-10-21"
-    ],
-    "US_MIDCAP": 155,
-    "issuer_metrics_published": 762
-  },
-  "status": "DATA_READY_RESEARCH_PENDING",
-  "failures": [],
+  "coverage": {},
+  "status": "FAILED",
+  "failures": [
+    "FetchFailure: Nasdaq bulk quote session stale after 10 ET: 2026-10-21 vs 2026-10-22"
+  ],
   "notes": [
     "Market-wide quote source supplies trading-session date, NOT per-security intraday timestamps.",
     "Triage results are NOT Opportunity Reserve v1.4 scores or buy recommendations."
@@ -71,6 +44,5 @@
     "issuer_fundamentals": "https://data.sec.gov/api/xbrl/companyfacts/",
     "etf_quote_primary": "https://api.nasdaq.com/api/quote/{symbol}/info?assetclass=etf",
     "etf_history_optional": "https://stooq.com/q/d/l/ (API key required)"
-  },
-  "next_gate": "ChatGPT must complete six issuer-grade reviews PER segment and six-factor scoring, vetoes, alternatives, plus finalist intraday prices."
+  }
 }
