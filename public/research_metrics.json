@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1-index",
   "meta": {
-    "run_utc": "2026-10-22T18:17:46.665951+00:00",
-    "producer_source_commit": "344bac36f390346f6b4153f9693d97c27bb04e68",
+    "run_utc": "2026-10-22T19:10:57.560113+00:00",
+    "producer_source_commit": "481341ad5451a5e7c99cacc1cff0ec596d0c584f",
     "report_date": "2026-10-22",
     "status": "DATA_READY_RESEARCH_PENDING",
     "coverage": {
@@ -107,7 +107,7 @@
       "sec_period_end": "2025-12-31",
       "cashflow_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001166691.json",
-      "balance_asof": "2026-06-30",
+      "balance_asof": "2026-09-30",
       "metrics": {
         "annual_pe": 3.92,
         "fcf_yield": 0.27941,
@@ -120,7 +120,7 @@
         "share_based_compensation_annual": 1288000000.0,
         "owner_cash_proxy_annual": 20605000000.0,
         "owner_cash_yield_proxy": 0.26297,
-        "cash_balance": 7735000000.0,
+        "cash_balance": 7676000000.0,
         "debt_balance": null,
         "net_debt_proxy": null,
         "interest_expense_annual": 4087000000.0,
@@ -1595,43 +1595,43 @@
       "path": "research_metrics_us_01.json",
       "segment": "US",
       "count": 150,
-      "sha256": "028ec79bbc9151d02bfe2023cad66c739736ecea3ad226f370191b48ef1d4264"
+      "sha256": "328dc27cf4c4ee89d2f5148430103d6b7e176d0ba1dd2cd9f74f47700e440ed3"
     },
     {
       "path": "research_metrics_us_02.json",
       "segment": "US",
       "count": 150,
-      "sha256": "8b18d6d9afab79f85754696b319d7e1322370f9c84e7f7c7fe97fbee846455d4"
+      "sha256": "9869afbe2b4d7036fbf789c292587ab9fbb93f316a775abc15ad1b343dfd33dd"
     },
     {
       "path": "research_metrics_us_03.json",
       "segment": "US",
       "count": 150,
-      "sha256": "df2a1f283e41c62cec0a773e29e1b223e28eb419f8377f50476957ba0b0b1a58"
+      "sha256": "349582c78dacc5191d3bc0b434c65e81daa1a820a3bc6b808f2dce0b1e933570"
     },
     {
       "path": "research_metrics_us_04.json",
       "segment": "US",
       "count": 150,
-      "sha256": "3ff136b653299939649663d10b8c1853759c3c85f3e101564a70fc4af22e810f"
+      "sha256": "50c32476e623686acd4fdd72e956cbb787298215f4aa07fd4594950f182a56ec"
     },
     {
       "path": "research_metrics_us_05.json",
       "segment": "US",
       "count": 6,
-      "sha256": "f3db47e5b40aa158ab58367c95a548b447cdbc26dbcd80cdc46e8282bc90ae75"
+      "sha256": "a34f239ce1cf162cef4bb410087d7fe6f0e32c5c23221d153b74ff11d17b1f48"
     },
     {
       "path": "research_metrics_intl_01.json",
       "segment": "INTL",
       "count": 150,
-      "sha256": "7574df411341e786ea5589bf8f2eb43d33112a30fd3e185e92614d691ce78852"
+      "sha256": "822049cae285597f1ab2c7b7eb8e0a8fbb63b29b027c4e27365230d1b4acbbbb"
     },
     {
       "path": "research_metrics_intl_02.json",
       "segment": "INTL",
       "count": 9,
-      "sha256": "e8101ffd3d32252f4eb8f2c6ccc9d134d7138674054312cb15568dbce3778da8"
+      "sha256": "cc527042e01f038e3f77046462f9b56e8adc4f7d7907734a34617f9b2bbf701f"
     }
   ],
   "consumer_instructions": "Fetch each listed shard from GitHub main/public for complete issuer coverage; verify SHA-256, matching meta, segment counts and no raw quotes/scores. Index queues are preliminary research priorities only."
