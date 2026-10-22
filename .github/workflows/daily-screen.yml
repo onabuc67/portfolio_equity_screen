@@ -55,19 +55,31 @@ jobs:
         env:
           SEC_CONTACT_EMAIL: ${{ secrets.SEC_CONTACT_EMAIL }}
         run: |
-          mkdir -p public
+          # Fail closed: never destroy the last valid live artifact set on producer failure.
+          # Generate and independently validate a complete bundle before atomic promotion.
+          mkdir -p public "$RUNNER_TEMP/equity_screen"
+          python -m src.screen --out "$RUNNER_TEMP/equity_screen"
+          python - <<'PYSTAGE'
+          import json,os
+          from pathlib import Path
+          from src.research_handoff import validate_research_index
+          stage=Path(os.environ['RUNNER_TEMP'])/'equity_screen'
+          status=json.loads((stage/'status.json').read_text())
+          if status['status']!='DATA_READY_RESEARCH_PENDING':
+              raise RuntimeError('NEW PRODUCER FAILED; preserving last valid published snapshot: '+str(status.get('failures')))
+          latest=json.loads((stage/'latest.json').read_text())
+          index=json.loads((stage/'research_metrics.json').read_text())
+          if status['run_utc']!=latest['meta']['run_utc'] or status['run_utc']!=index['meta']['run_utc']:
+              raise RuntimeError('Producer handoff run timestamps inconsistent; preserve previous snapshot')
+          validate_research_index(index,status,lambda name:(stage/name).read_bytes())
+          if not index['issuer_metrics_manifest']:
+              raise RuntimeError('No research shards; preserve prior snapshot')
+          print('STAGED_SNAPSHOT_VERIFIED',status['run_utc'])
+          PYSTAGE
           rm -f public/status.json public/latest.json public/research_metrics*.json
-          python -m src.screen --out public || echo 'Screen returned failure; status will be audited below'
-          if [ ! -f public/status.json ]; then
-            python - <<'PYSTATUS'
-          import json,datetime,pathlib
-          pathlib.Path('public/status.json').write_text(json.dumps({
-              'status':'FAILED',
-              'failures':['Producer exited without status.json'],
-              'run_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()
-          }))
-          PYSTATUS
-          fi
+          cp "$RUNNER_TEMP/equity_screen/status.json" public/status.json
+          cp "$RUNNER_TEMP/equity_screen/latest.json" public/latest.json
+          cp "$RUNNER_TEMP/equity_screen"/research_metrics*.json public/
 
       - name: Follow up prospective recommendations and calculate evidence-qualified paper results
         if: github.event_name != 'push'
