@@ -1,4 +1,6 @@
 import unittest
+from datetime import datetime, timezone
+from src.screen import market_reference_date
 from src.model_observations import advance
 from src.model_performance import evaluate,validate_model_ledger
 
@@ -66,6 +68,11 @@ class ProspectiveModelOutcomeTests(unittest.TestCase):
         updated,audit=advance(fake_signal(),'2026-10-30T23:00:00Z',failed)
         self.assertEqual(len(updated['assessment_events']),0)
         self.assertEqual(len(audit['source_errors']),1)
+
+    def test_utc_rollover_does_not_make_tomorrow_nyse_today(self):
+        # 02:19 UTC Oct 22 is still Oct 21 on Wall Street.
+        d=datetime(2026,10,22,2,19,tzinfo=timezone.utc)
+        self.assertEqual(market_reference_date(d).isoformat(),'2026-10-21')
 
     def test_future_reference_quote_rejected(self):
         ledger=fake_signal()
