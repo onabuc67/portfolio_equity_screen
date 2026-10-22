@@ -381,8 +381,14 @@ def write_json(path,obj):
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text(json.dumps(obj,ensure_ascii=False,indent=2,default=str),encoding='utf-8')
 
+def market_reference_date(now,asof=None):
+    # GitHub executes in UTC. Nasdaq session dates use New York exchange time.
+    # 19:00 Pacific on Oct 21 is already Oct 22 UTC, NOT Oct 22 NYSE session.
+    from zoneinfo import ZoneInfo
+    return asof if asof is not None else now.astimezone(ZoneInfo('America/New_York')).date()
+
 def main(out,asof=None,contact=None):
-    now=datetime.now(UTC);today=asof or now.date();session=requests.Session()
+    now=datetime.now(UTC);today=market_reference_date(now,asof);session=requests.Session()
     report={'pipeline_version':'0.4','producer_source_commit':os.getenv('GITHUB_SHA',''),'run_utc':now.isoformat(),'report_date':today.isoformat(),
             'provider_status':{},'coverage':{},'status':'FAILED','failures':[],
             'notes':['Market-wide quote source supplies trading-session date, NOT per-security intraday timestamps.',
