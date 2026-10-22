@@ -80,8 +80,10 @@ jobs:
           ledger=json.loads(ledger_path.read_text())
           scorecard=evaluate(ledger)
           Path('public/model_signal_scorecard.json').write_text(
-              json.dumps(scorecard,ensure_ascii=False,indent=2)+'\\n')
+              json.dumps(scorecard,ensure_ascii=False,indent=2)+'\n')
           print('Model-only recommended ideas:',scorecard['total_recommended'])
+          json.loads(Path('public/model_signal_scorecard.json').read_text())
+          print('Scorecard JSON readback VALID')
           PYSCORE
 
       - name: Publish dated machine-readable QA status
