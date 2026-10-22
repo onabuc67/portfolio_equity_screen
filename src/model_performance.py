@@ -51,7 +51,10 @@ def validate_model_ledger(ledger):
             q=event.get('reference_quote') or {}
             if not q.get('source_url') or not q.get('asof_utc') or not q.get('price'):
                 raise ValueError('Source-dated original price required')
-            _utc(event['published_at_utc']);_utc(q['asof_utc'])
+            published=_utc(event['published_at_utc']);quote_time=_utc(q['asof_utc'])
+            if quote_time>published:raise ValueError('Post-publication quote is look-ahead bias')
+            _utc(event['expiry'])
+            if _utc(event['expiry'])<=published:raise ValueError('Expiry must follow recommendation')
             _number(q['price'])
             issued[sid]=event
         elif et in ('TRIGGERED_PAPER','NO_FILL','CANCELED','EXPIRED','SUPERSEDED','CLOSED'):
@@ -81,7 +84,15 @@ def validate_model_ledger(ledger):
                 _number(e.get(keynum))
             if not e.get('idea_source_url') or not e.get('benchmark_source_url'):
                 raise ValueError('Verified outcome must cite source prices and distributions')
-        elif e.get('adjustments_verified') is not False:
+        elif e.get('adjustments_verified') is False:
+            if e.get('evidence_quality')=='PROVISIONAL_YAHOO_ADJUSTED_CLOSE':
+                for keynum in ('provisional_idea_total_return_pct','provisional_benchmark_total_return_pct','friction_pct'):
+                    _number(e.get(keynum))
+                if not e.get('idea_source_url') or not e.get('benchmark_source_url'):
+                    raise ValueError('Provisional return must cite the source')
+                if not e.get('entry_session') or not e.get('exit_session') or e['entry_session']>=e['exit_session']:
+                    raise ValueError('Provisional dates/entry invalid')
+        else:
             raise ValueError('Return evidence quality must be explicit')
     return issued
 
@@ -103,7 +114,20 @@ def evaluate(ledger):
                 measurements[str(horizon)]={'state':'NOT_EVALUATED','excess_return_pct':None}
                 continue
             if not e['adjustments_verified']:
-                measurements[str(horizon)]={'state':'UNVERIFIED','excess_return_pct':None}
+                if e.get('evidence_quality')=='PROVISIONAL_YAHOO_ADJUSTED_CLOSE':
+                    stock=_number(e['provisional_idea_total_return_pct'])
+                    bench=_number(e['provisional_benchmark_total_return_pct'])
+                    friction=_number(e['friction_pct'])
+                    gross=stock-bench if initial['action'] in ('BUY','ADD') else bench-stock
+                    measurements[str(horizon)]={'state':'PROVISIONAL',
+                        'excess_return_pct':None,
+                        'provisional_excess_return_pct':round(gross-friction,5),
+                        'provisional_security_return_pct':stock,
+                        'provisional_benchmark_return_pct':bench,
+                        'entry_session':e['entry_session'],'exit_session':e['exit_session'],
+                        'win_unverified':gross-friction>0}
+                else:
+                    measurements[str(horizon)]={'state':'UNVERIFIED','excess_return_pct':None}
                 continue
             stock=_number(e['idea_total_return_pct'])
             bench=_number(e['benchmark_total_return_pct'])
@@ -127,7 +151,13 @@ def evaluate(ledger):
               if r['outcomes'][str(h)]['state']=='EVALUATED']
         vals.sort()
         n=len(vals)
-        summary[str(h)]={'evaluated_count':n,'total_signal_count':len(rows),
+        provisional=[r['outcomes'][str(h)].get('provisional_excess_return_pct') for r in rows
+                     if r['outcomes'][str(h)]['state']=='PROVISIONAL']
+        summary[str(h)]={'evaluated_count':n,
+            'provisional_count':len(provisional),
+            'provisional_positive_count':sum(x>0 for x in provisional),
+            'provisional_mean_excess_pct':round(sum(provisional)/len(provisional),5) if provisional else None,
+            'total_signal_count':len(rows),
             'win_count':sum(x>0 for x in vals),'mean_excess_return_pct':round(sum(vals)/n,5) if n else None,
             'median_excess_return_pct':((vals[(n-1)//2]+vals[n//2])/2) if n else None,
             'win_rate_pct':round(100*sum(x>0 for x in vals)/n,2) if n else None,
@@ -136,6 +166,7 @@ def evaluate(ledger):
     return {'model_only':True,'total_recommended':len(rows),
             'paper_state_counts':dict(states),'horizons':summary,'rows':rows,
             'limitations':['No real order fills inferred','Tax-specific outcomes require private after-tax analysis',
-                'Returns require verified split/dividend adjustment and source-dated benchmark',
+                'Verified scores exclude provisional adjusted-close provider data until independently audited',
+                'PROVISIONAL is source-dated Yahoo adjusted-close; corporate actions, withholding, ROC and quote accuracy not independently audited',
                 'A small number of signals cannot establish persistent forecasting skill',
                 'Outcome data missing or immature are not counted as wins or losses']}
