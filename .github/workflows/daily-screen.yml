@@ -68,21 +68,32 @@ jobs:
           PYSTATUS
           fi
 
-      - name: Evaluate hypothetical recommendation ledger (no market-data guesses)
+      - name: Follow up prospective recommendations and calculate evidence-qualified paper results
         run: |
           python - <<'PYSCORE'
           import json
+          from datetime import datetime,timezone
           from pathlib import Path
           from src.model_performance import evaluate
+          from src.model_observations import advance
           ledger_path=Path('public/model_signal_ledger.json')
           if not ledger_path.is_file():
               raise RuntimeError('Model recommendation source ledger missing')
           ledger=json.loads(ledger_path.read_text())
-          scorecard=evaluate(ledger)
+          audited,followup=advance(ledger,datetime.now(timezone.utc).isoformat())
+          if audited['signal_events']!=ledger['signal_events'] or audited['assessment_events']!=ledger['assessment_events']:
+              ledger_path.write_text(json.dumps(audited,ensure_ascii=False,indent=2)+'\n')
+          scorecard=evaluate(audited)
+          Path('public/model_followup_status.json').write_text(
+              json.dumps(followup,ensure_ascii=False,indent=2)+'\n')
+          print('Provisional assessments recorded:',followup['new_provisional_assessments'])
+          print('Follow-up quote source errors:',len(followup['source_errors']))
           Path('public/model_signal_scorecard.json').write_text(
               json.dumps(scorecard,ensure_ascii=False,indent=2)+'\n')
           print('Model-only recommended ideas:',scorecard['total_recommended'])
-          json.loads(Path('public/model_signal_scorecard.json').read_text())
+          assert json.loads(Path('public/model_signal_scorecard.json').read_text())['total_recommended']==len(
+              [e for e in audited['signal_events'] if e['event_type']=='ISSUED'])
+          json.loads(Path('public/model_followup_status.json').read_text())
           print('Scorecard JSON readback VALID')
           PYSCORE
 
