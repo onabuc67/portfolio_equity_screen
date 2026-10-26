@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "as_of_utc": "2026-10-21T00:00:00Z",
+  "as_of_utc": "2026-10-26T17:58:11Z",
   "scope": "PUBLIC, MODEL-ONLY PAPER RECOMMENDATIONS. NOT ACTUAL OWNER TRADES OR PRIVATE PORTFOLIO.",
   "historical_coverage_start": "2026-10-21",
   "historical_pre_start": "NOT_BACKFILLED; do not assert all older recommendations included until original dated messages recovered",
@@ -16,6 +16,35 @@
     "time_zone": "America/Los_Angeles",
     "public_model_only": true
   },
-  "signal_events": [],
+  "signal_events": [
+    {
+      "signal_id": "SIG-2026-10-26-NAC-REDUCE-01",
+      "timestamp_utc": "2026-10-26T17:58:11Z",
+      "timestamp_pt": "2026-10-26 10:58:11 PT",
+      "ticker": "NAC",
+      "security": "Nuveen California Quality Municipal Income Fund",
+      "direction": "REDUCE",
+      "state": "RECOMMENDED",
+      "public_model_only": true,
+      "reference_price_usd": 9.975,
+      "reference_quote_asof_utc": "2026-10-26T17:43:02Z",
+      "price_source": "Structured U.S. market quote; Nasdaq public quote page",
+      "price_source_url": "https://www.nasdaq.com/market-activity/stocks/nac",
+      "entry_condition": "Paper reduction only with a limit price of $9.95 or better; no market order.",
+      "sizing": "Staged partial reduction; no owner holdings, shares, accounts, basis or tax data published.",
+      "horizon_sessions": [
+        5,
+        20,
+        60
+      ],
+      "benchmark": "CMF total return",
+      "safe_carry_comparator": "SGOV total return",
+      "catalyst": "Persistent distribution-quality weakness plus leveraged municipal CEF discount volatility and concentration risk.",
+      "risk": "A roughly 6% discount to latest reported NAV may mean-revert; municipal duration could rally if long yields fall.",
+      "invalidation": "Suspend before paper execution if verified coverage normalizes above 90%, leverage/funding improves materially, or price falls below the stated limit without new adverse evidence.",
+      "evidence_asof": "Latest sponsor NAV 2026-10-23; current quote 2026-10-26.",
+      "actual_execution_assumed": false
+    }
+  ],
   "assessment_events": []
 }
