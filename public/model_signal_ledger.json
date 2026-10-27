@@ -43,7 +43,25 @@
       "risk": "A roughly 6% discount to latest reported NAV may mean-revert; municipal duration could rally if long yields fall.",
       "invalidation": "Suspend before paper execution if verified coverage normalizes above 90%, leverage/funding improves materially, or price falls below the stated limit without new adverse evidence.",
       "evidence_asof": "Latest sponsor NAV 2026-10-23; current quote 2026-10-26.",
-      "actual_execution_assumed": false
+      "actual_execution_assumed": false,
+      "event_type": "ISSUED",
+      "action": "REDUCE",
+      "model_only": true,
+      "benchmark_ticker": "CMF",
+      "asset_class": "California municipal closed-end fund",
+      "trigger": "Paper reduction only with a limit price of $9.95 or better; no market order.",
+      "expiry": "2026-11-16T21:00:00Z",
+      "entry_rule": {
+        "type": "LIMIT_PRICE",
+        "limit": 9.95,
+        "friction_pct": 0.2
+      },
+      "reference_quote": {
+        "price": 9.975,
+        "asof_utc": "2026-10-26T17:43:02Z",
+        "source_url": "https://www.nasdaq.com/market-activity/stocks/nac"
+      },
+      "published_at_utc": "2026-10-26T17:58:11Z"
     }
   ],
   "assessment_events": []
