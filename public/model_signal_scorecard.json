@@ -1,46 +1,71 @@
 {
   "model_only": true,
-  "total_recommended": 0,
-  "paper_state_counts": {},
+  "total_recommended": 1,
+  "paper_state_counts": {
+    "RECOMMENDED_NOT_EXECUTED": 1
+  },
   "horizons": {
     "5": {
       "evaluated_count": 0,
       "provisional_count": 0,
       "provisional_positive_count": 0,
       "provisional_mean_excess_pct": null,
-      "total_signal_count": 0,
+      "total_signal_count": 1,
       "win_count": 0,
       "mean_excess_return_pct": null,
       "median_excess_return_pct": null,
       "win_rate_pct": null,
-      "unverified_or_immature_count": 0
+      "unverified_or_immature_count": 1
     },
     "20": {
       "evaluated_count": 0,
       "provisional_count": 0,
       "provisional_positive_count": 0,
       "provisional_mean_excess_pct": null,
-      "total_signal_count": 0,
+      "total_signal_count": 1,
       "win_count": 0,
       "mean_excess_return_pct": null,
       "median_excess_return_pct": null,
       "win_rate_pct": null,
-      "unverified_or_immature_count": 0
+      "unverified_or_immature_count": 1
     },
     "60": {
       "evaluated_count": 0,
       "provisional_count": 0,
       "provisional_positive_count": 0,
       "provisional_mean_excess_pct": null,
-      "total_signal_count": 0,
+      "total_signal_count": 1,
       "win_count": 0,
       "mean_excess_return_pct": null,
       "median_excess_return_pct": null,
       "win_rate_pct": null,
-      "unverified_or_immature_count": 0
+      "unverified_or_immature_count": 1
     }
   },
-  "rows": [],
+  "rows": [
+    {
+      "signal_id": "SIG-2026-10-26-NAC-REDUCE-01",
+      "ticker": "NAC",
+      "action": "REDUCE",
+      "published_at_utc": "2026-10-26T17:58:11Z",
+      "benchmark_ticker": "CMF",
+      "paper_state": "RECOMMENDED_NOT_EXECUTED",
+      "outcomes": {
+        "5": {
+          "state": "NOT_EVALUATED",
+          "excess_return_pct": null
+        },
+        "20": {
+          "state": "NOT_EVALUATED",
+          "excess_return_pct": null
+        },
+        "60": {
+          "state": "NOT_EVALUATED",
+          "excess_return_pct": null
+        }
+      }
+    }
+  ],
   "limitations": [
     "No real order fills inferred",
     "Tax-specific outcomes require private after-tax analysis",
