@@ -51,7 +51,7 @@ jobs:
           python -m unittest discover -s tests -v
 
       - name: Run public data screening
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
         env:
           SEC_CONTACT_EMAIL: ${{ secrets.SEC_CONTACT_EMAIL }}
         run: |
@@ -82,7 +82,7 @@ jobs:
           cp "$RUNNER_TEMP/equity_screen"/research_metrics*.json public/
 
       - name: Follow up prospective recommendations and calculate evidence-qualified paper results
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
         run: |
           python - <<'PYSCORE'
           import json
@@ -112,7 +112,7 @@ jobs:
           PYSCORE
 
       - name: Publish dated machine-readable QA status
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
         run: |
           git fetch origin main
           if ! git diff --quiet HEAD origin/main -- src/ tests/ requirements.txt .github/workflows/daily-screen.yml public/model_signal_ledger.json; then
@@ -130,22 +130,22 @@ jobs:
           fi
 
       - name: Configure GitHub Pages
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
         uses: actions/configure-pages@v5
 
       - name: Upload GitHub Pages artifact
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
 
       - name: Deploy screening results to GitHub Pages
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
         id: deployment
         uses: actions/deploy-pages@v4
 
       - name: Acceptance check
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
         run: |
           python - <<'PY'
           import json
