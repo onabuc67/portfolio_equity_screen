@@ -63,6 +63,8 @@ def corroborate_nasdaq_quote_date(session, rows, required=2):
     preferred = ('AAPL', 'JPM', 'MSFT', 'XOM', 'NVDA', 'WMT', 'AMZN', 'GOOGL', 'BAC')
     results = []
     errors = []
+    # Price comparisons are reliability warnings, not proof of the trading DATE.
+    # A large same-day move can exceed 3% while both timestamps are correct.
     for symbol in preferred:
         screener = by_symbol.get(symbol)
         if not screener:
@@ -82,11 +84,11 @@ def corroborate_nasdaq_quote_date(session, rows, required=2):
                 errors.append(f'{symbol}: missing provider trade timestamp or quoted price')
                 continue
             deviation = abs(quote-reference)/reference
-            if deviation > 0.03:
-                errors.append(f'{symbol}: screener/quote disagreement {deviation:.1%} (>3%)')
-                continue
             results.append({'ticker':symbol,'trade_timestamp':timestamp,'trade_date':qdate.isoformat(),
-                            'price_deviation_pct':round(100*deviation,3),'source':url})
+                            'price_deviation_pct':round(100*deviation,3),
+                            'bulk_price_corrob_3pct':deviation<=0.03,'source':url})
+            if deviation>0.03:
+                errors.append(f'{symbol}: screener/quote disagreement {deviation:.1%} (>3%); bulk row price UNVERIFIED')
             if len(results)>=required:
                 break
         except (FetchFailure,ValueError,KeyError,TypeError) as ex:
@@ -96,6 +98,8 @@ def corroborate_nasdaq_quote_date(session, rows, required=2):
         raise FetchFailure(f'Nasdaq screener missing asof AND only {len(results)}/{required} quote timestamp anchors validated; details: {errors[:5]}')
     if len(dates)!=1:
         raise FetchFailure(f'Nasdaq quote timestamp anchors disagree on session dates: {sorted(dates)}')
+    # Date is independently reported by quote/info; the bulk-price feed is NOT
+    # certified by this date, and all flagged prices must be verified per issuer.
     return date.fromisoformat(next(iter(dates))),results
 
 def number(s):
@@ -132,10 +136,14 @@ def market_rows(session,max_pages=70):
         chosen = source_dates[0]
     else:
         chosen, anchors = corroborate_nasdaq_quote_date(session, records)
-        provenance = 'Nasdaq quote/info corroboration — two dated symbols, sampled not per-row timestamp'
+        provenance = 'Nasdaq quote/info DATE corroboration only; bulk rows have NO verified individual trade date'
+    price_flags=[x for x in anchors if not x.get('bulk_price_corrob_3pct',True)]
     return records,chosen,{'source':STOCKS,'fetched_rows':len(records),
         'reported_total':total,'pages':page+1,'quote_date_provenance':provenance,
-        'quote_timestamp_anchors':anchors,'individual_row_timestamps_verified':False}
+        'quote_timestamp_anchors':anchors,
+        'bulk_price_discrepancy_sample_count':len(price_flags),
+        'bulk_row_price_reliability':'UNVERIFIED' if price_flags else 'SAMPLED_ONLY',
+        'individual_row_timestamps_verified':False}
 
 def sp500(session):
     rows=list(csv.DictReader(io.StringIO(fetch(session,SP500).text)))
@@ -370,6 +378,69 @@ def triage(rows,segment,n=15):
         if len(chosen)>=n:break
     return chosen
 
+def challenger_triage(rows, segment, exclude=(), n=15):
+    """Independent SEC-history challenger queue, NOT Opportunity Reserve scoring.
+
+    Preserve the original value queue; probe other dimensions from the BROAD
+    universe rather than presenting its near-identical top 15 every session.
+    Features are annual/historical, not current revisions or validated quality.
+    """
+    excluded=set(exclude)
+    candidates=[r for r in rows if r.get('segment')==segment
+                and r.get('ticker') not in excluded
+                and (r.get('annual_pe') is not None or r.get('fcf_yield') is not None)]
+    def num(r,field):
+        v=r.get(field)
+        return v if isinstance(v,(int,float)) and math.isfinite(v) else None
+    def cash_proxy(r):
+        v=num(r,'owner_cash_yield_proxy')
+        return v if v is not None else -999
+    def revenue(r):
+        v=num(r,'revenue_growth_yoy')
+        return min(1.0,v) if v is not None else -999
+    def balance(r):
+        if r.get('sector')=='Financials':return -999
+        cash=num(r,'cash_balance');debt=num(r,'debt_balance')
+        if cash is None or debt is None:return -999
+        return (cash-debt)/max(1.0,abs(cash)+abs(debt))
+    def midcap(r):
+        return (1 if r.get('size_class')=='MID' else -1,
+                cash_proxy(r),revenue(r))
+    def residual_value(r):
+        pe=num(r,'annual_pe')
+        fcf=num(r,'fcf_yield')
+        return ((min(30,max(0,30-pe))/30 if pe and pe>0 else 0)*.55
+               +(min(.2,max(-.05,fcf))/.2 if fcf is not None else 0)*.45)
+    lanes=[
+        ('cash_generation_proxy', cash_proxy),
+        ('revenue_growth_proxy', revenue),
+        ('balance_sheet_proxy', balance),
+        ('midcap_alternative', midcap),
+        ('alternative_valuation', residual_value),
+    ]
+    ordered={label:sorted(candidates,
+                         key=lambda r:(key(r),r['ticker']),reverse=True)
+             for label,key in lanes}
+    selected=[];seen=set();cnt=Counter()
+    while len(selected)<n:
+        progressed=False
+        for label,queue in lanes:
+            for r in ordered[label]:
+                t=r['ticker'];bucket=r.get('sector') if segment=='US' else r.get('country')
+                if t in seen or cnt[bucket]>=4:continue
+                # Never describe absent balance/growth/cash data as a positive signal.
+                if label=='cash_generation_proxy' and cash_proxy(r)==-999:continue
+                if label=='revenue_growth_proxy' and revenue(r)==-999:continue
+                if label=='balance_sheet_proxy' and balance(r)==-999:continue
+                if label=='midcap_alternative' and r.get('size_class')!='MID':continue
+                x=dict(r);x['_discovery_lane']=label
+                selected.append(x);seen.add(t);cnt[bucket]+=1;progressed=True
+                break
+            if len(selected)>=n:break
+        if not progressed:break
+    return selected
+
+
 def nyse_previous_session(today):
     # dependency available in production GitHub runner; time zone insensitive for DATE only.
     import pandas_market_calendars as mcal
@@ -451,6 +522,18 @@ def main(out,asof=None,contact=None):
         if len(sectors)<11:report['failures'].append(f'US 11-sector breadth: {len(sectors)}/11')
         if len(countries)<6:report['failures'].append(f'Foreign country breadth: {len(countries)}/6')
         us_top=triage(ok_us,'US',15);foreign_top=triage(ok_foreign,'INTL',15)
+        us_challengers=challenger_triage(ok_us,'US',(r['ticker'] for r in us_top),15)
+        foreign_challengers=challenger_triage(ok_foreign,'INTL',(r['ticker'] for r in foreign_top),15)
+        report['discovery_audit']={
+            'primary_us':len(us_top),'primary_intl':len(foreign_top),
+            'challenger_us':len(us_challengers),'challenger_intl':len(foreign_challengers),
+            'method':'Primary historical P/E/FCF value + independent annual SEC cash/revenue/balance/midcap challenger lanes; neither is an investment recommendation',
+            'bulk_price_validation':'PER_ISSUER_REQUIRED',
+        }
+        if meta.get('bulk_price_discrepancy_sample_count',0):
+            report['notes'].append('Nasdaq quote/info corroborated DATE only; bulk screener price disagreed >3% for sampled symbols; individual issuer quotes and valuation MUST be independently refreshed.')
+        if len(us_challengers)<15:report['failures'].append(f'US independent challengers: {len(us_challengers)}/15')
+        if len(foreign_challengers)<15:report['failures'].append(f'International independent challengers: {len(foreign_challengers)}/15')
         if len(us_top)<15:report['failures'].append(f'US preliminary candidates: {len(us_top)}/15')
         if len(foreign_top)<15:report['failures'].append(f'Foreign preliminary candidates: {len(foreign_top)}/15')
         if not report['failures']:
@@ -465,9 +548,11 @@ def main(out,asof=None,contact=None):
                 return {k:r.get(k) for k in keep}
             public={'meta':report,'us_review_queue':[publish_issuer(r) for r in us_top],
                    'foreign_review_queue':[publish_issuer(r) for r in foreign_top],
+                   'us_challenger_queue':[dict(publish_issuer(r),discovery_lane=r['_discovery_lane']) for r in us_challengers],
+                   'foreign_challenger_queue':[dict(publish_issuer(r),discovery_lane=r['_discovery_lane']) for r in foreign_challengers],
                    'international_etfs':[{'ticker':e['ticker'],'quote_asof_date':e['quote_asof_date'],'source_url':e['source_url']} for e in verified_etfs],
                    'warnings':['Issuer queue is NOT validated investment recommendations. Researcher must fetch current quote and reconcile nonrecurring GAAP earnings.','Raw Nasdaq/Stooq price data are not redistributed in this public research-queue artifact.']}
-            metrics=build_research_metrics(report,enriched,us_top,foreign_top,verified_etfs)
+            metrics=build_research_metrics(report,enriched,us_top,foreign_top,verified_etfs,us_challengers,foreign_challengers)
             validate_research_metrics(metrics,report)
             index,shards=partition_research_metrics(metrics)
             write_json(out/'research_metrics.json',index)

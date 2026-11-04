@@ -68,7 +68,8 @@ def _public_row(row, report_date, quote_session_date):
     return item
 
 
-def build_research_metrics(report, enriched, us_queue, foreign_queue, etfs):
+def build_research_metrics(report, enriched, us_queue, foreign_queue, etfs,
+                           us_challengers=None, foreign_challengers=None):
     """Create dated, reproducible preliminary public research measurements."""
     valid = [r for r in enriched if r.get('annual_pe') is not None or r.get('fcf_yield') is not None]
     valid.sort(key=lambda r: (r['segment'], r['ticker']))
@@ -78,6 +79,12 @@ def build_research_metrics(report, enriched, us_queue, foreign_queue, etfs):
     by_key = {(r['segment'], r['ticker']): r for r in rows}
     us = [by_key[('US', r['ticker'])] for r in us_queue if ('US', r['ticker']) in by_key]
     foreign = [by_key[('INTL', r['ticker'])] for r in foreign_queue if ('INTL', r['ticker']) in by_key]
+    us_challengers = us_challengers or []
+    foreign_challengers = foreign_challengers or []
+    challenger_us = [dict(by_key[('US', r['ticker'])],discovery_lane=r.get('_discovery_lane','alternative_valuation'))
+                     for r in us_challengers if ('US',r['ticker']) in by_key]
+    challenger_foreign = [dict(by_key[('INTL', r['ticker'])],discovery_lane=r.get('_discovery_lane','alternative_valuation'))
+                          for r in foreign_challengers if ('INTL',r['ticker']) in by_key]
     audit = {
         'issuer_metrics_published': len(rows),
         'us_metrics_published': sum(r['segment'] == 'US' for r in rows),
@@ -86,6 +93,8 @@ def build_research_metrics(report, enriched, us_queue, foreign_queue, etfs):
         'owner_cash_proxy_computable': sum(r['metrics']['owner_cash_proxy_annual'] is not None for r in rows),
         'us_preliminary_queue': len(us),
         'foreign_preliminary_queue': len(foreign),
+        'us_challenger_queue': len(challenger_us),
+        'foreign_challenger_queue': len(challenger_foreign),
         'issuer_grade_finalists_validated': 0,
         'canonical_six_factor_scores': 0,
     }
@@ -114,6 +123,8 @@ def build_research_metrics(report, enriched, us_queue, foreign_queue, etfs):
         'audit': audit,
         'preliminary_us_queue': us,
         'preliminary_foreign_queue': foreign,
+        'challenger_us_queue': challenger_us,
+        'challenger_foreign_queue': challenger_foreign,
         'issuer_metrics': rows,
         'international_etfs': [
             {'ticker': e['ticker'], 'quote_asof_date': e['quote_asof_date'], 'source_url': e['source_url']}
@@ -144,6 +155,16 @@ def validate_research_metrics(payload, report, minimum_us=200, minimum_foreign=1
         raise ValueError('issuer research metrics below coverage minimum')
     if audit['us_preliminary_queue'] < 15 or audit['foreign_preliminary_queue'] < 15:
         raise ValueError('preliminary research queues below minimum')
+    if report.get('discovery_audit'):
+        if audit.get('us_challenger_queue',0)<15 or audit.get('foreign_challenger_queue',0)<15:
+            raise ValueError('independent challenger queues below minimum')
+        for segment,primary,challenger in (
+            ('US',payload['preliminary_us_queue'],payload['challenger_us_queue']),
+            ('INTL',payload['preliminary_foreign_queue'],payload['challenger_foreign_queue'])):
+            seen={x['ticker'] for x in primary}
+            if len(challenger)!=len({x['ticker'] for x in challenger}) or any(
+                x['ticker'] in seen or x['segment']!=segment for x in challenger):
+                raise ValueError(f'{segment} challenger overlap/duplicate')
     if audit['issuer_grade_finalists_validated'] or audit['canonical_six_factor_scores']:
         raise ValueError('producer may not claim issuer validation or canonical scores')
     if payload['provenance']['individual_row_timestamps_verified'] is not False:
@@ -171,7 +192,7 @@ def partition_research_metrics(payload, max_rows=150):
     index['schema_version']='1.1-index'
     index['issuer_metrics_total']=len(payload['issuer_metrics'])
     index['issuer_metrics_manifest']=[]
-    index['consumer_instructions']='Fetch each listed shard from GitHub main/public for complete issuer coverage; verify SHA-256, matching meta, segment counts and no raw quotes/scores. Index queues are preliminary research priorities only.'
+    index['consumer_instructions']='Fetch all listed shards from GitHub main/public; verify SHA-256 and common metadata. Treat primary value-ranked 15+15 and independent 15+15 challenger queues as DISCOVERY ONLY; refresh current quote, latest quarter, normalized earnings, revisions, peers and countercase before 6+6 issuer-grade evaluation. Never infer v1.4 Opportunity Scores or tradable signals from this artifact.'
     shards=[]
     for segment in ('US','INTL'):
         group=[r for r in payload['issuer_metrics'] if r['segment']==segment]

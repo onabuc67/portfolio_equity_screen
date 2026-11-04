@@ -32,6 +32,39 @@ class ProviderAndQualityTests(unittest.TestCase):
   _,foreign=screen.select_stocks(rows,{}, {r['symbol']:str(i+100) for i,r in enumerate(rows)})
   self.assertEqual(sum(x['country']=='CN' for x in foreign),40)
   self.assertEqual(sum(x['country']=='BR' for x in foreign),8)
+ def test_quote_session_date_survives_intraday_price_disagreements(self):
+  # Date can be evidenced even when bulk-price integrity is unverified.
+  class FakeResponse:
+   def __init__(self,symbol):self.symbol=symbol
+   def json(self):
+    return {'data':{'primaryData':{'lastTradeTimestamp':'Nov 4, 2026 3:55 PM ET',
+     'lastSalePrice':'$106.00' if self.symbol=='AAPL' else '$108.00'}}}
+  def fake_fetch(session,url,**kwargs):
+   return FakeResponse(url.split('/quote/')[1].split('/')[0])
+  rows=[{'symbol':'AAPL','lastsale':'$100.00'},{'symbol':'JPM','lastsale':'$100.00'}]
+  with patch.object(screen,'fetch',side_effect=fake_fetch):
+   day,anchors=screen.corroborate_nasdaq_quote_date(object(),rows)
+  self.assertEqual(day,date(2026,11,4))
+  self.assertEqual(len(anchors),2)
+  self.assertTrue(all(not q['bulk_price_corrob_3pct'] for q in anchors))
+
+ def test_challenger_independent_of_persistent_value_queue(self):
+  sectors=sorted(screen.SECTORS)
+  rows=[]
+  for i in range(110):
+   rows.append({'ticker':f'U{i:03d}','segment':'US','sector':sectors[i%11],
+    'size_class':'MID' if i%3==0 else 'LARGE',
+    'annual_pe':4+(i%27),'fcf_yield':.015+(i%13)*.008,
+    'revenue_growth_yoy':.02+(i%17)*.015,
+    'owner_cash_yield_proxy':.005+(i%19)*.01,
+    'cash_balance':500+i*50,'debt_balance':200+i*10})
+  primary=screen.triage(list(rows),'US',15)
+  challengers=screen.challenger_triage(rows,'US',(r['ticker'] for r in primary),15)
+  self.assertEqual(len(primary),15)
+  self.assertEqual(len(challengers),15)
+  self.assertTrue({r['ticker'] for r in primary}.isdisjoint({r['ticker'] for r in challengers}))
+  self.assertTrue(all('opportunity_score' not in r for r in challengers))
+
  def test_fail_closed_no_sec_contact(self):
   class Fake: pass
   with self.assertRaises(screen.FetchFailure):screen.facts_for(Fake(),{'cik':'0000320193'},'',date(2026,10,20))
@@ -73,6 +106,12 @@ class ProviderAndQualityTests(unittest.TestCase):
    r=json.loads((Path(d)/'latest.json').read_text());self.assertEqual(len(r['us_review_queue']),15)
    self.assertEqual(len(r['foreign_review_queue']),15)
    self.assertNotIn('opportunity_score',r['us_review_queue'][0])
+   self.assertEqual(len(r['us_challenger_queue']),15)
+   self.assertEqual(len(r['foreign_challenger_queue']),15)
+   self.assertFalse({x['ticker'] for x in r['us_review_queue']} &
+                    {x['ticker'] for x in r['us_challenger_queue']})
+   self.assertFalse({x['ticker'] for x in r['foreign_review_queue']} &
+                    {x['ticker'] for x in r['foreign_challenger_queue']})
    m=json.loads((Path(d)/'research_metrics.json').read_text())
    self.assertEqual(m['meta']['run_utc'],obj['run_utc'])
    self.assertEqual(m['meta']['coverage'],obj['coverage'])
