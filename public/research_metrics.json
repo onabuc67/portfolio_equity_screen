@@ -1,32 +1,32 @@
 {
   "schema_version": "1.1-index",
   "meta": {
-    "run_utc": "2026-11-09T23:45:22.301242+00:00",
-    "producer_source_commit": "3734b8da77373c469ab65fb70e2889e23e51e986",
-    "report_date": "2026-11-09",
+    "run_utc": "2026-11-10T21:16:09.087902+00:00",
+    "producer_source_commit": "8db0215391d965e1c5a799428a247898748a3c31",
+    "report_date": "2026-11-10",
     "status": "DATA_READY_RESEARCH_PENDING",
     "coverage": {
-      "US": 604,
-      "INTL": 156,
+      "US": 605,
+      "INTL": 155,
       "INTL_ETF": 31,
       "US_SECTORS": 11,
       "INTL_COUNTRIES": 18,
-      "issuer_facts_attempted": 901,
+      "issuer_facts_attempted": 902,
       "issuer_facts_with_valuation": 760,
       "etf_quotes_attempted": 31,
-      "nasdaq_quote_asof_date": "2026-11-09",
+      "nasdaq_quote_asof_date": "2026-11-10",
       "etf_quote_asof_range": [
-        "2026-11-09",
-        "2026-11-09"
+        "2026-11-10",
+        "2026-11-10"
       ],
-      "US_MIDCAP": 154,
+      "US_MIDCAP": 155,
       "issuer_metrics_published": 760
     }
   },
   "provenance": {
     "sec_annual_facts": "https://data.sec.gov/api/xbrl/companyfacts/",
     "nasdaq_bulk_market_source": "https://api.nasdaq.com/api/screener/stocks",
-    "nasdaq_bulk_quote_date": "2026-11-09",
+    "nasdaq_bulk_quote_date": "2026-11-10",
     "individual_row_timestamps_verified": false,
     "raw_vendor_quotes_published": false,
     "vendor_cap_sec_ratio_caveat": "Preliminary vendor-market-cap divided by SEC annual earnings/cash flow; periods differ; independently validate finalist quotes",
@@ -38,10 +38,10 @@
   },
   "audit": {
     "issuer_metrics_published": 760,
-    "us_metrics_published": 604,
-    "us_midcap_metrics_published": 154,
-    "foreign_metrics_published": 156,
-    "owner_cash_proxy_computable": 394,
+    "us_metrics_published": 605,
+    "us_midcap_metrics_published": 155,
+    "foreign_metrics_published": 155,
+    "owner_cash_proxy_computable": 397,
     "us_preliminary_queue": 15,
     "foreign_preliminary_queue": 15,
     "us_challenger_queue": 15,
@@ -65,8 +65,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001091667.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 2.35,
-        "fcf_yield": 0.32658,
+        "annual_pe": 2.41,
+        "fcf_yield": 0.31849,
         "earnings_annual": 5766000000.0,
         "operating_cashflow_annual": 16077000000.0,
         "capital_expenditures_annual": 11659000000.0,
@@ -75,7 +75,7 @@
         "revenue_growth_yoy": -0.00565,
         "share_based_compensation_annual": 673000000.0,
         "owner_cash_proxy_annual": 3745000000.0,
-        "owner_cash_yield_proxy": 0.27683,
+        "owner_cash_yield_proxy": 0.26997,
         "cash_balance": 616000000.0,
         "debt_balance": 107052000000.0,
         "net_debt_proxy": 106436000000.0,
@@ -85,7 +85,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-01-30",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -109,8 +109,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001581990.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 3.03,
-        "fcf_yield": 0.44845,
+        "annual_pe": 2.98,
+        "fcf_yield": 0.45498,
         "earnings_annual": 1686000000.0,
         "operating_cashflow_annual": 2931000000.0,
         "capital_expenditures_annual": 643000000.0,
@@ -129,7 +129,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-27",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -155,8 +155,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001166691.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 4.33,
-        "fcf_yield": 0.25278,
+        "annual_pe": 4.35,
+        "fcf_yield": 0.25154,
         "earnings_annual": 19998000000.0,
         "operating_cashflow_annual": 33643000000.0,
         "capital_expenditures_annual": 11750000000.0,
@@ -165,7 +165,7 @@
         "revenue_growth_yoy": -0.00019,
         "share_based_compensation_annual": 1288000000.0,
         "owner_cash_proxy_annual": 20605000000.0,
-        "owner_cash_yield_proxy": 0.23791,
+        "owner_cash_yield_proxy": 0.23674,
         "cash_balance": 7676000000.0,
         "debt_balance": null,
         "net_debt_proxy": null,
@@ -175,7 +175,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-03",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -199,8 +199,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002067876.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 4.95,
-        "fcf_yield": 0.40281,
+        "annual_pe": 5.15,
+        "fcf_yield": 0.38674,
         "earnings_annual": 931000000.0,
         "operating_cashflow_annual": 2022000000.0,
         "capital_expenditures_annual": 167000000.0,
@@ -209,7 +209,7 @@
         "revenue_growth_yoy": -0.05296,
         "share_based_compensation_annual": 29000000.0,
         "owner_cash_proxy_annual": 1826000000.0,
-        "owner_cash_yield_proxy": 0.39651,
+        "owner_cash_yield_proxy": 0.38069,
         "cash_balance": 1051000000.0,
         "debt_balance": 2926000000.0,
         "net_debt_proxy": 1875000000.0,
@@ -219,7 +219,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-03-03",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -243,8 +243,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000899051.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 6.13,
-        "fcf_yield": 0.15666,
+        "annual_pe": 6.11,
+        "fcf_yield": 0.15731,
         "earnings_annual": 10282000000.0,
         "operating_cashflow_annual": 10110000000.0,
         "capital_expenditures_annual": 228000000.0,
@@ -263,7 +263,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-20",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -290,8 +290,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021175.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 10.02,
-        "fcf_yield": 0.18781,
+        "annual_pe": 10.03,
+        "fcf_yield": 0.18753,
         "earnings_annual": 1278000000.0,
         "operating_cashflow_annual": 2490000000.0,
         "capital_expenditures_annual": 86000000.0,
@@ -310,7 +310,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-10",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -337,8 +337,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000874766.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 9.35,
-        "fcf_yield": 0.16048,
+        "annual_pe": 9.41,
+        "fcf_yield": 0.15945,
         "earnings_annual": 3836000000.0,
         "operating_cashflow_annual": 5922000000.0,
         "capital_expenditures_annual": 169000000.0,
@@ -357,7 +357,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-20",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -366,6 +366,52 @@
         "warnings": [
           "FCF and owner-cash multiples may not be economically comparable for financials",
           "CFO/capex/SBC not available for a matching fiscal period"
+        ]
+      }
+    },
+    {
+      "ticker": "M",
+      "name": "Macy's Inc Common Stock",
+      "segment": "US",
+      "country": "US",
+      "sector": "Consumer Discretionary",
+      "sector_authority": "Nasdaq indicative mapping; verify GICS",
+      "size_class": "MID",
+      "cik": "0000794367",
+      "sec_filed": "2026-03-27",
+      "sec_period_end": "2026-01-31",
+      "cashflow_period_end": "2026-01-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000794367.json",
+      "balance_asof": "2026-08-01",
+      "metrics": {
+        "annual_pe": 10.15,
+        "fcf_yield": 0.16221,
+        "earnings_annual": 642000000.0,
+        "operating_cashflow_annual": 1430000000.0,
+        "capital_expenditures_annual": 373000000.0,
+        "fcf_annual": 1057000000.0,
+        "revenue_annual": 22621000000.0,
+        "revenue_growth_yoy": -0.01673,
+        "share_based_compensation_annual": 59000000.0,
+        "owner_cash_proxy_annual": 998000000.0,
+        "owner_cash_yield_proxy": 0.15315,
+        "cash_balance": 1298000000.0,
+        "debt_balance": 2433000000.0,
+        "net_debt_proxy": 1135000000.0,
+        "interest_expense_annual": 139000000.0,
+        "interest_coverage_proxy": 4.619
+      },
+      "data_quality": {
+        "sec_annual_period_end": "2026-01-31",
+        "sec_filed": "2026-03-27",
+        "bulk_market_session_date": "2026-11-10",
+        "individual_quote_timestamp_verified": false,
+        "current_quarter_validated": false,
+        "normalized_earnings_validated": false,
+        "issuer_grade_finalist_validated": false,
+        "canonical_six_factor_score": null,
+        "warnings": [
+          "Interest proxy is GAAP net income divided by interest expense, NOT EBIT/interest coverage"
         ]
       }
     },
@@ -384,8 +430,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000093751.json",
       "balance_asof": "2016-09-30",
       "metrics": {
-        "annual_pe": 15.3,
-        "fcf_yield": 0.24071,
+        "annual_pe": 15.79,
+        "fcf_yield": 0.23312,
         "earnings_annual": 2945000000.0,
         "operating_cashflow_annual": 11898000000.0,
         "capital_expenditures_annual": 1055000000.0,
@@ -404,7 +450,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-19",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -431,8 +477,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001070423.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 9.54,
-        "fcf_yield": 0.13586,
+        "annual_pe": 9.41,
+        "fcf_yield": 0.13771,
         "earnings_annual": 1769000000.0,
         "operating_cashflow_annual": 2936000000.0,
         "capital_expenditures_annual": 643000000.0,
@@ -451,7 +497,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-27",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -477,8 +523,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001070412.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 7.88,
-        "fcf_yield": 0.107,
+        "annual_pe": 8.13,
+        "fcf_yield": 0.10374,
         "earnings_annual": 633162000.0,
         "operating_cashflow_annual": 1028957000.0,
         "capital_expenditures_annual": 494988000.0,
@@ -487,7 +533,7 @@
         "revenue_growth_yoy": 0.76757,
         "share_based_compensation_annual": 23679000.0,
         "owner_cash_proxy_annual": 510290000.0,
-        "owner_cash_yield_proxy": 0.10226,
+        "owner_cash_yield_proxy": 0.09914,
         "cash_balance": 4406000.0,
         "debt_balance": 2278924000.0,
         "net_debt_proxy": 2274518000.0,
@@ -497,7 +543,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-10",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -521,8 +567,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001575515.json",
       "balance_asof": "2023-12-31",
       "metrics": {
-        "annual_pe": 8.65,
-        "fcf_yield": 0.10328,
+        "annual_pe": 8.73,
+        "fcf_yield": 0.10228,
         "earnings_annual": 523670000.0,
         "operating_cashflow_annual": 715998000.0,
         "capital_expenditures_annual": 248267000.0,
@@ -531,7 +577,7 @@
         "revenue_growth_yoy": 0.1408,
         "share_based_compensation_annual": 31103000.0,
         "owner_cash_proxy_annual": 436628000.0,
-        "owner_cash_yield_proxy": 0.09642,
+        "owner_cash_yield_proxy": 0.09548,
         "cash_balance": 228664000.0,
         "debt_balance": 125000000.0,
         "net_debt_proxy": null,
@@ -541,7 +587,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-28",
         "sec_filed": "2026-02-19",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -565,8 +611,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001046257.json",
       "balance_asof": "2020-03-31",
       "metrics": {
-        "annual_pe": 7.86,
-        "fcf_yield": 0.08834,
+        "annual_pe": 7.85,
+        "fcf_yield": 0.08841,
         "earnings_annual": 736000000.0,
         "operating_cashflow_annual": 944000000.0,
         "capital_expenditures_annual": 433000000.0,
@@ -585,7 +631,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-17",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -611,8 +657,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001324404.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 9.72,
-        "fcf_yield": 0.10314,
+        "annual_pe": 9.7,
+        "fcf_yield": 0.1033,
         "earnings_annual": 1798000000.0,
         "operating_cashflow_annual": 2752000000.0,
         "capital_expenditures_annual": 950000000.0,
@@ -621,7 +667,7 @@
         "revenue_growth_yoy": 0.1934,
         "share_based_compensation_annual": 45000000.0,
         "owner_cash_proxy_annual": 1757000000.0,
-        "owner_cash_yield_proxy": 0.10057,
+        "owner_cash_yield_proxy": 0.10072,
         "cash_balance": 2820000000.0,
         "debt_balance": 3217000000.0,
         "net_debt_proxy": 397000000.0,
@@ -631,7 +677,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-25",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -657,8 +703,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001467858.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 22.86,
-        "fcf_yield": 0.24163,
+        "annual_pe": 23.79,
+        "fcf_yield": 0.2322,
         "earnings_annual": 3180000000.0,
         "operating_cashflow_annual": 26867000000.0,
         "capital_expenditures_annual": 9303000000.0,
@@ -677,7 +723,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-01-27",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -686,50 +732,6 @@
         "warnings": [
           "CFO/capex/SBC not available for a matching fiscal period"
         ]
-      }
-    },
-    {
-      "ticker": "SNDK",
-      "name": "Sandisk Corporation Common Stock",
-      "segment": "US",
-      "country": "US",
-      "sector": "Information Technology",
-      "sector_authority": "S&P500 constituents GICS label",
-      "size_class": "LARGE",
-      "cik": "0002023554",
-      "sec_filed": "2026-08-17",
-      "sec_period_end": "2026-07-03",
-      "cashflow_period_end": "2026-07-03",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002023554.json",
-      "balance_asof": "2026-07-03",
-      "metrics": {
-        "annual_pe": 10.39,
-        "fcf_yield": 0.09673,
-        "earnings_annual": 11433000000.0,
-        "operating_cashflow_annual": 11671000000.0,
-        "capital_expenditures_annual": 177000000.0,
-        "fcf_annual": 11494000000.0,
-        "revenue_annual": 20248000000.0,
-        "revenue_growth_yoy": 1.75296,
-        "share_based_compensation_annual": 232000000.0,
-        "owner_cash_proxy_annual": 11262000000.0,
-        "owner_cash_yield_proxy": 0.09478,
-        "cash_balance": 5136000000.0,
-        "debt_balance": 0.0,
-        "net_debt_proxy": null,
-        "interest_expense_annual": null,
-        "interest_coverage_proxy": null
-      },
-      "data_quality": {
-        "sec_annual_period_end": "2026-07-03",
-        "sec_filed": "2026-08-17",
-        "bulk_market_session_date": "2026-11-09",
-        "individual_quote_timestamp_verified": false,
-        "current_quarter_validated": false,
-        "normalized_earnings_validated": false,
-        "issuer_grade_finalist_validated": false,
-        "canonical_six_factor_score": null,
-        "warnings": []
       }
     }
   ],
@@ -749,8 +751,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001595761.json",
       "balance_asof": "2025-12-31",
       "metrics": {
-        "annual_pe": 3.48,
-        "fcf_yield": 0.29741,
+        "annual_pe": 3.42,
+        "fcf_yield": 0.30297,
         "earnings_annual": 461075000.0,
         "operating_cashflow_annual": 519479000.0,
         "capital_expenditures_annual": 42368000.0,
@@ -759,7 +761,7 @@
         "revenue_growth_yoy": 0.75367,
         "share_based_compensation_annual": 42067000.0,
         "owner_cash_proxy_annual": 435044000.0,
-        "owner_cash_yield_proxy": 0.27118,
+        "owner_cash_yield_proxy": 0.27626,
         "cash_balance": 2298941000.0,
         "debt_balance": 2096160000.0,
         "net_debt_proxy": -202781000.0,
@@ -769,7 +771,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-04-23",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -795,8 +797,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001001807.json",
       "balance_asof": null,
       "metrics": {
-        "annual_pe": 5.77,
-        "fcf_yield": 0.20062,
+        "annual_pe": 5.92,
+        "fcf_yield": 0.1957,
         "earnings_annual": 1909000000.0,
         "operating_cashflow_annual": 3827000000.0,
         "capital_expenditures_annual": 1616000000.0,
@@ -815,7 +817,7 @@
       "data_quality": {
         "sec_annual_period_end": "2024-12-31",
         "sec_filed": "2025-04-28",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -842,8 +844,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001529192.json",
       "balance_asof": "2019-12-31",
       "metrics": {
-        "annual_pe": 6.28,
-        "fcf_yield": 0.11756,
+        "annual_pe": 6.21,
+        "fcf_yield": 0.11889,
         "earnings_annual": 1059566000.0,
         "operating_cashflow_annual": 1065943000.0,
         "capital_expenditures_annual": 283961000.0,
@@ -852,7 +854,7 @@
         "revenue_growth_yoy": null,
         "share_based_compensation_annual": 247539000.0,
         "owner_cash_proxy_annual": 534443000.0,
-        "owner_cash_yield_proxy": 0.08035,
+        "owner_cash_yield_proxy": 0.08126,
         "cash_balance": 3449566000.0,
         "debt_balance": 9267000.0,
         "net_debt_proxy": null,
@@ -862,7 +864,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-04-16",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -888,8 +890,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001003935.json",
       "balance_asof": "2018-12-31",
       "metrics": {
-        "annual_pe": 9.33,
-        "fcf_yield": 0.12214,
+        "annual_pe": 9.38,
+        "fcf_yield": 0.12147,
         "earnings_annual": 612101000.0,
         "operating_cashflow_annual": 716549000.0,
         "capital_expenditures_annual": 18920000.0,
@@ -898,7 +900,7 @@
         "revenue_growth_yoy": 0.07682,
         "share_based_compensation_annual": 146046000.0,
         "owner_cash_proxy_annual": 551583000.0,
-        "owner_cash_yield_proxy": 0.09657,
+        "owner_cash_yield_proxy": 0.09604,
         "cash_balance": 382007000.0,
         "debt_balance": 212308000.0,
         "net_debt_proxy": null,
@@ -908,7 +910,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-26",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -932,8 +934,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001530238.json",
       "balance_asof": "2025-12-31",
       "metrics": {
-        "annual_pe": 1.89,
-        "fcf_yield": 0.04018,
+        "annual_pe": 1.9,
+        "fcf_yield": 0.03989,
         "earnings_annual": 2098435000.0,
         "operating_cashflow_annual": 302325000.0,
         "capital_expenditures_annual": 143111000.0,
@@ -942,7 +944,7 @@
         "revenue_growth_yoy": -0.44806,
         "share_based_compensation_annual": 25800000.0,
         "owner_cash_proxy_annual": 133414000.0,
-        "owner_cash_yield_proxy": 0.03367,
+        "owner_cash_yield_proxy": 0.03343,
         "cash_balance": 374248000.0,
         "debt_balance": null,
         "net_debt_proxy": null,
@@ -952,7 +954,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-04-28",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -976,8 +978,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001269238.json",
       "balance_asof": "2025-12-31",
       "metrics": {
-        "annual_pe": 5.85,
-        "fcf_yield": 0.06961,
+        "annual_pe": 5.81,
+        "fcf_yield": 0.07014,
         "earnings_annual": 4775000000.0,
         "operating_cashflow_annual": 2059000000.0,
         "capital_expenditures_annual": 114000000.0,
@@ -986,7 +988,7 @@
         "revenue_growth_yoy": 0.22227,
         "share_based_compensation_annual": 325000000.0,
         "owner_cash_proxy_annual": 1620000000.0,
-        "owner_cash_yield_proxy": 0.05798,
+        "owner_cash_yield_proxy": 0.05842,
         "cash_balance": 6642000000.0,
         "debt_balance": null,
         "net_debt_proxy": null,
@@ -996,7 +998,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-04-28",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1022,8 +1024,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001791942.json",
       "balance_asof": null,
       "metrics": {
-        "annual_pe": 5.98,
-        "fcf_yield": 0.0624,
+        "annual_pe": 6.31,
+        "fcf_yield": 0.05922,
         "earnings_annual": 2229792000.0,
         "operating_cashflow_annual": 2931953000.0,
         "capital_expenditures_annual": 2099269000.0,
@@ -1042,7 +1044,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-03-25",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1069,8 +1071,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000701818.json",
       "balance_asof": null,
       "metrics": {
-        "annual_pe": 10.61,
-        "fcf_yield": 0.09794,
+        "annual_pe": 10.9,
+        "fcf_yield": 0.0953,
         "earnings_annual": 2470000000.0,
         "operating_cashflow_annual": 3760500000.0,
         "capital_expenditures_annual": 1194200000.0,
@@ -1089,7 +1091,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-03-26",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1116,8 +1118,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001499620.json",
       "balance_asof": "2020-02-29",
       "metrics": {
-        "annual_pe": 10.61,
-        "fcf_yield": 0.09023,
+        "annual_pe": 10.66,
+        "fcf_yield": 0.08988,
         "earnings_annual": 530751000.0,
         "operating_cashflow_annual": 601467000.0,
         "capital_expenditures_annual": 93191000.0,
@@ -1126,7 +1128,7 @@
         "revenue_growth_yoy": 0.33715,
         "share_based_compensation_annual": 43093000.0,
         "owner_cash_proxy_annual": 465183000.0,
-        "owner_cash_yield_proxy": 0.08258,
+        "owner_cash_yield_proxy": 0.08226,
         "cash_balance": 1786038000.0,
         "debt_balance": 261950000.0,
         "net_debt_proxy": null,
@@ -1136,7 +1138,7 @@
       "data_quality": {
         "sec_annual_period_end": "2026-02-28",
         "sec_filed": "2026-06-12",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1160,8 +1162,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001997464.json",
       "balance_asof": null,
       "metrics": {
-        "annual_pe": 15.94,
-        "fcf_yield": 0.13338,
+        "annual_pe": 16.36,
+        "fcf_yield": 0.12999,
         "earnings_annual": 307700000.0,
         "operating_cashflow_annual": 667500000.0,
         "capital_expenditures_annual": 13100000.0,
@@ -1180,7 +1182,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-03-25",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1207,8 +1209,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000749098.json",
       "balance_asof": "2025-12-31",
       "metrics": {
-        "annual_pe": 18.12,
-        "fcf_yield": 0.14278,
+        "annual_pe": 18.25,
+        "fcf_yield": 0.14176,
         "earnings_annual": 883000000.0,
         "operating_cashflow_annual": 3598000000.0,
         "capital_expenditures_annual": 1313000000.0,
@@ -1227,7 +1229,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-03-27",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1254,8 +1256,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001735707.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 11.99,
-        "fcf_yield": 0.09176,
+        "annual_pe": 12.36,
+        "fcf_yield": 0.08902,
         "earnings_annual": 310000000.0,
         "operating_cashflow_annual": 413000000.0,
         "capital_expenditures_annual": 72000000.0,
@@ -1264,7 +1266,7 @@
         "revenue_growth_yoy": 0.03137,
         "share_based_compensation_annual": 27000000.0,
         "owner_cash_proxy_annual": 314000000.0,
-        "owner_cash_yield_proxy": 0.0845,
+        "owner_cash_yield_proxy": 0.08197,
         "cash_balance": 211000000.0,
         "debt_balance": 1366000000.0,
         "net_debt_proxy": 1155000000.0,
@@ -1274,60 +1276,13 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-19",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
         "issuer_grade_finalist_validated": false,
         "canonical_six_factor_score": null,
         "warnings": []
-      }
-    },
-    {
-      "ticker": "HSBC",
-      "name": "HSBC Holdings plc. Common Stock",
-      "segment": "INTL",
-      "country": "GB",
-      "sector": "Financials",
-      "sector_authority": "Nasdaq indicative vendor mapping",
-      "size_class": null,
-      "cik": "0001089113",
-      "sec_filed": "2026-02-26",
-      "sec_period_end": "2025-12-31",
-      "cashflow_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001089113.json",
-      "balance_asof": null,
-      "metrics": {
-        "annual_pe": 12.92,
-        "fcf_yield": 0.09476,
-        "earnings_annual": 23131000000.0,
-        "operating_cashflow_annual": 29766000000.0,
-        "capital_expenditures_annual": 1447000000.0,
-        "fcf_annual": 28319000000.0,
-        "revenue_annual": null,
-        "revenue_growth_yoy": null,
-        "share_based_compensation_annual": null,
-        "owner_cash_proxy_annual": null,
-        "owner_cash_yield_proxy": null,
-        "cash_balance": null,
-        "debt_balance": null,
-        "net_debt_proxy": null,
-        "interest_expense_annual": 63078000000.0,
-        "interest_coverage_proxy": null
-      },
-      "data_quality": {
-        "sec_annual_period_end": "2025-12-31",
-        "sec_filed": "2026-02-26",
-        "bulk_market_session_date": "2026-11-09",
-        "individual_quote_timestamp_verified": false,
-        "current_quarter_validated": false,
-        "normalized_earnings_validated": false,
-        "issuer_grade_finalist_validated": false,
-        "canonical_six_factor_score": null,
-        "warnings": [
-          "FCF and owner-cash multiples may not be economically comparable for financials",
-          "CFO/capex/SBC not available for a matching fiscal period"
-        ]
       }
     },
     {
@@ -1346,7 +1301,7 @@
       "balance_asof": "2026-09-30",
       "metrics": {
         "annual_pe": 13.09,
-        "fcf_yield": 0.09256,
+        "fcf_yield": 0.09257,
         "earnings_annual": 1242000000.0,
         "operating_cashflow_annual": 3652000000.0,
         "capital_expenditures_annual": 2147000000.0,
@@ -1365,7 +1320,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-23",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1373,6 +1328,53 @@
         "canonical_six_factor_score": null,
         "warnings": [
           "Interest proxy is GAAP net income divided by interest expense, NOT EBIT/interest coverage",
+          "CFO/capex/SBC not available for a matching fiscal period"
+        ]
+      }
+    },
+    {
+      "ticker": "HSBC",
+      "name": "HSBC Holdings plc. Common Stock",
+      "segment": "INTL",
+      "country": "GB",
+      "sector": "Financials",
+      "sector_authority": "Nasdaq indicative vendor mapping",
+      "size_class": null,
+      "cik": "0001089113",
+      "sec_filed": "2026-02-26",
+      "sec_period_end": "2025-12-31",
+      "cashflow_period_end": "2025-12-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001089113.json",
+      "balance_asof": null,
+      "metrics": {
+        "annual_pe": 13.39,
+        "fcf_yield": 0.09143,
+        "earnings_annual": 23131000000.0,
+        "operating_cashflow_annual": 29766000000.0,
+        "capital_expenditures_annual": 1447000000.0,
+        "fcf_annual": 28319000000.0,
+        "revenue_annual": null,
+        "revenue_growth_yoy": null,
+        "share_based_compensation_annual": null,
+        "owner_cash_proxy_annual": null,
+        "owner_cash_yield_proxy": null,
+        "cash_balance": null,
+        "debt_balance": null,
+        "net_debt_proxy": null,
+        "interest_expense_annual": 63078000000.0,
+        "interest_coverage_proxy": null
+      },
+      "data_quality": {
+        "sec_annual_period_end": "2025-12-31",
+        "sec_filed": "2026-02-26",
+        "bulk_market_session_date": "2026-11-10",
+        "individual_quote_timestamp_verified": false,
+        "current_quarter_validated": false,
+        "normalized_earnings_validated": false,
+        "issuer_grade_finalist_validated": false,
+        "canonical_six_factor_score": null,
+        "warnings": [
+          "FCF and owner-cash multiples may not be economically comparable for financials",
           "CFO/capex/SBC not available for a matching fiscal period"
         ]
       }
@@ -1392,8 +1394,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001034670.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 12.08,
-        "fcf_yield": 0.08051,
+        "annual_pe": 12.16,
+        "fcf_yield": 0.07997,
         "earnings_annual": 736000000.0,
         "operating_cashflow_annual": 1157000000.0,
         "capital_expenditures_annual": 441000000.0,
@@ -1412,7 +1414,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-19",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1441,8 +1443,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000927628.json",
       "balance_asof": "2015-06-30",
       "metrics": {
-        "annual_pe": 49.49,
-        "fcf_yield": 0.21533,
+        "annual_pe": 48.73,
+        "fcf_yield": 0.2187,
         "earnings_annual": 2453000000.0,
         "operating_cashflow_annual": 27718000000.0,
         "capital_expenditures_annual": 1578000000.0,
@@ -1451,7 +1453,7 @@
         "revenue_growth_yoy": 0.36618,
         "share_based_compensation_annual": 776000000.0,
         "owner_cash_proxy_annual": 25364000000.0,
-        "owner_cash_yield_proxy": 0.20894,
+        "owner_cash_yield_proxy": 0.21221,
         "cash_balance": 49331000000.0,
         "debt_balance": 43878000000.0,
         "net_debt_proxy": null,
@@ -1461,7 +1463,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-19",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1474,41 +1476,41 @@
       "discovery_lane": "cash_generation_proxy"
     },
     {
-      "ticker": "MU",
-      "name": "Micron Technology Inc. Common Stock",
+      "ticker": "SNDK",
+      "name": "Sandisk Corporation Common Stock",
       "segment": "US",
       "country": "US",
       "sector": "Information Technology",
       "sector_authority": "S&P500 constituents GICS label",
       "size_class": "LARGE",
-      "cik": "0000723125",
-      "sec_filed": "2026-10-09",
-      "sec_period_end": "2026-09-03",
-      "cashflow_period_end": "2026-09-03",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000723125.json",
-      "balance_asof": "2013-05-30",
+      "cik": "0002023554",
+      "sec_filed": "2026-08-17",
+      "sec_period_end": "2026-07-03",
+      "cashflow_period_end": "2026-07-03",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002023554.json",
+      "balance_asof": "2026-07-03",
       "metrics": {
-        "annual_pe": 9.19,
-        "fcf_yield": 0.07553,
-        "earnings_annual": 84969000000.0,
-        "operating_cashflow_annual": 89675000000.0,
-        "capital_expenditures_annual": 30712000000.0,
-        "fcf_annual": 58963000000.0,
-        "revenue_annual": 133188000000.0,
-        "revenue_growth_yoy": 2.56327,
-        "share_based_compensation_annual": 1333000000.0,
-        "owner_cash_proxy_annual": 57630000000.0,
-        "owner_cash_yield_proxy": 0.07382,
-        "cash_balance": 38391000000.0,
-        "debt_balance": 3624000000.0,
+        "annual_pe": 11.03,
+        "fcf_yield": 0.09112,
+        "earnings_annual": 11433000000.0,
+        "operating_cashflow_annual": 11671000000.0,
+        "capital_expenditures_annual": 177000000.0,
+        "fcf_annual": 11494000000.0,
+        "revenue_annual": 20248000000.0,
+        "revenue_growth_yoy": 1.75296,
+        "share_based_compensation_annual": 232000000.0,
+        "owner_cash_proxy_annual": 11262000000.0,
+        "owner_cash_yield_proxy": 0.08928,
+        "cash_balance": 5136000000.0,
+        "debt_balance": 0.0,
         "net_debt_proxy": null,
-        "interest_expense_annual": 388000000.0,
+        "interest_expense_annual": null,
         "interest_coverage_proxy": null
       },
       "data_quality": {
-        "sec_annual_period_end": "2026-09-03",
-        "sec_filed": "2026-10-09",
-        "bulk_market_session_date": "2026-11-09",
+        "sec_annual_period_end": "2026-07-03",
+        "sec_filed": "2026-08-17",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1533,8 +1535,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001014473.json",
       "balance_asof": "2013-12-31",
       "metrics": {
-        "annual_pe": 33.53,
-        "fcf_yield": 0.03858,
+        "annual_pe": 33.22,
+        "fcf_yield": 0.03894,
         "earnings_annual": 825700000.0,
         "operating_cashflow_annual": 1091100000.0,
         "capital_expenditures_annual": 22800000.0,
@@ -1543,7 +1545,7 @@
         "revenue_growth_yoy": 0.0637,
         "share_based_compensation_annual": 69700000.0,
         "owner_cash_proxy_annual": 998600000.0,
-        "owner_cash_yield_proxy": 0.03607,
+        "owner_cash_yield_proxy": 0.0364,
         "cash_balance": 208400000.0,
         "debt_balance": 0.0,
         "net_debt_proxy": null,
@@ -1553,7 +1555,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-05",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1580,8 +1582,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001170010.json",
       "balance_asof": "2026-08-31",
       "metrics": {
-        "annual_pe": 29.55,
-        "fcf_yield": 0.17005,
+        "annual_pe": 31.04,
+        "fcf_yield": 0.16191,
         "earnings_annual": 247290000.0,
         "operating_cashflow_annual": 1783847000.0,
         "capital_expenditures_annual": 540989000.0,
@@ -1590,7 +1592,7 @@
         "revenue_growth_yoy": -0.01792,
         "share_based_compensation_annual": 99018000.0,
         "owner_cash_proxy_annual": 1143840000.0,
-        "owner_cash_yield_proxy": 0.15651,
+        "owner_cash_yield_proxy": 0.14901,
         "cash_balance": 915787000.0,
         "debt_balance": 16785887000.0,
         "net_debt_proxy": 15870100000.0,
@@ -1600,7 +1602,7 @@
       "data_quality": {
         "sec_annual_period_end": "2026-02-28",
         "sec_filed": "2026-04-15",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1627,8 +1629,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000798354.json",
       "balance_asof": "2012-12-31",
       "metrics": {
-        "annual_pe": 9.59,
-        "fcf_yield": 0.1285,
+        "annual_pe": 9.68,
+        "fcf_yield": 0.12721,
         "earnings_annual": 3490000000.0,
         "operating_cashflow_annual": 6062000000.0,
         "capital_expenditures_annual": 1763000000.0,
@@ -1637,7 +1639,7 @@
         "revenue_growth_yoy": 0.03603,
         "share_based_compensation_annual": 357000000.0,
         "owner_cash_proxy_annual": 3942000000.0,
-        "owner_cash_yield_proxy": 0.11783,
+        "owner_cash_yield_proxy": 0.11664,
         "cash_balance": 1326000000.0,
         "debt_balance": 3230000000.0,
         "net_debt_proxy": null,
@@ -1647,7 +1649,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-19",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1675,7 +1677,7 @@
       "balance_asof": "2026-08-30",
       "metrics": {
         "annual_pe": null,
-        "fcf_yield": 0.13456,
+        "fcf_yield": 0.13412,
         "earnings_annual": -1916200000.0,
         "operating_cashflow_annual": 1402100000.0,
         "capital_expenditures_annual": 423400000.0,
@@ -1684,7 +1686,7 @@
         "revenue_growth_yoy": -0.02852,
         "share_based_compensation_annual": 54700000.0,
         "owner_cash_proxy_annual": 924000000.0,
-        "owner_cash_yield_proxy": 0.12704,
+        "owner_cash_yield_proxy": 0.12662,
         "cash_balance": 371600000.0,
         "debt_balance": 7730000000.0,
         "net_debt_proxy": 7358400000.0,
@@ -1694,7 +1696,7 @@
       "data_quality": {
         "sec_annual_period_end": "2026-05-31",
         "sec_filed": "2026-07-15",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1707,49 +1709,47 @@
       "discovery_lane": "cash_generation_proxy"
     },
     {
-      "ticker": "IONQ",
-      "name": "IonQ Inc. Common Stock",
+      "ticker": "MU",
+      "name": "Micron Technology Inc. Common Stock",
       "segment": "US",
       "country": "US",
       "sector": "Information Technology",
-      "sector_authority": "Nasdaq indicative mapping; verify GICS",
-      "size_class": "MID",
-      "cik": "0001824920",
-      "sec_filed": "2026-02-25",
-      "sec_period_end": "2025-12-31",
-      "cashflow_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001824920.json",
-      "balance_asof": "2026-09-30",
+      "sector_authority": "S&P500 constituents GICS label",
+      "size_class": "LARGE",
+      "cik": "0000723125",
+      "sec_filed": "2026-10-09",
+      "sec_period_end": "2026-09-03",
+      "cashflow_period_end": "2026-09-03",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000723125.json",
+      "balance_asof": "2013-05-30",
       "metrics": {
-        "annual_pe": null,
-        "fcf_yield": -0.02128,
-        "earnings_annual": -510378000.0,
-        "operating_cashflow_annual": -283187000.0,
-        "capital_expenditures_annual": 16417000.0,
-        "fcf_annual": -299604000.0,
-        "revenue_annual": 130016000.0,
-        "revenue_growth_yoy": 2.0185,
-        "share_based_compensation_annual": 312032000.0,
-        "owner_cash_proxy_annual": -611636000.0,
-        "owner_cash_yield_proxy": -0.04345,
-        "cash_balance": 217008000.0,
-        "debt_balance": 65610000.0,
-        "net_debt_proxy": -151398000.0,
-        "interest_expense_annual": null,
+        "annual_pe": 9.76,
+        "fcf_yield": 0.07108,
+        "earnings_annual": 84969000000.0,
+        "operating_cashflow_annual": 89675000000.0,
+        "capital_expenditures_annual": 30712000000.0,
+        "fcf_annual": 58963000000.0,
+        "revenue_annual": 133188000000.0,
+        "revenue_growth_yoy": 2.56327,
+        "share_based_compensation_annual": 1333000000.0,
+        "owner_cash_proxy_annual": 57630000000.0,
+        "owner_cash_yield_proxy": 0.06948,
+        "cash_balance": 38391000000.0,
+        "debt_balance": 3624000000.0,
+        "net_debt_proxy": null,
+        "interest_expense_annual": 388000000.0,
         "interest_coverage_proxy": null
       },
       "data_quality": {
-        "sec_annual_period_end": "2025-12-31",
-        "sec_filed": "2026-02-25",
-        "bulk_market_session_date": "2026-11-09",
+        "sec_annual_period_end": "2026-09-03",
+        "sec_filed": "2026-10-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
         "issuer_grade_finalist_validated": false,
         "canonical_six_factor_score": null,
-        "warnings": [
-          "Positive-earnings annual P/E not established"
-        ]
+        "warnings": []
       },
       "discovery_lane": "revenue_growth_proxy"
     },
@@ -1768,8 +1768,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000097210.json",
       "balance_asof": "2014-12-31",
       "metrics": {
-        "annual_pe": 61.49,
-        "fcf_yield": 0.01322,
+        "annual_pe": 69.32,
+        "fcf_yield": 0.01173,
         "earnings_annual": 554047000.0,
         "operating_cashflow_annual": 674415000.0,
         "capital_expenditures_annual": 224009000.0,
@@ -1778,7 +1778,7 @@
         "revenue_growth_yoy": 0.13126,
         "share_based_compensation_annual": 63999000.0,
         "owner_cash_proxy_annual": 386407000.0,
-        "owner_cash_yield_proxy": 0.01134,
+        "owner_cash_yield_proxy": 0.01006,
         "cash_balance": 460742000.0,
         "debt_balance": 0.0,
         "net_debt_proxy": null,
@@ -1788,7 +1788,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-19",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1815,8 +1815,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001316835.json",
       "balance_asof": "2015-06-30",
       "metrics": {
-        "annual_pe": 15.46,
-        "fcf_yield": 0.12679,
+        "annual_pe": 16.31,
+        "fcf_yield": 0.12022,
         "earnings_annual": 435199000.0,
         "operating_cashflow_annual": 1215886000.0,
         "capital_expenditures_annual": 362602000.0,
@@ -1825,7 +1825,7 @@
         "revenue_growth_yoy": -0.07377,
         "share_based_compensation_annual": 53512000.0,
         "owner_cash_proxy_annual": 799772000.0,
-        "owner_cash_yield_proxy": 0.11884,
+        "owner_cash_yield_proxy": 0.11268,
         "cash_balance": 55012000.0,
         "debt_balance": 408868000.0,
         "net_debt_proxy": null,
@@ -1835,7 +1835,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-17",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1846,48 +1846,49 @@
       "discovery_lane": "midcap_alternative"
     },
     {
-      "ticker": "PYPL",
-      "name": "PayPal Holdings Inc. Common Stock",
+      "ticker": "PGR",
+      "name": "Progressive Corporation (The) Common Stock",
       "segment": "US",
       "country": "US",
       "sector": "Financials",
       "sector_authority": "S&P500 constituents GICS label",
       "size_class": "LARGE",
-      "cik": "0001633917",
-      "sec_filed": "2026-02-03",
+      "cik": "0000080661",
+      "sec_filed": "2026-03-02",
       "sec_period_end": "2025-12-31",
       "cashflow_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001633917.json",
-      "balance_asof": "2026-09-30",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000080661.json",
+      "balance_asof": "2016-06-30",
       "metrics": {
-        "annual_pe": 9.4,
-        "fcf_yield": 0.11307,
-        "earnings_annual": 5233000000.0,
-        "operating_cashflow_annual": 6416000000.0,
-        "capital_expenditures_annual": 852000000.0,
-        "fcf_annual": 5564000000.0,
-        "revenue_annual": 33172000000.0,
-        "revenue_growth_yoy": 0.04324,
-        "share_based_compensation_annual": 1002000000.0,
-        "owner_cash_proxy_annual": 4562000000.0,
-        "owner_cash_yield_proxy": 0.09271,
-        "cash_balance": 20089000000.0,
-        "debt_balance": 13272000000.0,
-        "net_debt_proxy": -6817000000.0,
-        "interest_expense_annual": 347000000.0,
+        "annual_pe": 11.66,
+        "fcf_yield": 0.1304,
+        "earnings_annual": 11308000000.0,
+        "operating_cashflow_annual": 17548000000.0,
+        "capital_expenditures_annual": 348000000.0,
+        "fcf_annual": 17200000000.0,
+        "revenue_annual": 87671000000.0,
+        "revenue_growth_yoy": 0.16318,
+        "share_based_compensation_annual": null,
+        "owner_cash_proxy_annual": null,
+        "owner_cash_yield_proxy": null,
+        "cash_balance": 156000000.0,
+        "debt_balance": 2664100000.0,
+        "net_debt_proxy": null,
+        "interest_expense_annual": null,
         "interest_coverage_proxy": null
       },
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
-        "sec_filed": "2026-02-03",
-        "bulk_market_session_date": "2026-11-09",
+        "sec_filed": "2026-03-02",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
         "issuer_grade_finalist_validated": false,
         "canonical_six_factor_score": null,
         "warnings": [
-          "FCF and owner-cash multiples may not be economically comparable for financials"
+          "FCF and owner-cash multiples may not be economically comparable for financials",
+          "CFO/capex/SBC not available for a matching fiscal period"
         ]
       },
       "discovery_lane": "alternative_valuation"
@@ -1907,8 +1908,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000007084.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 30.9,
-        "fcf_yield": 0.12623,
+        "annual_pe": 30.84,
+        "fcf_yield": 0.12646,
         "earnings_annual": 1078000000.0,
         "operating_cashflow_annual": 5452000000.0,
         "capital_expenditures_annual": 1248000000.0,
@@ -1917,7 +1918,7 @@
         "revenue_growth_yoy": -0.06151,
         "share_based_compensation_annual": 83000000.0,
         "owner_cash_proxy_annual": 4121000000.0,
-        "owner_cash_yield_proxy": 0.12374,
+        "owner_cash_yield_proxy": 0.12397,
         "cash_balance": 5740000000.0,
         "debt_balance": 8585000000.0,
         "net_debt_proxy": 2845000000.0,
@@ -1927,7 +1928,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-17",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1954,8 +1955,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000895126.json",
       "balance_asof": "2026-03-31",
       "metrics": {
-        "annual_pe": 10.74,
-        "fcf_yield": 0.09412,
+        "annual_pe": 10.91,
+        "fcf_yield": 0.09263,
         "earnings_annual": 1819000000.0,
         "operating_cashflow_annual": 4575000000.0,
         "capital_expenditures_annual": 2736000000.0,
@@ -1964,7 +1965,7 @@
         "revenue_growth_yoy": 1.86281,
         "share_based_compensation_annual": 46000000.0,
         "owner_cash_proxy_annual": 1793000000.0,
-        "owner_cash_yield_proxy": 0.09177,
+        "owner_cash_yield_proxy": 0.09031,
         "cash_balance": 221000000.0,
         "debt_balance": 5008000000.0,
         "net_debt_proxy": null,
@@ -1974,7 +1975,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-18",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -1985,50 +1986,47 @@
       "discovery_lane": "revenue_growth_proxy"
     },
     {
-      "ticker": "EME",
-      "name": "EMCOR Group Inc. Common Stock",
+      "ticker": "POWL",
+      "name": "Powell Industries Inc. Common Stock",
       "segment": "US",
       "country": "US",
-      "sector": "Industrials",
-      "sector_authority": "S&P500 constituents GICS label",
-      "size_class": "LARGE",
-      "cik": "0000105634",
-      "sec_filed": "2026-02-26",
-      "sec_period_end": "2025-12-31",
-      "cashflow_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000105634.json",
-      "balance_asof": "2012-12-31",
+      "sector": "Energy",
+      "sector_authority": "Nasdaq indicative mapping; verify GICS",
+      "size_class": "MID",
+      "cik": "0000080420",
+      "sec_filed": "2025-11-19",
+      "sec_period_end": "2025-09-30",
+      "cashflow_period_end": "2025-09-30",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000080420.json",
+      "balance_asof": "2022-09-30",
       "metrics": {
-        "annual_pe": 20.92,
-        "fcf_yield": null,
-        "earnings_annual": 1272817000.0,
-        "operating_cashflow_annual": 1302063000.0,
-        "capital_expenditures_annual": null,
-        "fcf_annual": null,
-        "revenue_annual": 16986422000.0,
-        "revenue_growth_yoy": 0.16616,
-        "share_based_compensation_annual": null,
-        "owner_cash_proxy_annual": null,
-        "owner_cash_yield_proxy": null,
-        "cash_balance": 774752000.0,
+        "annual_pe": 28.55,
+        "fcf_yield": 0.02999,
+        "earnings_annual": 180747000.0,
+        "operating_cashflow_annual": 167937000.0,
+        "capital_expenditures_annual": 13149000.0,
+        "fcf_annual": 154788000.0,
+        "revenue_annual": 1104318000.0,
+        "revenue_growth_yoy": 0.09084,
+        "share_based_compensation_annual": 4635000.0,
+        "owner_cash_proxy_annual": 150153000.0,
+        "owner_cash_yield_proxy": 0.0291,
+        "cash_balance": 633561000.0,
         "debt_balance": 0.0,
         "net_debt_proxy": null,
-        "interest_expense_annual": 12020000.0,
-        "interest_coverage_proxy": 105.892
+        "interest_expense_annual": 204000.0,
+        "interest_coverage_proxy": null
       },
       "data_quality": {
-        "sec_annual_period_end": "2025-12-31",
-        "sec_filed": "2026-02-26",
-        "bulk_market_session_date": "2026-11-09",
+        "sec_annual_period_end": "2025-09-30",
+        "sec_filed": "2025-11-19",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
         "issuer_grade_finalist_validated": false,
         "canonical_six_factor_score": null,
-        "warnings": [
-          "Interest proxy is GAAP net income divided by interest expense, NOT EBIT/interest coverage",
-          "CFO/capex/SBC not available for a matching fiscal period"
-        ]
+        "warnings": []
       },
       "discovery_lane": "balance_sheet_proxy"
     },
@@ -2047,8 +2045,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001142417.json",
       "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 53.73,
-        "fcf_yield": 0.12687,
+        "annual_pe": 56.9,
+        "fcf_yield": 0.1198,
         "earnings_annual": 109000000.0,
         "operating_cashflow_annual": 891000000.0,
         "capital_expenditures_annual": 148000000.0,
@@ -2057,7 +2055,7 @@
         "revenue_growth_yoy": -0.08471,
         "share_based_compensation_annual": 78000000.0,
         "owner_cash_proxy_annual": 665000000.0,
-        "owner_cash_yield_proxy": 0.11355,
+        "owner_cash_yield_proxy": 0.10722,
         "cash_balance": 446000000.0,
         "debt_balance": 11409000000.0,
         "net_debt_proxy": 10963000000.0,
@@ -2067,7 +2065,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-27",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2078,49 +2076,48 @@
       "discovery_lane": "midcap_alternative"
     },
     {
-      "ticker": "PGR",
-      "name": "Progressive Corporation (The) Common Stock",
+      "ticker": "PYPL",
+      "name": "PayPal Holdings Inc. Common Stock",
       "segment": "US",
       "country": "US",
       "sector": "Financials",
       "sector_authority": "S&P500 constituents GICS label",
       "size_class": "LARGE",
-      "cik": "0000080661",
-      "sec_filed": "2026-03-02",
+      "cik": "0001633917",
+      "sec_filed": "2026-02-03",
       "sec_period_end": "2025-12-31",
       "cashflow_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000080661.json",
-      "balance_asof": "2016-06-30",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001633917.json",
+      "balance_asof": "2026-09-30",
       "metrics": {
-        "annual_pe": 11.67,
-        "fcf_yield": 0.13031,
-        "earnings_annual": 11308000000.0,
-        "operating_cashflow_annual": 17548000000.0,
-        "capital_expenditures_annual": 348000000.0,
-        "fcf_annual": 17200000000.0,
-        "revenue_annual": 87671000000.0,
-        "revenue_growth_yoy": 0.16318,
-        "share_based_compensation_annual": null,
-        "owner_cash_proxy_annual": null,
-        "owner_cash_yield_proxy": null,
-        "cash_balance": 156000000.0,
-        "debt_balance": 2664100000.0,
-        "net_debt_proxy": null,
-        "interest_expense_annual": null,
+        "annual_pe": 9.53,
+        "fcf_yield": 0.11155,
+        "earnings_annual": 5233000000.0,
+        "operating_cashflow_annual": 6416000000.0,
+        "capital_expenditures_annual": 852000000.0,
+        "fcf_annual": 5564000000.0,
+        "revenue_annual": 33172000000.0,
+        "revenue_growth_yoy": 0.04324,
+        "share_based_compensation_annual": 1002000000.0,
+        "owner_cash_proxy_annual": 4562000000.0,
+        "owner_cash_yield_proxy": 0.09146,
+        "cash_balance": 20089000000.0,
+        "debt_balance": 13272000000.0,
+        "net_debt_proxy": -6817000000.0,
+        "interest_expense_annual": 347000000.0,
         "interest_coverage_proxy": null
       },
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
-        "sec_filed": "2026-03-02",
-        "bulk_market_session_date": "2026-11-09",
+        "sec_filed": "2026-02-03",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
         "issuer_grade_finalist_validated": false,
         "canonical_six_factor_score": null,
         "warnings": [
-          "FCF and owner-cash multiples may not be economically comparable for financials",
-          "CFO/capex/SBC not available for a matching fiscal period"
+          "FCF and owner-cash multiples may not be economically comparable for financials"
         ]
       },
       "discovery_lane": "alternative_valuation"
@@ -2142,8 +2139,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002099039.json",
       "balance_asof": "2026-03-31",
       "metrics": {
-        "annual_pe": 27.46,
-        "fcf_yield": 0.55014,
+        "annual_pe": 27.86,
+        "fcf_yield": 0.54236,
         "earnings_annual": 498700000.0,
         "operating_cashflow_annual": 7553900000.0,
         "capital_expenditures_annual": 19600000.0,
@@ -2152,7 +2149,7 @@
         "revenue_growth_yoy": 0.2246,
         "share_based_compensation_annual": 95500000.0,
         "owner_cash_proxy_annual": 7438800000.0,
-        "owner_cash_yield_proxy": 0.54317,
+        "owner_cash_yield_proxy": 0.53548,
         "cash_balance": 27802200000.0,
         "debt_balance": 334700000.0,
         "net_debt_proxy": -27467500000.0,
@@ -2162,7 +2159,7 @@
       "data_quality": {
         "sec_annual_period_end": "2026-03-31",
         "sec_filed": "2026-06-25",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2187,8 +2184,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001513845.json",
       "balance_asof": "2025-12-31",
       "metrics": {
-        "annual_pe": 426.7,
-        "fcf_yield": -0.10457,
+        "annual_pe": 466.11,
+        "fcf_yield": -0.09573,
         "earnings_annual": 82500000.0,
         "operating_cashflow_annual": 384800000.0,
         "capital_expenditures_annual": 4066000000.0,
@@ -2197,7 +2194,7 @@
         "revenue_growth_yoy": 4.79016,
         "share_based_compensation_annual": 83200000.0,
         "owner_cash_proxy_annual": -3764400000.0,
-        "owner_cash_yield_proxy": -0.10694,
+        "owner_cash_yield_proxy": -0.09789,
         "cash_balance": 3721600000.0,
         "debt_balance": 4127700000.0,
         "net_debt_proxy": 406100000.0,
@@ -2207,7 +2204,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-04-30",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2232,8 +2229,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001861737.json",
       "balance_asof": "2022-12-31",
       "metrics": {
-        "annual_pe": 36.13,
-        "fcf_yield": -0.01222,
+        "annual_pe": 36.08,
+        "fcf_yield": -0.01223,
         "earnings_annual": 62330000.0,
         "operating_cashflow_annual": 16732000.0,
         "capital_expenditures_annual": 44239000.0,
@@ -2242,7 +2239,7 @@
         "revenue_growth_yoy": 0.52138,
         "share_based_compensation_annual": 16395000.0,
         "owner_cash_proxy_annual": -43902000.0,
-        "owner_cash_yield_proxy": -0.0195,
+        "owner_cash_yield_proxy": -0.01952,
         "cash_balance": 238450000.0,
         "debt_balance": 2678000.0,
         "net_debt_proxy": null,
@@ -2252,7 +2249,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-04-24",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2277,8 +2274,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000756894.json",
       "balance_asof": "2010-12-31",
       "metrics": {
-        "annual_pe": 9.33,
-        "fcf_yield": 0.05792,
+        "annual_pe": 9.72,
+        "fcf_yield": 0.0556,
         "earnings_annual": 7154000000.0,
         "operating_cashflow_annual": 7689000000.0,
         "capital_expenditures_annual": 3821000000.0,
@@ -2297,7 +2294,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-27",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2325,8 +2322,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001723690.json",
       "balance_asof": "2025-12-31",
       "metrics": {
-        "annual_pe": 35.79,
-        "fcf_yield": 0.15533,
+        "annual_pe": 34.93,
+        "fcf_yield": 0.15913,
         "earnings_annual": 170673000.0,
         "operating_cashflow_annual": 1022023000.0,
         "capital_expenditures_annual": 73338000.0,
@@ -2335,7 +2332,7 @@
         "revenue_growth_yoy": 0.18057,
         "share_based_compensation_annual": 167384000.0,
         "owner_cash_proxy_annual": 781301000.0,
-        "owner_cash_yield_proxy": 0.12792,
+        "owner_cash_yield_proxy": 0.13105,
         "cash_balance": 1749487000.0,
         "debt_balance": null,
         "net_debt_proxy": null,
@@ -2345,7 +2342,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-04-16",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2373,7 +2370,7 @@
       "balance_asof": null,
       "metrics": {
         "annual_pe": null,
-        "fcf_yield": -0.02728,
+        "fcf_yield": -0.02696,
         "earnings_annual": -102142000.0,
         "operating_cashflow_annual": -49954000.0,
         "capital_expenditures_annual": 680000.0,
@@ -2392,7 +2389,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-06-30",
         "sec_filed": "2025-08-29",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2422,8 +2419,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001109138.json",
       "balance_asof": "2012-12-31",
       "metrics": {
-        "annual_pe": 89.06,
-        "fcf_yield": 0.02822,
+        "annual_pe": 96.4,
+        "fcf_yield": 0.02607,
         "earnings_annual": 50722000.0,
         "operating_cashflow_annual": 141871000.0,
         "capital_expenditures_annual": 14396000.0,
@@ -2442,7 +2439,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-03-19",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2469,8 +2466,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001123799.json",
       "balance_asof": null,
       "metrics": {
-        "annual_pe": 13.8,
-        "fcf_yield": 0.08481,
+        "annual_pe": 13.7,
+        "fcf_yield": 0.0854,
         "earnings_annual": 1547000000.0,
         "operating_cashflow_annual": 1983000000.0,
         "capital_expenditures_annual": 173000000.0,
@@ -2489,7 +2486,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-03-31",
         "sec_filed": "2025-05-22",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2518,7 +2515,7 @@
       "balance_asof": "2020-06-30",
       "metrics": {
         "annual_pe": null,
-        "fcf_yield": 0.10706,
+        "fcf_yield": 0.10862,
         "earnings_annual": -2915000000.0,
         "operating_cashflow_annual": 749000000.0,
         "capital_expenditures_annual": 123000000.0,
@@ -2527,7 +2524,7 @@
         "revenue_growth_yoy": 0.12514,
         "share_based_compensation_annual": 35000000.0,
         "owner_cash_proxy_annual": 591000000.0,
-        "owner_cash_yield_proxy": 0.10108,
+        "owner_cash_yield_proxy": 0.10255,
         "cash_balance": 784000000.0,
         "debt_balance": 9058000000.0,
         "net_debt_proxy": null,
@@ -2537,7 +2534,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-23",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2564,8 +2561,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001697862.json",
       "balance_asof": null,
       "metrics": {
-        "annual_pe": 44.54,
-        "fcf_yield": 0.0118,
+        "annual_pe": 46.22,
+        "fcf_yield": 0.01137,
         "earnings_annual": 1292035000.0,
         "operating_cashflow_annual": 685192000.0,
         "capital_expenditures_annual": 6165000.0,
@@ -2584,7 +2581,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-03-19",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2611,7 +2608,7 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001567094.json",
       "balance_asof": "2015-12-31",
       "metrics": {
-        "annual_pe": 28.03,
+        "annual_pe": 31.15,
         "fcf_yield": null,
         "earnings_annual": 510000000.0,
         "operating_cashflow_annual": 2538000000.0,
@@ -2631,7 +2628,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-02-26",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2642,6 +2639,51 @@
         ]
       },
       "discovery_lane": "balance_sheet_proxy"
+    },
+    {
+      "ticker": "CHKP",
+      "name": "Check Point Software Technologies Ltd. Ordinary Shares",
+      "segment": "INTL",
+      "country": "IL",
+      "sector": "Information Technology",
+      "sector_authority": "Nasdaq indicative vendor mapping",
+      "size_class": null,
+      "cik": "0001015922",
+      "sec_filed": "2026-03-31",
+      "sec_period_end": "2025-12-31",
+      "cashflow_period_end": "2025-12-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001015922.json",
+      "balance_asof": "2025-12-31",
+      "metrics": {
+        "annual_pe": 13.91,
+        "fcf_yield": 0.07979,
+        "earnings_annual": 1056900000.0,
+        "operating_cashflow_annual": 1199400000.0,
+        "capital_expenditures_annual": 26600000.0,
+        "fcf_annual": 1172800000.0,
+        "revenue_annual": 2725400000.0,
+        "revenue_growth_yoy": 0.06253,
+        "share_based_compensation_annual": 205600000.0,
+        "owner_cash_proxy_annual": 967200000.0,
+        "owner_cash_yield_proxy": 0.0658,
+        "cash_balance": 1800000000.0,
+        "debt_balance": null,
+        "net_debt_proxy": null,
+        "interest_expense_annual": null,
+        "interest_coverage_proxy": null
+      },
+      "data_quality": {
+        "sec_annual_period_end": "2025-12-31",
+        "sec_filed": "2026-03-31",
+        "bulk_market_session_date": "2026-11-10",
+        "individual_quote_timestamp_verified": false,
+        "current_quarter_validated": false,
+        "normalized_earnings_validated": false,
+        "issuer_grade_finalist_validated": false,
+        "canonical_six_factor_score": null,
+        "warnings": []
+      },
+      "discovery_lane": "alternative_valuation"
     },
     {
       "ticker": "HDB",
@@ -2658,8 +2700,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001144967.json",
       "balance_asof": "2025-03-31",
       "metrics": {
-        "annual_pe": 16.06,
-        "fcf_yield": 0.10245,
+        "annual_pe": 16.48,
+        "fcf_yield": 0.09983,
         "earnings_annual": 8035900000.0,
         "operating_cashflow_annual": 13995200000.0,
         "capital_expenditures_annual": 777200000.0,
@@ -2668,7 +2710,7 @@
         "revenue_growth_yoy": 0.15246,
         "share_based_compensation_annual": 288400000.0,
         "owner_cash_proxy_annual": 12929600000.0,
-        "owner_cash_yield_proxy": 0.10021,
+        "owner_cash_yield_proxy": 0.09765,
         "cash_balance": 23211200000.0,
         "debt_balance": 68666300000.0,
         "net_debt_proxy": 45455100000.0,
@@ -2678,7 +2720,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-03-31",
         "sec_filed": "2025-07-14",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2687,53 +2729,6 @@
         "warnings": [
           "FCF and owner-cash multiples may not be economically comparable for financials",
           "Annual fiscal period over 420 days old"
-        ]
-      },
-      "discovery_lane": "alternative_valuation"
-    },
-    {
-      "ticker": "EDU",
-      "name": "New Oriental Education & Technology Group Inc. Sponsored ADR representing 10 Ordinary Share (Cayman Islands)",
-      "segment": "INTL",
-      "country": "CN",
-      "sector": "Real Estate",
-      "sector_authority": "Nasdaq indicative vendor mapping",
-      "size_class": null,
-      "cik": "0001372920",
-      "sec_filed": "2026-09-22",
-      "sec_period_end": "2026-05-31",
-      "cashflow_period_end": "2026-05-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001372920.json",
-      "balance_asof": "2026-05-31",
-      "metrics": {
-        "annual_pe": 16.48,
-        "fcf_yield": 0.09165,
-        "earnings_annual": 516661000.0,
-        "operating_cashflow_annual": 1027080000.0,
-        "capital_expenditures_annual": 246869000.0,
-        "fcf_annual": 780211000.0,
-        "revenue_annual": 5661294000.0,
-        "revenue_growth_yoy": 0.1553,
-        "share_based_compensation_annual": 88466000.0,
-        "owner_cash_proxy_annual": 691745000.0,
-        "owner_cash_yield_proxy": 0.08126,
-        "cash_balance": 2096490000.0,
-        "debt_balance": null,
-        "net_debt_proxy": null,
-        "interest_expense_annual": 28000.0,
-        "interest_coverage_proxy": 18452.179
-      },
-      "data_quality": {
-        "sec_annual_period_end": "2026-05-31",
-        "sec_filed": "2026-09-22",
-        "bulk_market_session_date": "2026-11-09",
-        "individual_quote_timestamp_verified": false,
-        "current_quarter_validated": false,
-        "normalized_earnings_validated": false,
-        "issuer_grade_finalist_validated": false,
-        "canonical_six_factor_score": null,
-        "warnings": [
-          "Interest proxy is GAAP net income divided by interest expense, NOT EBIT/interest coverage"
         ]
       },
       "discovery_lane": "cash_generation_proxy"
@@ -2753,8 +2748,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001308648.json",
       "balance_asof": null,
       "metrics": {
-        "annual_pe": 35.46,
-        "fcf_yield": 0.062,
+        "annual_pe": 37.05,
+        "fcf_yield": 0.05934,
         "earnings_annual": 210975000.0,
         "operating_cashflow_annual": 526010000.0,
         "capital_expenditures_annual": 62096000.0,
@@ -2773,7 +2768,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-03-31",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2800,8 +2795,8 @@
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001853717.json",
       "balance_asof": "2025-12-31",
       "metrics": {
-        "annual_pe": 21.07,
-        "fcf_yield": 0.05582,
+        "annual_pe": 20.97,
+        "fcf_yield": 0.0561,
         "earnings_annual": 231837000.0,
         "operating_cashflow_annual": 284969000.0,
         "capital_expenditures_annual": 12266000.0,
@@ -2810,7 +2805,7 @@
         "revenue_growth_yoy": 0.4099,
         "share_based_compensation_annual": 18801000.0,
         "owner_cash_proxy_annual": 253902000.0,
-        "owner_cash_yield_proxy": 0.05197,
+        "owner_cash_yield_proxy": 0.05223,
         "cash_balance": 474778000.0,
         "debt_balance": 36036000.0,
         "net_debt_proxy": -438742000.0,
@@ -2820,7 +2815,7 @@
       "data_quality": {
         "sec_annual_period_end": "2025-12-31",
         "sec_filed": "2026-04-17",
-        "bulk_market_session_date": "2026-11-09",
+        "bulk_market_session_date": "2026-11-10",
         "individual_quote_timestamp_verified": false,
         "current_quarter_validated": false,
         "normalized_earnings_validated": false,
@@ -2834,157 +2829,157 @@
   "international_etfs": [
     {
       "ticker": "VEA",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/VEA/info?assetclass=etf"
     },
     {
       "ticker": "VWO",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/VWO/info?assetclass=etf"
     },
     {
       "ticker": "VGK",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/VGK/info?assetclass=etf"
     },
     {
       "ticker": "VPL",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/VPL/info?assetclass=etf"
     },
     {
       "ticker": "EWJ",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWJ/info?assetclass=etf"
     },
     {
       "ticker": "EWG",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWG/info?assetclass=etf"
     },
     {
       "ticker": "EWU",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWU/info?assetclass=etf"
     },
     {
       "ticker": "EWC",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWC/info?assetclass=etf"
     },
     {
       "ticker": "EWA",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWA/info?assetclass=etf"
     },
     {
       "ticker": "EEM",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EEM/info?assetclass=etf"
     },
     {
       "ticker": "IEMG",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/IEMG/info?assetclass=etf"
     },
     {
       "ticker": "VXUS",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/VXUS/info?assetclass=etf"
     },
     {
       "ticker": "IXUS",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/IXUS/info?assetclass=etf"
     },
     {
       "ticker": "ACWX",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/ACWX/info?assetclass=etf"
     },
     {
       "ticker": "EFV",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EFV/info?assetclass=etf"
     },
     {
       "ticker": "EWY",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWY/info?assetclass=etf"
     },
     {
       "ticker": "EWT",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWT/info?assetclass=etf"
     },
     {
       "ticker": "EWZ",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWZ/info?assetclass=etf"
     },
     {
       "ticker": "EWW",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWW/info?assetclass=etf"
     },
     {
       "ticker": "INDA",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/INDA/info?assetclass=etf"
     },
     {
       "ticker": "FXI",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/FXI/info?assetclass=etf"
     },
     {
       "ticker": "MCHI",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/MCHI/info?assetclass=etf"
     },
     {
       "ticker": "SPEM",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/SPEM/info?assetclass=etf"
     },
     {
       "ticker": "SCHE",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/SCHE/info?assetclass=etf"
     },
     {
       "ticker": "AVDE",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/AVDE/info?assetclass=etf"
     },
     {
       "ticker": "AVEM",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/AVEM/info?assetclass=etf"
     },
     {
       "ticker": "EWI",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWI/info?assetclass=etf"
     },
     {
       "ticker": "EWL",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWL/info?assetclass=etf"
     },
     {
       "ticker": "EWN",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWN/info?assetclass=etf"
     },
     {
       "ticker": "EWP",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EWP/info?assetclass=etf"
     },
     {
       "ticker": "EZA",
-      "quote_asof_date": "2026-11-09",
+      "quote_asof_date": "2026-11-10",
       "source_url": "https://api.nasdaq.com/api/quote/EZA/info?assetclass=etf"
     }
   ],
@@ -3000,43 +2995,43 @@
       "path": "research_metrics_us_01.json",
       "segment": "US",
       "count": 150,
-      "sha256": "853cf6e7d24c0abfd8b742ae121717fa4f1f701e3171168fe7fdd8a36ae65157"
+      "sha256": "6a7817421c0d68a01c69c7cbd3a2ca909daa0d346478d5bd34f934533bc4d171"
     },
     {
       "path": "research_metrics_us_02.json",
       "segment": "US",
       "count": 150,
-      "sha256": "46f878b0d8d1457c80a9fd45e6ecad26c0f31ed9650fcef4163dcd8de11dffbc"
+      "sha256": "9b19b438e1c5f1a7cb98dd43986968d4f3896db9fe267c463404b40d4169bccf"
     },
     {
       "path": "research_metrics_us_03.json",
       "segment": "US",
       "count": 150,
-      "sha256": "c4ddd6b2cf90bb255cc16c561a32be1a9a6d66007b336428480bc468d8458d17"
+      "sha256": "c558161c96cea07667d1b8da47f1ddd865823019ef921c17da3365cecd924e64"
     },
     {
       "path": "research_metrics_us_04.json",
       "segment": "US",
       "count": 150,
-      "sha256": "a860b8cb0020e8005d6015f4618aecf5eea12b0314d669afb4ce156f2596805e"
+      "sha256": "f28b7fa016cba24fa9664d22332ae533dd86b23e2da8a49822b9c00336e148d1"
     },
     {
       "path": "research_metrics_us_05.json",
       "segment": "US",
-      "count": 4,
-      "sha256": "ea115f5679567c2128cd0f3a61211f8c262b5f977ebe51cd2f32f8b4c6f320e0"
+      "count": 5,
+      "sha256": "deccd7ab3915d67328385e9c9e0dcd7c4f19ee2559b62d60e24456ac34ec7a63"
     },
     {
       "path": "research_metrics_intl_01.json",
       "segment": "INTL",
       "count": 150,
-      "sha256": "0059b4fdff9e218a4b2801501218f4441f01b77b20c0492fc4ee817805f349b7"
+      "sha256": "74b62813de97526dd7f7c53016e60a362efeaf713778b43e97031e8246605f13"
     },
     {
       "path": "research_metrics_intl_02.json",
       "segment": "INTL",
-      "count": 6,
-      "sha256": "663f3f20ecc840c4c9c32c138b956d048896da6d4afc46f18373db7150bcebb2"
+      "count": 5,
+      "sha256": "02d98bae87013d998d3dc3a275f0332e4ce5cb32637ac8ff983ad38a229c84df"
     }
   ],
   "consumer_instructions": "Fetch all listed shards from GitHub main/public; verify SHA-256 and common metadata. Treat primary value-ranked 15+15 and independent 15+15 challenger queues as DISCOVERY ONLY; refresh current quote, latest quarter, normalized earnings, revisions, peers and countercase before 6+6 issuer-grade evaluation. Never infer v1.4 Opportunity Scores or tradable signals from this artifact."
