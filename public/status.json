@@ -1,29 +1,29 @@
 {
   "pipeline_version": "0.4",
-  "producer_source_commit": "8db0215391d965e1c5a799428a247898748a3c31",
-  "run_utc": "2026-11-10T21:16:09.087902+00:00",
-  "report_date": "2026-11-10",
+  "producer_source_commit": "ae8a0bc5d2e662ea212d8ae9b27be18796c4219b",
+  "run_utc": "2026-11-11T21:51:34.750758+00:00",
+  "report_date": "2026-11-11",
   "provider_status": {
     "nasdaq": {
       "source": "https://api.nasdaq.com/api/screener/stocks",
-      "fetched_rows": 7179,
+      "fetched_rows": 7212,
       "reported_total": null,
       "pages": 1,
       "quote_date_provenance": "Nasdaq quote/info DATE corroboration only; bulk rows have NO verified individual trade date",
       "quote_timestamp_anchors": [
         {
           "ticker": "AAPL",
-          "trade_timestamp": "Nov 10, 2026 4:16 PM ET",
-          "trade_date": "2026-11-10",
-          "price_deviation_pct": 0.539,
+          "trade_timestamp": "Nov 11, 2026 4:51 PM ET",
+          "trade_date": "2026-11-11",
+          "price_deviation_pct": 1.934,
           "bulk_price_corrob_3pct": true,
           "source": "https://api.nasdaq.com/api/quote/AAPL/info"
         },
         {
           "ticker": "JPM",
-          "trade_timestamp": "Nov 10, 2026 4:16 PM ET",
-          "trade_date": "2026-11-10",
-          "price_deviation_pct": 0.067,
+          "trade_timestamp": "Nov 11, 2026 4:51 PM ET",
+          "trade_date": "2026-11-11",
+          "price_deviation_pct": 0.319,
           "bulk_price_corrob_3pct": true,
           "source": "https://api.nasdaq.com/api/quote/JPM/info"
         }
@@ -47,21 +47,21 @@
     "etf_failed_samples": []
   },
   "coverage": {
-    "US": 605,
+    "US": 603,
     "INTL": 155,
     "INTL_ETF": 31,
     "US_SECTORS": 11,
     "INTL_COUNTRIES": 18,
     "issuer_facts_attempted": 902,
-    "issuer_facts_with_valuation": 760,
+    "issuer_facts_with_valuation": 758,
     "etf_quotes_attempted": 31,
-    "nasdaq_quote_asof_date": "2026-11-10",
+    "nasdaq_quote_asof_date": "2026-11-11",
     "etf_quote_asof_range": [
-      "2026-11-10",
-      "2026-11-10"
+      "2026-11-11",
+      "2026-11-11"
     ],
-    "US_MIDCAP": 155,
-    "issuer_metrics_published": 760
+    "US_MIDCAP": 153,
+    "issuer_metrics_published": 758
   },
   "status": "DATA_READY_RESEARCH_PENDING",
   "failures": [],
