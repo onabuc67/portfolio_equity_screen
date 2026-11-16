@@ -1,29 +1,29 @@
 {
   "pipeline_version": "0.4",
-  "producer_source_commit": "a0a4d6ba4dffab7ab44685ce0b0a83e3eefcbdee",
-  "run_utc": "2026-11-13T21:23:31.268653+00:00",
-  "report_date": "2026-11-13",
+  "producer_source_commit": "dddb3e32cea62f3f6602b3b161852e3658da3c93",
+  "run_utc": "2026-11-16T23:43:34.774595+00:00",
+  "report_date": "2026-11-16",
   "provider_status": {
     "nasdaq": {
       "source": "https://api.nasdaq.com/api/screener/stocks",
-      "fetched_rows": 7252,
+      "fetched_rows": 7264,
       "reported_total": null,
       "pages": 1,
       "quote_date_provenance": "Nasdaq quote/info DATE corroboration only; bulk rows have NO verified individual trade date",
       "quote_timestamp_anchors": [
         {
           "ticker": "AAPL",
-          "trade_timestamp": "Nov 13, 2026 4:23 PM ET",
-          "trade_date": "2026-11-13",
-          "price_deviation_pct": 0.197,
+          "trade_timestamp": "Nov 16, 2026 6:43 PM ET",
+          "trade_date": "2026-11-16",
+          "price_deviation_pct": 0.873,
           "bulk_price_corrob_3pct": true,
           "source": "https://api.nasdaq.com/api/quote/AAPL/info"
         },
         {
           "ticker": "JPM",
-          "trade_timestamp": "Nov 13, 2026 4:23 PM ET",
-          "trade_date": "2026-11-13",
-          "price_deviation_pct": 0.488,
+          "trade_timestamp": "Nov 16, 2026 6:43 PM ET",
+          "trade_date": "2026-11-16",
+          "price_deviation_pct": 2.55,
           "bulk_price_corrob_3pct": true,
           "source": "https://api.nasdaq.com/api/quote/JPM/info"
         }
@@ -35,10 +35,10 @@
     "sp500_constituents": 503,
     "eligible_pre_sec": {
       "us": 632,
-      "foreign": 268
+      "foreign": 270
     },
     "issuer_errors": 1,
-    "foreign_candidate_pool": 268,
+    "foreign_candidate_pool": 270,
     "foreign_sec_facts_errors": 1,
     "foreign_missing_valuation": 112,
     "etf_sources": {
@@ -47,21 +47,21 @@
     "etf_failed_samples": []
   },
   "coverage": {
-    "US": 603,
-    "INTL": 156,
+    "US": 605,
+    "INTL": 158,
     "INTL_ETF": 31,
     "US_SECTORS": 11,
     "INTL_COUNTRIES": 18,
-    "issuer_facts_attempted": 900,
-    "issuer_facts_with_valuation": 759,
+    "issuer_facts_attempted": 902,
+    "issuer_facts_with_valuation": 763,
     "etf_quotes_attempted": 31,
-    "nasdaq_quote_asof_date": "2026-11-13",
+    "nasdaq_quote_asof_date": "2026-11-16",
     "etf_quote_asof_range": [
-      "2026-11-13",
-      "2026-11-13"
+      "2026-11-16",
+      "2026-11-16"
     ],
-    "US_MIDCAP": 153,
-    "issuer_metrics_published": 759
+    "US_MIDCAP": 155,
+    "issuer_metrics_published": 763
   },
   "status": "DATA_READY_RESEARCH_PENDING",
   "failures": [],
