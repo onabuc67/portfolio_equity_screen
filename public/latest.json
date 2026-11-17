@@ -1,30 +1,30 @@
 {
   "meta": {
     "pipeline_version": "0.4",
-    "producer_source_commit": "dddb3e32cea62f3f6602b3b161852e3658da3c93",
-    "run_utc": "2026-11-16T23:43:34.774595+00:00",
-    "report_date": "2026-11-16",
+    "producer_source_commit": "139cfb0e905dcbeb30f0a6c9a86bd11c720039d0",
+    "run_utc": "2026-11-17T22:50:59.753108+00:00",
+    "report_date": "2026-11-17",
     "provider_status": {
       "nasdaq": {
         "source": "https://api.nasdaq.com/api/screener/stocks",
-        "fetched_rows": 7264,
+        "fetched_rows": 7278,
         "reported_total": null,
         "pages": 1,
         "quote_date_provenance": "Nasdaq quote/info DATE corroboration only; bulk rows have NO verified individual trade date",
         "quote_timestamp_anchors": [
           {
             "ticker": "AAPL",
-            "trade_timestamp": "Nov 16, 2026 6:43 PM ET",
-            "trade_date": "2026-11-16",
-            "price_deviation_pct": 0.873,
+            "trade_timestamp": "Nov 17, 2026 5:51 PM ET",
+            "trade_date": "2026-11-17",
+            "price_deviation_pct": 0.808,
             "bulk_price_corrob_3pct": true,
             "source": "https://api.nasdaq.com/api/quote/AAPL/info"
           },
           {
             "ticker": "JPM",
-            "trade_timestamp": "Nov 16, 2026 6:43 PM ET",
-            "trade_date": "2026-11-16",
-            "price_deviation_pct": 2.55,
+            "trade_timestamp": "Nov 17, 2026 5:51 PM ET",
+            "trade_date": "2026-11-17",
+            "price_deviation_pct": 1.838,
             "bulk_price_corrob_3pct": true,
             "source": "https://api.nasdaq.com/api/quote/JPM/info"
           }
@@ -48,21 +48,21 @@
       "etf_failed_samples": []
     },
     "coverage": {
-      "US": 605,
+      "US": 604,
       "INTL": 158,
       "INTL_ETF": 31,
       "US_SECTORS": 11,
       "INTL_COUNTRIES": 18,
       "issuer_facts_attempted": 902,
-      "issuer_facts_with_valuation": 763,
+      "issuer_facts_with_valuation": 762,
       "etf_quotes_attempted": 31,
-      "nasdaq_quote_asof_date": "2026-11-16",
+      "nasdaq_quote_asof_date": "2026-11-17",
       "etf_quote_asof_range": [
-        "2026-11-16",
-        "2026-11-16"
+        "2026-11-17",
+        "2026-11-17"
       ],
-      "US_MIDCAP": 155,
-      "issuer_metrics_published": 763
+      "US_MIDCAP": 154,
+      "issuer_metrics_published": 762
     },
     "status": "DATA_READY_RESEARCH_PENDING",
     "failures": [],
@@ -99,8 +99,8 @@
       "sec_filed": "2026-01-30",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001091667.json",
-      "annual_pe": 2.75,
-      "fcf_yield": 0.27893
+      "annual_pe": 2.76,
+      "fcf_yield": 0.2778
     },
     {
       "ticker": "PAGP",
@@ -114,7 +114,7 @@
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001581990.json",
       "annual_pe": 3.1,
-      "fcf_yield": 0.43798
+      "fcf_yield": 0.43716
     },
     {
       "ticker": "CMCSA",
@@ -127,8 +127,8 @@
       "sec_filed": "2026-02-03",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001166691.json",
-      "annual_pe": 4.47,
-      "fcf_yield": 0.24504
+      "annual_pe": 4.55,
+      "fcf_yield": 0.24083
     },
     {
       "ticker": "VSNT",
@@ -141,8 +141,8 @@
       "sec_filed": "2026-03-03",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002067876.json",
-      "annual_pe": 5.28,
-      "fcf_yield": 0.37759
+      "annual_pe": 5.41,
+      "fcf_yield": 0.36807
     },
     {
       "ticker": "CNA",
@@ -155,8 +155,8 @@
       "sec_filed": "2026-02-10",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021175.json",
-      "annual_pe": 10.28,
-      "fcf_yield": 0.1829
+      "annual_pe": 10.27,
+      "fcf_yield": 0.1832
     },
     {
       "ticker": "ALL",
@@ -169,22 +169,8 @@
       "sec_filed": "2026-02-20",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000899051.json",
-      "annual_pe": 6.44,
-      "fcf_yield": 0.14915
-    },
-    {
-      "ticker": "M",
-      "name": "Macy's Inc Common Stock",
-      "segment": "US",
-      "country": "US",
-      "sector": "Consumer Discretionary",
-      "sector_authority": "Nasdaq indicative mapping; verify GICS",
-      "cik": "0000794367",
-      "sec_filed": "2026-03-27",
-      "sec_period_end": "2026-01-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000794367.json",
-      "annual_pe": 10.05,
-      "fcf_yield": 0.16378
+      "annual_pe": 6.51,
+      "fcf_yield": 0.14764
     },
     {
       "ticker": "HIG",
@@ -197,8 +183,8 @@
       "sec_filed": "2026-02-20",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000874766.json",
-      "annual_pe": 9.59,
-      "fcf_yield": 0.15646
+      "annual_pe": 9.61,
+      "fcf_yield": 0.15609
     },
     {
       "ticker": "STT",
@@ -211,8 +197,8 @@
       "sec_filed": "2026-02-19",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000093751.json",
-      "annual_pe": 16.03,
-      "fcf_yield": 0.2297
+      "annual_pe": 15.71,
+      "fcf_yield": 0.23433
     },
     {
       "ticker": "PAA",
@@ -225,22 +211,8 @@
       "sec_filed": "2026-02-27",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001070423.json",
-      "annual_pe": 9.78,
-      "fcf_yield": 0.13253
-    },
-    {
-      "ticker": "IHS",
-      "name": "IHS Holding Limited Ordinary Shares",
-      "segment": "US",
-      "country": "US",
-      "sector": "Communication Services",
-      "sector_authority": "Nasdaq indicative mapping; verify GICS",
-      "cik": "0001876183",
-      "sec_filed": "2026-03-16",
-      "sec_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001876183.json",
-      "annual_pe": 19.63,
-      "fcf_yield": 0.255
+      "annual_pe": 9.8,
+      "fcf_yield": 0.13226
     },
     {
       "ticker": "CNX",
@@ -253,8 +225,8 @@
       "sec_filed": "2026-02-10",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001070412.json",
-      "annual_pe": 8.25,
-      "fcf_yield": 0.10223
+      "annual_pe": 8.16,
+      "fcf_yield": 0.10332
     },
     {
       "ticker": "SFM",
@@ -267,8 +239,8 @@
       "sec_filed": "2026-02-19",
       "sec_period_end": "2025-12-28",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001575515.json",
-      "annual_pe": 9.17,
-      "fcf_yield": 0.09739
+      "annual_pe": 8.84,
+      "fcf_yield": 0.10108
     },
     {
       "ticker": "INGR",
@@ -281,8 +253,8 @@
       "sec_filed": "2026-02-17",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001046257.json",
-      "annual_pe": 7.97,
-      "fcf_yield": 0.08715
+      "annual_pe": 7.87,
+      "fcf_yield": 0.08824
     },
     {
       "ticker": "CF",
@@ -295,8 +267,36 @@
       "sec_filed": "2026-02-25",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001324404.json",
-      "annual_pe": 10.18,
-      "fcf_yield": 0.09844
+      "annual_pe": 9.75,
+      "fcf_yield": 0.10281
+    },
+    {
+      "ticker": "GM",
+      "name": "General Motors Company Common Stock",
+      "segment": "US",
+      "country": "US",
+      "sector": "Consumer Discretionary",
+      "sector_authority": "S&P500 constituents GICS label",
+      "cik": "0001467858",
+      "sec_filed": "2026-01-27",
+      "sec_period_end": "2025-12-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001467858.json",
+      "annual_pe": 22.19,
+      "fcf_yield": 0.24885
+    },
+    {
+      "ticker": "SNDK",
+      "name": "Sandisk Corporation Common Stock",
+      "segment": "US",
+      "country": "US",
+      "sector": "Information Technology",
+      "sector_authority": "S&P500 constituents GICS label",
+      "cik": "0002023554",
+      "sec_filed": "2026-08-17",
+      "sec_period_end": "2026-07-03",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002023554.json",
+      "annual_pe": 10.07,
+      "fcf_yield": 0.09984
     }
   ],
   "foreign_review_queue": [
@@ -311,8 +311,8 @@
       "sec_filed": "2026-04-23",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001595761.json",
-      "annual_pe": 3.28,
-      "fcf_yield": 0.31527
+      "annual_pe": 3.2,
+      "fcf_yield": 0.32368
     },
     {
       "ticker": "TLK",
@@ -325,8 +325,8 @@
       "sec_filed": "2025-04-28",
       "sec_period_end": "2024-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001001807.json",
-      "annual_pe": 6.06,
-      "fcf_yield": 0.19109
+      "annual_pe": 6.08,
+      "fcf_yield": 0.19044
     },
     {
       "ticker": "VIPS",
@@ -339,8 +339,8 @@
       "sec_filed": "2026-04-16",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001529192.json",
-      "annual_pe": 6.01,
-      "fcf_yield": 0.12274
+      "annual_pe": 6.03,
+      "fcf_yield": 0.12238
     },
     {
       "ticker": "NICE",
@@ -353,22 +353,8 @@
       "sec_filed": "2026-02-26",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001003935.json",
-      "annual_pe": 9.32,
-      "fcf_yield": 0.12228
-    },
-    {
-      "ticker": "JOYY",
-      "name": "JOYY Inc. American Depositary Shares",
-      "segment": "INTL",
-      "country": "SG",
-      "sector": "Information Technology",
-      "sector_authority": "Nasdaq indicative vendor mapping",
-      "cik": "0001530238",
-      "sec_filed": "2026-04-28",
-      "sec_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001530238.json",
-      "annual_pe": 1.88,
-      "fcf_yield": 0.04031
+      "annual_pe": 9.06,
+      "fcf_yield": 0.12579
     },
     {
       "ticker": "KGC",
@@ -381,8 +367,22 @@
       "sec_filed": "2026-03-26",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000701818.json",
-      "annual_pe": 9.9,
-      "fcf_yield": 0.10492
+      "annual_pe": 9.52,
+      "fcf_yield": 0.10918
+    },
+    {
+      "ticker": "JOYY",
+      "name": "JOYY Inc. American Depositary Shares",
+      "segment": "INTL",
+      "country": "SG",
+      "sector": "Information Technology",
+      "sector_authority": "Nasdaq indicative vendor mapping",
+      "cik": "0001530238",
+      "sec_filed": "2026-04-28",
+      "sec_period_end": "2025-12-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001530238.json",
+      "annual_pe": 1.86,
+      "fcf_yield": 0.0407
     },
     {
       "ticker": "TCOM",
@@ -395,8 +395,8 @@
       "sec_filed": "2026-04-28",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001269238.json",
-      "annual_pe": 5.75,
-      "fcf_yield": 0.07088
+      "annual_pe": 5.84,
+      "fcf_yield": 0.06977
     },
     {
       "ticker": "JBS",
@@ -409,22 +409,8 @@
       "sec_filed": "2026-03-25",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001791942.json",
-      "annual_pe": 5.85,
-      "fcf_yield": 0.06389
-    },
-    {
-      "ticker": "TAL",
-      "name": "TAL Education Group American Depositary Shares",
-      "segment": "INTL",
-      "country": "CN",
-      "sector": "Real Estate",
-      "sector_authority": "Nasdaq indicative vendor mapping",
-      "cik": "0001499620",
-      "sec_filed": "2026-06-12",
-      "sec_period_end": "2026-02-28",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001499620.json",
-      "annual_pe": 10.73,
-      "fcf_yield": 0.08922
+      "annual_pe": 5.92,
+      "fcf_yield": 0.06311
     },
     {
       "ticker": "MGA",
@@ -437,8 +423,8 @@
       "sec_filed": "2026-03-27",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000749098.json",
-      "annual_pe": 18.11,
-      "fcf_yield": 0.14288
+      "annual_pe": 17.94,
+      "fcf_yield": 0.14425
     },
     {
       "ticker": "B",
@@ -451,22 +437,22 @@
       "sec_filed": "2026-02-27",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000756894.json",
-      "annual_pe": 8.56,
-      "fcf_yield": 0.06316
+      "annual_pe": 8.31,
+      "fcf_yield": 0.06509
     },
     {
-      "ticker": "GTX",
-      "name": "Garrett Motion Inc. Common Stock",
+      "ticker": "TAL",
+      "name": "TAL Education Group American Depositary Shares",
       "segment": "INTL",
-      "country": "CH",
-      "sector": "Consumer Discretionary",
+      "country": "CN",
+      "sector": "Real Estate",
       "sector_authority": "Nasdaq indicative vendor mapping",
-      "cik": "0001735707",
-      "sec_filed": "2026-02-19",
-      "sec_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001735707.json",
-      "annual_pe": 12.43,
-      "fcf_yield": 0.08847
+      "cik": "0001499620",
+      "sec_filed": "2026-06-12",
+      "sec_period_end": "2026-02-28",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001499620.json",
+      "annual_pe": 11.01,
+      "fcf_yield": 0.08698
     },
     {
       "ticker": "ALV",
@@ -479,22 +465,22 @@
       "sec_filed": "2026-02-19",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001034670.json",
-      "annual_pe": 11.78,
-      "fcf_yield": 0.08258
+      "annual_pe": 11.48,
+      "fcf_yield": 0.08471
     },
     {
-      "ticker": "MRX",
-      "name": "Marex Group Limited Ordinary Shares",
+      "ticker": "GTX",
+      "name": "Garrett Motion Inc. Common Stock",
       "segment": "INTL",
-      "country": "GB",
-      "sector": "Financials",
+      "country": "CH",
+      "sector": "Consumer Discretionary",
       "sector_authority": "Nasdaq indicative vendor mapping",
-      "cik": "0001997464",
-      "sec_filed": "2026-03-25",
+      "cik": "0001735707",
+      "sec_filed": "2026-02-19",
       "sec_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001997464.json",
-      "annual_pe": 17.04,
-      "fcf_yield": 0.12482
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001735707.json",
+      "annual_pe": 12.23,
+      "fcf_yield": 0.08993
     },
     {
       "ticker": "HSBC",
@@ -507,8 +493,22 @@
       "sec_filed": "2026-02-26",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001089113.json",
-      "annual_pe": 13.3,
-      "fcf_yield": 0.09203
+      "annual_pe": 13.09,
+      "fcf_yield": 0.09355
+    },
+    {
+      "ticker": "MRX",
+      "name": "Marex Group Limited Ordinary Shares",
+      "segment": "INTL",
+      "country": "GB",
+      "sector": "Financials",
+      "sector_authority": "Nasdaq indicative vendor mapping",
+      "cik": "0001997464",
+      "sec_filed": "2026-03-25",
+      "sec_period_end": "2025-12-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001997464.json",
+      "annual_pe": 17.01,
+      "fcf_yield": 0.12503
     }
   ],
   "us_challenger_queue": [
@@ -523,23 +523,23 @@
       "sec_filed": "2026-02-19",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000927628.json",
-      "annual_pe": 47.85,
-      "fcf_yield": 0.2227,
+      "annual_pe": 47.39,
+      "fcf_yield": 0.22487,
       "discovery_lane": "cash_generation_proxy"
     },
     {
-      "ticker": "SNDK",
-      "name": "Sandisk Corporation Common Stock",
+      "ticker": "MU",
+      "name": "Micron Technology Inc. Common Stock",
       "segment": "US",
       "country": "US",
       "sector": "Information Technology",
       "sector_authority": "S&P500 constituents GICS label",
-      "cik": "0002023554",
-      "sec_filed": "2026-08-17",
-      "sec_period_end": "2026-07-03",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002023554.json",
-      "annual_pe": 11.01,
-      "fcf_yield": 0.09127,
+      "cik": "0000723125",
+      "sec_filed": "2026-10-09",
+      "sec_period_end": "2026-09-03",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000723125.json",
+      "annual_pe": 9.57,
+      "fcf_yield": 0.07248,
       "discovery_lane": "revenue_growth_proxy"
     },
     {
@@ -553,8 +553,8 @@
       "sec_filed": "2026-02-05",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001014473.json",
-      "annual_pe": 34.0,
-      "fcf_yield": 0.03805,
+      "annual_pe": 33.51,
+      "fcf_yield": 0.03861,
       "discovery_lane": "balance_sheet_proxy"
     },
     {
@@ -568,8 +568,8 @@
       "sec_filed": "2026-04-15",
       "sec_period_end": "2026-02-28",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001170010.json",
-      "annual_pe": 30.55,
-      "fcf_yield": 0.16454,
+      "annual_pe": 29.64,
+      "fcf_yield": 0.16959,
       "discovery_lane": "midcap_alternative"
     },
     {
@@ -583,8 +583,8 @@
       "sec_filed": "2026-02-19",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000798354.json",
-      "annual_pe": 9.72,
-      "fcf_yield": 0.12669,
+      "annual_pe": 9.65,
+      "fcf_yield": 0.12761,
       "discovery_lane": "alternative_valuation"
     },
     {
@@ -599,22 +599,22 @@
       "sec_period_end": "2026-05-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000023217.json",
       "annual_pe": null,
-      "fcf_yield": 0.13922,
+      "fcf_yield": 0.13518,
       "discovery_lane": "cash_generation_proxy"
     },
     {
-      "ticker": "MU",
-      "name": "Micron Technology Inc. Common Stock",
+      "ticker": "IONQ",
+      "name": "IonQ Inc. Common Stock",
       "segment": "US",
       "country": "US",
       "sector": "Information Technology",
-      "sector_authority": "S&P500 constituents GICS label",
-      "cik": "0000723125",
-      "sec_filed": "2026-10-09",
-      "sec_period_end": "2026-09-03",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000723125.json",
-      "annual_pe": 10.36,
-      "fcf_yield": 0.06696,
+      "sector_authority": "Nasdaq indicative mapping; verify GICS",
+      "cik": "0001824920",
+      "sec_filed": "2026-02-25",
+      "sec_period_end": "2025-12-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001824920.json",
+      "annual_pe": null,
+      "fcf_yield": -0.02444,
       "discovery_lane": "revenue_growth_proxy"
     },
     {
@@ -628,8 +628,8 @@
       "sec_filed": "2026-02-19",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000097210.json",
-      "annual_pe": 70.32,
-      "fcf_yield": 0.01156,
+      "annual_pe": 65.35,
+      "fcf_yield": 0.01244,
       "discovery_lane": "balance_sheet_proxy"
     },
     {
@@ -643,8 +643,8 @@
       "sec_filed": "2026-02-17",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001316835.json",
-      "annual_pe": 15.0,
-      "fcf_yield": 0.13068,
+      "annual_pe": 14.88,
+      "fcf_yield": 0.13174,
       "discovery_lane": "midcap_alternative"
     },
     {
@@ -658,23 +658,23 @@
       "sec_filed": "2026-02-03",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001633917.json",
-      "annual_pe": 9.41,
-      "fcf_yield": 0.11299,
+      "annual_pe": 9.34,
+      "fcf_yield": 0.11386,
       "discovery_lane": "alternative_valuation"
     },
     {
-      "ticker": "KHC",
-      "name": "The Kraft Heinz Company Common Stock",
+      "ticker": "ADM",
+      "name": "Archer-Daniels-Midland Company Common Stock",
       "segment": "US",
       "country": "US",
       "sector": "Consumer Staples",
       "sector_authority": "S&P500 constituents GICS label",
-      "cik": "0001637459",
-      "sec_filed": "2026-02-12",
-      "sec_period_end": "2025-12-27",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001637459.json",
-      "annual_pe": null,
-      "fcf_yield": 0.12311,
+      "cik": "0000007084",
+      "sec_filed": "2026-02-17",
+      "sec_period_end": "2025-12-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000007084.json",
+      "annual_pe": 31.18,
+      "fcf_yield": 0.12508,
       "discovery_lane": "cash_generation_proxy"
     },
     {
@@ -688,23 +688,23 @@
       "sec_filed": "2026-02-18",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000895126.json",
-      "annual_pe": 11.24,
-      "fcf_yield": 0.08994,
+      "annual_pe": 10.96,
+      "fcf_yield": 0.09222,
       "discovery_lane": "revenue_growth_proxy"
     },
     {
-      "ticker": "EME",
-      "name": "EMCOR Group Inc. Common Stock",
+      "ticker": "POWL",
+      "name": "Powell Industries Inc. Common Stock",
       "segment": "US",
       "country": "US",
-      "sector": "Industrials",
-      "sector_authority": "S&P500 constituents GICS label",
-      "cik": "0000105634",
-      "sec_filed": "2026-02-26",
-      "sec_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000105634.json",
-      "annual_pe": 22.67,
-      "fcf_yield": null,
+      "sector": "Energy",
+      "sector_authority": "Nasdaq indicative mapping; verify GICS",
+      "cik": "0000080420",
+      "sec_filed": "2026-11-17",
+      "sec_period_end": "2026-09-30",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000080420.json",
+      "annual_pe": 24.93,
+      "fcf_yield": 0.07538,
       "discovery_lane": "balance_sheet_proxy"
     },
     {
@@ -718,8 +718,8 @@
       "sec_filed": "2026-02-27",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001142417.json",
-      "annual_pe": 58.8,
-      "fcf_yield": 0.11593,
+      "annual_pe": 58.96,
+      "fcf_yield": 0.11562,
       "discovery_lane": "midcap_alternative"
     },
     {
@@ -733,8 +733,8 @@
       "sec_filed": "2026-03-02",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000080661.json",
-      "annual_pe": 12.08,
-      "fcf_yield": 0.12592,
+      "annual_pe": 12.16,
+      "fcf_yield": 0.1251,
       "discovery_lane": "alternative_valuation"
     }
   ],
@@ -750,8 +750,8 @@
       "sec_filed": "2026-06-25",
       "sec_period_end": "2026-03-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002099039.json",
-      "annual_pe": 27.66,
-      "fcf_yield": 0.54622,
+      "annual_pe": 28.72,
+      "fcf_yield": 0.52608,
       "discovery_lane": "cash_generation_proxy"
     },
     {
@@ -765,8 +765,8 @@
       "sec_filed": "2026-04-30",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001513845.json",
-      "annual_pe": 411.41,
-      "fcf_yield": -0.10846,
+      "annual_pe": 380.35,
+      "fcf_yield": -0.11732,
       "discovery_lane": "revenue_growth_proxy"
     },
     {
@@ -781,7 +781,7 @@
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002035697.json",
       "annual_pe": null,
-      "fcf_yield": -0.00245,
+      "fcf_yield": -0.0024,
       "discovery_lane": "balance_sheet_proxy"
     },
     {
@@ -795,8 +795,8 @@
       "sec_filed": "2026-02-18",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001203464.json",
-      "annual_pe": 13.4,
-      "fcf_yield": 0.08653,
+      "annual_pe": 13.11,
+      "fcf_yield": 0.08847,
       "discovery_lane": "alternative_valuation"
     },
     {
@@ -810,8 +810,8 @@
       "sec_filed": "2026-04-16",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001723690.json",
-      "annual_pe": 32.34,
-      "fcf_yield": 0.17186,
+      "annual_pe": 30.9,
+      "fcf_yield": 0.17986,
       "discovery_lane": "cash_generation_proxy"
     },
     {
@@ -826,7 +826,7 @@
       "sec_period_end": "2025-06-30",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001345099.json",
       "annual_pe": null,
-      "fcf_yield": -0.02933,
+      "fcf_yield": -0.03126,
       "discovery_lane": "revenue_growth_proxy"
     },
     {
@@ -840,8 +840,8 @@
       "sec_filed": "2026-04-24",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001861737.json",
-      "annual_pe": 36.35,
-      "fcf_yield": -0.01214,
+      "annual_pe": 33.35,
+      "fcf_yield": -0.01323,
       "discovery_lane": "balance_sheet_proxy"
     },
     {
@@ -855,68 +855,8 @@
       "sec_filed": "2026-04-29",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001842827.json",
-      "annual_pe": 15.63,
-      "fcf_yield": 0.10367,
-      "discovery_lane": "alternative_valuation"
-    },
-    {
-      "ticker": "HDB",
-      "name": "HDFC Bank Limited Common Stock",
-      "segment": "INTL",
-      "country": "IN",
-      "sector": "Financials",
-      "sector_authority": "Nasdaq indicative vendor mapping",
-      "cik": "0001144967",
-      "sec_filed": "2025-07-14",
-      "sec_period_end": "2025-03-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001144967.json",
-      "annual_pe": 16.5,
-      "fcf_yield": 0.09971,
-      "discovery_lane": "cash_generation_proxy"
-    },
-    {
-      "ticker": "ARGX",
-      "name": "argenx SE American Depositary Shares",
-      "segment": "INTL",
-      "country": "NL",
-      "sector": "Health Care",
-      "sector_authority": "Nasdaq indicative vendor mapping",
-      "cik": "0001697862",
-      "sec_filed": "2026-03-19",
-      "sec_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001697862.json",
-      "annual_pe": 46.12,
-      "fcf_yield": 0.0114,
-      "discovery_lane": "revenue_growth_proxy"
-    },
-    {
-      "ticker": "CAMT",
-      "name": "Camtek Ltd. Ordinary Shares",
-      "segment": "INTL",
-      "country": "IL",
-      "sector": "Information Technology",
-      "sector_authority": "Nasdaq indicative vendor mapping",
-      "cik": "0001109138",
-      "sec_filed": "2026-03-19",
-      "sec_period_end": "2025-12-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001109138.json",
-      "annual_pe": 93.36,
-      "fcf_yield": 0.02692,
-      "discovery_lane": "balance_sheet_proxy"
-    },
-    {
-      "ticker": "WIT",
-      "name": "Wipro Limited Common Stock",
-      "segment": "INTL",
-      "country": "IN",
-      "sector": "Information Technology",
-      "sector_authority": "Nasdaq indicative vendor mapping",
-      "cik": "0001123799",
-      "sec_filed": "2025-05-22",
-      "sec_period_end": "2025-03-31",
-      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001123799.json",
-      "annual_pe": 13.57,
-      "fcf_yield": 0.08621,
+      "annual_pe": 15.28,
+      "fcf_yield": 0.10605,
       "discovery_lane": "alternative_valuation"
     },
     {
@@ -931,7 +871,67 @@
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001451505.json",
       "annual_pe": null,
-      "fcf_yield": 0.10126,
+      "fcf_yield": 0.10716,
+      "discovery_lane": "cash_generation_proxy"
+    },
+    {
+      "ticker": "ARGX",
+      "name": "argenx SE American Depositary Shares",
+      "segment": "INTL",
+      "country": "NL",
+      "sector": "Health Care",
+      "sector_authority": "Nasdaq indicative vendor mapping",
+      "cik": "0001697862",
+      "sec_filed": "2026-03-19",
+      "sec_period_end": "2025-12-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001697862.json",
+      "annual_pe": 45.68,
+      "fcf_yield": 0.01151,
+      "discovery_lane": "revenue_growth_proxy"
+    },
+    {
+      "ticker": "CAMT",
+      "name": "Camtek Ltd. Ordinary Shares",
+      "segment": "INTL",
+      "country": "IL",
+      "sector": "Information Technology",
+      "sector_authority": "Nasdaq indicative vendor mapping",
+      "cik": "0001109138",
+      "sec_filed": "2026-03-19",
+      "sec_period_end": "2025-12-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001109138.json",
+      "annual_pe": 85.58,
+      "fcf_yield": 0.02937,
+      "discovery_lane": "balance_sheet_proxy"
+    },
+    {
+      "ticker": "WIT",
+      "name": "Wipro Limited Common Stock",
+      "segment": "INTL",
+      "country": "IN",
+      "sector": "Information Technology",
+      "sector_authority": "Nasdaq indicative vendor mapping",
+      "cik": "0001123799",
+      "sec_filed": "2025-05-22",
+      "sec_period_end": "2025-03-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001123799.json",
+      "annual_pe": 13.51,
+      "fcf_yield": 0.08662,
+      "discovery_lane": "alternative_valuation"
+    },
+    {
+      "ticker": "HDB",
+      "name": "HDFC Bank Limited Common Stock",
+      "segment": "INTL",
+      "country": "IN",
+      "sector": "Financials",
+      "sector_authority": "Nasdaq indicative vendor mapping",
+      "cik": "0001144967",
+      "sec_filed": "2025-07-14",
+      "sec_period_end": "2025-03-31",
+      "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001144967.json",
+      "annual_pe": 16.79,
+      "fcf_yield": 0.09799,
       "discovery_lane": "cash_generation_proxy"
     },
     {
@@ -945,8 +945,8 @@
       "sec_filed": "2026-03-31",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001308648.json",
-      "annual_pe": 31.91,
-      "fcf_yield": 0.06891,
+      "annual_pe": 29.61,
+      "fcf_yield": 0.07426,
       "discovery_lane": "revenue_growth_proxy"
     },
     {
@@ -960,7 +960,7 @@
       "sec_filed": "2026-02-26",
       "sec_period_end": "2025-12-31",
       "sec_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001567094.json",
-      "annual_pe": 28.87,
+      "annual_pe": 27.77,
       "fcf_yield": null,
       "discovery_lane": "balance_sheet_proxy"
     }
@@ -968,157 +968,157 @@
   "international_etfs": [
     {
       "ticker": "VEA",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/VEA/info?assetclass=etf"
     },
     {
       "ticker": "VWO",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/VWO/info?assetclass=etf"
     },
     {
       "ticker": "VGK",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/VGK/info?assetclass=etf"
     },
     {
       "ticker": "VPL",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/VPL/info?assetclass=etf"
     },
     {
       "ticker": "EWJ",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWJ/info?assetclass=etf"
     },
     {
       "ticker": "EWG",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWG/info?assetclass=etf"
     },
     {
       "ticker": "EWU",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWU/info?assetclass=etf"
     },
     {
       "ticker": "EWC",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWC/info?assetclass=etf"
     },
     {
       "ticker": "EWA",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWA/info?assetclass=etf"
     },
     {
       "ticker": "EEM",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EEM/info?assetclass=etf"
     },
     {
       "ticker": "IEMG",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/IEMG/info?assetclass=etf"
     },
     {
       "ticker": "VXUS",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/VXUS/info?assetclass=etf"
     },
     {
       "ticker": "IXUS",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/IXUS/info?assetclass=etf"
     },
     {
       "ticker": "ACWX",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/ACWX/info?assetclass=etf"
     },
     {
       "ticker": "EFV",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EFV/info?assetclass=etf"
     },
     {
       "ticker": "EWY",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWY/info?assetclass=etf"
     },
     {
       "ticker": "EWT",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWT/info?assetclass=etf"
     },
     {
       "ticker": "EWZ",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWZ/info?assetclass=etf"
     },
     {
       "ticker": "EWW",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWW/info?assetclass=etf"
     },
     {
       "ticker": "INDA",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/INDA/info?assetclass=etf"
     },
     {
       "ticker": "FXI",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/FXI/info?assetclass=etf"
     },
     {
       "ticker": "MCHI",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/MCHI/info?assetclass=etf"
     },
     {
       "ticker": "SPEM",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/SPEM/info?assetclass=etf"
     },
     {
       "ticker": "SCHE",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/SCHE/info?assetclass=etf"
     },
     {
       "ticker": "AVDE",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/AVDE/info?assetclass=etf"
     },
     {
       "ticker": "AVEM",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/AVEM/info?assetclass=etf"
     },
     {
       "ticker": "EWI",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWI/info?assetclass=etf"
     },
     {
       "ticker": "EWL",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWL/info?assetclass=etf"
     },
     {
       "ticker": "EWN",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWN/info?assetclass=etf"
     },
     {
       "ticker": "EWP",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EWP/info?assetclass=etf"
     },
     {
       "ticker": "EZA",
-      "quote_asof_date": "2026-11-16",
+      "quote_asof_date": "2026-11-17",
       "source_url": "https://api.nasdaq.com/api/quote/EZA/info?assetclass=etf"
     }
   ],
