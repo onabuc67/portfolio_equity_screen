@@ -3,10 +3,14 @@ name: Public equity market snapshot (preclose)
 
 on:
   schedule:
-    # UTC attempts include a 10:10 AM Pacific run in PDT AND PST.
-    # The 11 AM PT ChatGPT decision report uses the latest completed producer output.
-    # GitHub scheduled starts may drift: acceptance requires actual data-ready time < 11 PT.
-    - cron: '10 15-19 * * 1-5'
+    # Multiple EARLY weekday UTC attempts protect the 11:00 America/Los_Angeles
+    # Portfolio decision deadline from observed multi-hour GitHub schedule delays.
+    # 09:17–18:17 UTC = 01:17–10:17 PST / 02:17–11:17 PDT.
+    # GitHub cron is best-effort, not a delivery guarantee; the consumer checks
+    # actual producer run_utc, market-date provenance, and source freshness.
+    # Concurrency prevents overlapping publishes; existing staged atomic
+    # validation continues to preserve the last good snapshot on source failure.
+    - cron: '17 9-18 * * 1-5'
   workflow_dispatch:
   push:
     branches: [main]
