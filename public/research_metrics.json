@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1-index",
   "meta": {
-    "run_utc": "2026-11-20T17:49:34.870989+00:00",
-    "producer_source_commit": "f09ec7ac8cbde2ac7373c3c6281abd5b1528456e",
+    "run_utc": "2026-11-20T23:59:50.547585+00:00",
+    "producer_source_commit": "05cb95f4ee8417942a0368afdb4ae53a64ac4846",
     "report_date": "2026-11-20",
     "status": "DATA_READY_RESEARCH_PENDING",
     "coverage": {
@@ -3001,43 +3001,43 @@
       "path": "research_metrics_us_01.json",
       "segment": "US",
       "count": 150,
-      "sha256": "a2de17deebe04b37a2aa8166a1bb8a26024e0914b9a27014bdf61efc9a08ed11"
+      "sha256": "80f01f9bc1198bd0b1802f081d2d641c9c3ef2a05189d2a79c3531795bb2fcb3"
     },
     {
       "path": "research_metrics_us_02.json",
       "segment": "US",
       "count": 150,
-      "sha256": "241fe795cb81a6a9d66cb7fd7b84d58cf396d491bc45799755cef4820af566ae"
+      "sha256": "fc6a70f521bb08a71d481fe068b0763fc28a66cfeb139471588b687c05c76d94"
     },
     {
       "path": "research_metrics_us_03.json",
       "segment": "US",
       "count": 150,
-      "sha256": "28103109d7433af040a3e203f62d57e406688c650ef59cfda793b77f51944ebe"
+      "sha256": "6a95c645ac7c6c01187a86500c6a42ade3a840f9c69dca3fdeabefb12a4b99f2"
     },
     {
       "path": "research_metrics_us_04.json",
       "segment": "US",
       "count": 150,
-      "sha256": "c6638cb517e112396b82012e2cb0ec3ccd1ed01cad593aa4f21d8e66bf7229a6"
+      "sha256": "052a8782aa9a71cc826a64690f8d3711dfb516a1b8ef3c3d26973aa87afd0b40"
     },
     {
       "path": "research_metrics_us_05.json",
       "segment": "US",
       "count": 7,
-      "sha256": "837bd611be05a118eb209a6bea57b72719870029f8d82319363108ed75f8cde6"
+      "sha256": "f395e4eeb8b928572fe3c53b0c9fc1706f99f9fa11e473d23f5c8ae7d15e44dc"
     },
     {
       "path": "research_metrics_intl_01.json",
       "segment": "INTL",
       "count": 150,
-      "sha256": "49efa8f2263993f1d8d1ed396350baeb0c7254fe930c323e5b92d4faaf316417"
+      "sha256": "7fa060a6eeebec6123bac43ee2177d2ec995af2dff3edc4fef6fb7e11202fb5b"
     },
     {
       "path": "research_metrics_intl_02.json",
       "segment": "INTL",
       "count": 6,
-      "sha256": "bbbd191870974d93b14ecb4914c40b3ad295863ccbde59bc3b16a9e6a066b167"
+      "sha256": "c5b9fc30ddd2659eff72713ac2358fd2f82e8a0784757161f2521a63c58acb58"
     }
   ],
   "consumer_instructions": "Fetch all listed shards from GitHub main/public; verify SHA-256 and common metadata. Treat primary value-ranked 15+15 and independent 15+15 challenger queues as DISCOVERY ONLY; refresh current quote, latest quarter, normalized earnings, revisions, peers and countercase before 6+6 issuer-grade evaluation. Never infer v1.4 Opportunity Scores or tradable signals from this artifact."
