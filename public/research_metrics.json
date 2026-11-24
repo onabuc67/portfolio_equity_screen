@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1-index",
   "meta": {
-    "run_utc": "2026-11-23T21:27:57.537193+00:00",
-    "producer_source_commit": "caeba1eac82c1ff674f4670209b56261822313ce",
+    "run_utc": "2026-11-24T01:36:15.897428+00:00",
+    "producer_source_commit": "7b5b8bc3fa17fb96336ca62e90ebc25aa980534d",
     "report_date": "2026-11-23",
     "status": "DATA_READY_RESEARCH_PENDING",
     "coverage": {
@@ -16,7 +16,7 @@
       "etf_quotes_attempted": 31,
       "nasdaq_quote_asof_date": "2026-11-23",
       "etf_quote_asof_range": [
-        "2026-11-23",
+        "2026-11-20",
         "2026-11-23"
       ],
       "US_MIDCAP": 156,
@@ -2842,12 +2842,12 @@
     },
     {
       "ticker": "VGK",
-      "quote_asof_date": "2026-11-23",
+      "quote_asof_date": "2026-11-20",
       "source_url": "https://api.nasdaq.com/api/quote/VGK/info?assetclass=etf"
     },
     {
       "ticker": "VPL",
-      "quote_asof_date": "2026-11-23",
+      "quote_asof_date": "2026-11-20",
       "source_url": "https://api.nasdaq.com/api/quote/VPL/info?assetclass=etf"
     },
     {
@@ -2897,12 +2897,12 @@
     },
     {
       "ticker": "ACWX",
-      "quote_asof_date": "2026-11-23",
+      "quote_asof_date": "2026-11-20",
       "source_url": "https://api.nasdaq.com/api/quote/ACWX/info?assetclass=etf"
     },
     {
       "ticker": "EFV",
-      "quote_asof_date": "2026-11-23",
+      "quote_asof_date": "2026-11-20",
       "source_url": "https://api.nasdaq.com/api/quote/EFV/info?assetclass=etf"
     },
     {
@@ -2952,12 +2952,12 @@
     },
     {
       "ticker": "AVDE",
-      "quote_asof_date": "2026-11-23",
+      "quote_asof_date": "2026-11-20",
       "source_url": "https://api.nasdaq.com/api/quote/AVDE/info?assetclass=etf"
     },
     {
       "ticker": "AVEM",
-      "quote_asof_date": "2026-11-23",
+      "quote_asof_date": "2026-11-20",
       "source_url": "https://api.nasdaq.com/api/quote/AVEM/info?assetclass=etf"
     },
     {
@@ -2998,43 +2998,43 @@
       "path": "research_metrics_us_01.json",
       "segment": "US",
       "count": 150,
-      "sha256": "da8b2e46d5725f537328b7c74d98199708f4a91bf1e4fe460c21ec511738c093"
+      "sha256": "3394f8bad9126f4e19d033fd77bf14433842df482e06f7d3d4208a29802b003b"
     },
     {
       "path": "research_metrics_us_02.json",
       "segment": "US",
       "count": 150,
-      "sha256": "e98fdd016b09a593f8b722aedd49c2886c5a1861378017c790aba43c085ae6ca"
+      "sha256": "a0845d6e2e4565ce634648a3ce0a64f54abf717c4ee8fcc3b82e0b7f2c14fbeb"
     },
     {
       "path": "research_metrics_us_03.json",
       "segment": "US",
       "count": 150,
-      "sha256": "31918bf6d1eb683db24ceb56ecbda2d861af68eb13774b39ea269ba7acef54b8"
+      "sha256": "e9162c315c59e5e3021ea1d79ea368853b7420aff7b1a6c99ff5522e32e661b6"
     },
     {
       "path": "research_metrics_us_04.json",
       "segment": "US",
       "count": 150,
-      "sha256": "f23d46bc48ad0d4844a788d10cce250360e24419516633286d30928211d96704"
+      "sha256": "b2699e9b9a13ae9221d22d19afa423b9c16051f00d0d1fc0dcfd0d01f702aedb"
     },
     {
       "path": "research_metrics_us_05.json",
       "segment": "US",
       "count": 7,
-      "sha256": "0d919f3fe73d4193cdad763d56bfc4cf211cd8c9cd2496d44fce34853c7fa00d"
+      "sha256": "07e724ceed56802950c367711df2164193570cd4567bfc09bea41a57240e387c"
     },
     {
       "path": "research_metrics_intl_01.json",
       "segment": "INTL",
       "count": 150,
-      "sha256": "b9d3340a72e6f40729ee9302a36c4a8449f1539dc13579c1cc6d570e740883a4"
+      "sha256": "c642c3fc2d83b4b3ff21fa1370c6a0fb515581967cf15eba7e7786451d09560e"
     },
     {
       "path": "research_metrics_intl_02.json",
       "segment": "INTL",
       "count": 4,
-      "sha256": "8d434c2b918b72bae7715407ff17667329699dbf5f1c2b56c8a661225fcd575b"
+      "sha256": "7ed15562024563ac9e97ed8d63ffa240876f6ffbabf327ea294d81001d555d5e"
     }
   ],
   "consumer_instructions": "Fetch all listed shards from GitHub main/public; verify SHA-256 and common metadata. Treat primary value-ranked 15+15 and independent 15+15 challenger queues as DISCOVERY ONLY; refresh current quote, latest quarter, normalized earnings, revisions, peers and countercase before 6+6 issuer-grade evaluation. Never infer v1.4 Opportunity Scores or tradable signals from this artifact."

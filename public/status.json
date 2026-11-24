@@ -1,7 +1,7 @@
 {
   "pipeline_version": "0.4",
-  "producer_source_commit": "caeba1eac82c1ff674f4670209b56261822313ce",
-  "run_utc": "2026-11-23T21:27:57.537193+00:00",
+  "producer_source_commit": "7b5b8bc3fa17fb96336ca62e90ebc25aa980534d",
+  "run_utc": "2026-11-24T01:36:15.897428+00:00",
   "report_date": "2026-11-23",
   "provider_status": {
     "nasdaq": {
@@ -13,17 +13,17 @@
       "quote_timestamp_anchors": [
         {
           "ticker": "AAPL",
-          "trade_timestamp": "Nov 23, 2026 4:27 PM ET",
+          "trade_timestamp": "Nov 23, 2026 7:59 PM ET",
           "trade_date": "2026-11-23",
-          "price_deviation_pct": 2.03,
+          "price_deviation_pct": 2.111,
           "bulk_price_corrob_3pct": true,
           "source": "https://api.nasdaq.com/api/quote/AAPL/info"
         },
         {
           "ticker": "JPM",
-          "trade_timestamp": "Nov 23, 2026 4:28 PM ET",
+          "trade_timestamp": "Nov 23, 2026 7:59 PM ET",
           "trade_date": "2026-11-23",
-          "price_deviation_pct": 2.222,
+          "price_deviation_pct": 2.583,
           "bulk_price_corrob_3pct": true,
           "source": "https://api.nasdaq.com/api/quote/JPM/info"
         }
@@ -57,7 +57,7 @@
     "etf_quotes_attempted": 31,
     "nasdaq_quote_asof_date": "2026-11-23",
     "etf_quote_asof_range": [
-      "2026-11-23",
+      "2026-11-20",
       "2026-11-23"
     ],
     "US_MIDCAP": 156,
